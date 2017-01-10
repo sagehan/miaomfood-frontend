@@ -1,0 +1,423 @@
+@import "variables";
+@import '~normalize.css/normalize';
+
+@font-face {
+	font-family: 'HanziPen SC';
+	src: local('HanziPen SC');
+	src: local('HanziPenSC-W3');
+}
+
+@font-face {
+	font-family: 'Lucida Grande';
+	src: local('Lucida Grande');
+}
+
+* { 
+	-webkit-margin-before: 0;
+	-webkit-margin-after : 0;
+	-webkit-margin-start : 0;
+	-webkit-margin-end   : 0;
+}
+
+body { font-family: Helvetica, sans-serif; }
+main { width: 100%; background-color: $page-bg; }
+
+.cuisine h1 {
+	font: #{24px/$rem_size}em/1.5 "HanziPen SC";
+	text-align: center;
+}
+
+#tasty { background-color: $tasty-bg; }
+#drink { background-color: $drink_bg; }
+
+#pizza div.group {
+	position: relative;
+	width : percentage($group_width/$layout_width);;
+	margin: #{(4*$row_height/16px)}em auto;
+	border: 1.5px dashed $border_bg; 
+
+	&:after,
+	&:before {
+		content: "";
+		display: block;
+		position: absolute;
+		width: percentage((4*$column_width + 3*$gutter_width)/$group_width);
+	}
+
+	.h-product figure { 
+		display: block;
+		position: relative; 
+		margin: 3em auto 0; 
+		width  : 100%;
+	}
+
+	.p-name {
+		width 			: #{24px/$rem_size}em;
+		min-height		: #{5*$row_height/18px}em;
+		padding 		: #{($row_height/2/18px)}em #{($row_height/4/18px)}em;
+		font 			: #{18px/$rem_size}em/#{($row_height/18px)} "HanziPen SC";
+		text-align		: center;
+		vertical-align	: middle;
+		box-shadow		: inset 1px 1px 3px $shadow_bg;
+		background-color: $page_bg;
+	}
+
+	.spec-tag {
+		-webkit-padding-start: 0;
+		position  : relative;
+		margin-top: -#{((2*$row_height - 3px + $row_height/2)/12px)}em;
+		padding : 0;
+		width 	: -webkit-max-content;
+		width 	: -moz-max-content;
+		height 	: -webkit-max-content;
+		height  : -moz-max-content;
+		font  	: #{12px/$rem_size}em/#{(($row_height - 5px)/12px)} -apple-system, BlinkMacSystemFont, 'Microsoft YaHei', Helvetica, sans-serif;
+		list-style-type: none;
+
+		.p-spec {
+			position  : relative;
+			-webkit-margin-after: #{$row_height/2/12px}em;
+			margin-bottom: 8px;
+			padding: 0 0.3em;
+			color: $tag-border_color;
+			outline   : 1px dashed $tag-border_color;
+			word-break: keep-all;
+		}
+
+		.p-spec.isSelected { outline-style: solid; }
+	}
+
+	figure:after,
+	figure:before {
+		content: "";
+		display: block;
+		width  : 100%;
+		padding-top : 100%;
+		background-color: white;
+		border-radius: 100%;
+	}
+
+	figure:before { 
+		transform: scale(1.35, 1.35); 
+		box-shadow: 1px 2px 1px 1px adjust-color($shadow_bg, $alpha: -0.5);
+	}
+
+	figure:after {
+		position: absolute;
+		width: 100%;
+		top: 50%;
+		left: 50%;
+		transform 	: translate(-50%, -50%) scale(1.19, 1.19);
+		box-shadow: 1px 1px 1px 1px adjust-color($shadow_bg, $alpha: -0.5);
+		z-index: 9998
+	}
+
+	.u-photo {
+		display: block;
+		position: absolute;
+		width 		: 100%;
+		height 		: auto;
+		top: 50%;
+		left: 50%;
+		-webkit-shape-outside: circle() padding-box;
+		shape-outside: circle();
+		transform 	: translate(-50%, -50%) scale(1.2, 1.2);
+		z-index: 9999;
+	}
+
+	.e-description { 
+		position	: absolute;
+		top: 0;
+		margin-top: -3em;
+		padding-top: 0.5em;
+		font 		: #{12px/$rem_size}em/#{($row_height/12px)} "HanziPen SC"; 
+		white-space : nowrap;
+		word-break 	: keep-all;
+	}
+}
+
+#pizza div.twins {
+	display	  : flex;
+	flex-wrap : nowrap;
+	justify-content: space-between;
+
+	.h-product {
+		width: 49%;
+
+		&:nth-child(odd) {
+			.p-name { transform: translateX(-100%); }
+
+			figure { 
+				transform: translateX(-#{$column_width + 2*$gutter_width}); 
+
+				.e-description { 
+					margin-left: 1em;
+					transform: translateX(#{$column_width + 2*$gutter_width}) rotate(15deg); 
+				}
+			}
+
+			.p-spec.isSelected:after {			
+				content : "✓";
+				display : inline-block;
+				position: absolute;
+				right 	: 0;
+				bottom 	: -1px;
+				width 	: 1em;
+				height 	: #{($row_height - 6px)/14px}em;
+				padding : 0 0.25em;
+				transform: translateX(100%);
+				font 	: #{(14px/12px)}em/#{(($row_height - 6px)/14px)} "Lucida Grande";
+				border 	: 1px solid $tag-border_color;
+				border-bottom-right-radius: 2em;
+				border-top-right-radius: 2em;
+				word-spacing: 0;
+				color 	: white;
+				background-color: $tag-border_color;
+			}	
+		}
+
+		&:nth-child(even) { 
+			.p-name { 
+				position: relative;
+				right 	: -100%;
+			}
+
+			figure { 
+				transform: translateX(#{$column_width + 2*$gutter_width}); 
+
+				.e-description { 
+					right: 0;
+					margin-right: 1em;
+					transform: translateX(-#{$column_width + 2*$gutter_width}) rotate(-15deg); 
+				}
+			}
+
+			.spec-tag {
+				right 	 : -100%;
+				transform: translateX(-100%);
+			}
+
+			.p-spec.isSelected:before {			
+				content : "✓";
+				display : inline-block;
+				position: absolute;
+				left 	: 0;
+				bottom 	: -1px;
+				width 	: 1em;
+				height 	: #{($row_height - 6px)/14px}em;
+				padding : 0 0.25em;
+				transform: translateX(-100%);
+				font 	: #{(14px/12px)}em/#{(($row_height - 6px)/14px)} "Lucida Grande";
+				border 	: 1px solid $tag-border_color;
+				border-bottom-left-radius: 2em;
+				border-top-left-radius: 2em;
+				color 	: white;
+				background-color: $tag-border_color;
+			}
+		}
+	}
+
+	&:nth-of-type(1) article.h-product:nth-child(1),
+	&:nth-of-type(2) article.h-product:nth-child(2),
+	&:nth-of-type(3) article.h-product:nth-child(1),
+	&:nth-of-type(4) article.h-product:nth-child(2), {
+		-webkit-margin-before: #{(3*$row_height/16px)}em;
+		margin-top 	: #{(4*$row_height/16px)}em;
+		position 	:relative;
+		bottom 		: -#{(1*$row_height/16px)}em;
+	}
+
+	&:nth-of-type(odd) {
+		&:before {
+			top: -2em;
+			left: -2em;
+			height: #{3*$row_height/$rem_size}em;
+			transform: scale(1.35, 1.35);
+		}
+
+		&:after {
+			bottom: 0;
+			right: 0;
+			height: #{2*$row_height/$rem_size}em;
+			transform: translate(50%, 50%);
+			background-color:  $tasty_bg;
+		}
+
+		article.h-product:after {
+			content: "";
+			display: block;
+			position: absolute;
+			bottom: 0;
+			left: 100%;
+			width: 2*($column_width+$gutter_width);
+			height: #{2*$row_height/$rem_size}em;
+		}
+	}
+
+	&:nth-of-type(even) {
+		&:before {
+			top: -2em;
+			right: -2em;
+			height: #{3*$row_height/$rem_size}em;
+			transform: scale(1.35, 1.35);
+		}
+
+		&:after {
+			bottom: 0;
+			left: 0;
+			height: #{2*$row_height/$rem_size}em;
+			transform: translate(-50%, 50%);
+			background-color:  $tasty_bg;
+		}
+
+		article.h-product:after {
+			content: "";
+			display: block;
+			position: absolute;
+			bottom: 1em;
+			left: 0;
+			width: 2*($column_width+$gutter_width);
+			height: #{2*$row_height/$rem_size}em;
+		}
+	}
+
+	&:nth-of-type(1) {
+		&:before { background: url(~assets/imgs/bacon.png) left top/contain no-repeat content-box;}
+
+		article.h-product:nth-child(1):after {
+			transform: scale(1.15, 1.15);
+			background: url(~assets/imgs/yuangu.png) left top/contain no-repeat content-box;
+		}
+		article.h-product:nth-child(2):after {
+			transform: translate(-50%, -50%) scale(1.5, 1.5);
+			background: url(~assets/imgs/pineapple.png) left top/contain no-repeat content-box;
+		}
+	}
+
+	&:nth-of-type(2) {
+		&:before { background: url(~assets/imgs/beef.png) left top/contain no-repeat content-box; }
+
+		article.h-product:nth-child(1):after {
+			transform: translate(-50%, 0) scale(1.15, 1.15);
+			//background: url(~assets/imgs/) left top/contain no-repeat content-box;
+		}
+		article.h-product:nth-child(2):after {
+			transform: translate(-100%,50%) scale(1.5, 1.5);
+			background: url(~assets/imgs/pepper.png) left top/contain no-repeat content-box;
+		}
+	}
+
+	&:nth-of-type(3) {
+		&:before { background: url(~assets/imgs/chicken.png) left top/contain no-repeat content-box; }
+
+		article.h-product:nth-child(1):after {
+			transform: scale(1.15, 1.15);
+			background: url(~assets/imgs/pepper.png) left top/contain no-repeat content-box;
+		}
+		article.h-product:nth-child(2):after {
+			transform: translate(-50%,-50%) scale(1.5, 1.5);
+			background: url(~assets/imgs/yuangu.png) left top/contain no-repeat content-box;
+		}
+	}
+
+	&:nth-of-type(4) {
+		//&:before { background: url(~assets/imgs/chicken.png) left top/contain no-repeat content-box; }
+
+		article.h-product:nth-child(1):after {
+			transform: translate(-50%, -25%) scale(1.15, 1.15);
+			background: url(~assets/imgs/huanggua.png) left top/contain no-repeat content-box;
+		}
+		article.h-product:nth-child(2):after {
+			transform: translate(-100%, 50%) scale(1.5, 1.5);
+			background: url(~assets/imgs/xia.png) left top/contain no-repeat content-box;
+		}
+	}
+}
+
+#pizza div.orphan { 
+	article.h-product {
+		position: relative;
+		padding : 1em 0 3em;
+		//height 	: #{8*$row_height/$rem_size}em;
+	}
+
+	&:nth-of-type(even) article.h-product {
+		.p-name { transform: translateX(-100%); }
+		
+		.spec-tag .p-spec.isSelected:after {			
+			content : "✓";
+			display : inline-block;
+			position: absolute;
+			right 	: 0;
+			bottom 	: -1px;
+			width 	: 1em;
+			height 	: #{($row_height - 6px)/14px}em;
+			padding : 0 0.25em;
+			transform: translateX(100%);
+			font 	: #{(14px/12px)}em/#{(($row_height - 6px)/14px)} "Lucida Grande";
+			border 	: 1px solid $tag-border_color;
+			border-bottom-right-radius: 2em;
+			border-top-right-radius: 2em;
+			word-spacing: 0;
+			color 	: white;
+			background-color: $tag-border_color;
+		}	
+
+		figure { 
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 50%;
+			transform: translateX(#{$column_width + 2*$gutter_width}); 
+
+			.e-description { 
+				right: 0;
+				margin-right: 1em;
+				transform: translateX(-#{$column_width + 2*$gutter_width}) rotate(-15deg); 
+			}
+		}
+	}
+
+	&:nth-of-type(odd) article.h-product {
+		.p-name { 
+			position: relative;
+			right 	: -100%; 
+		}
+		
+		.spec-tag {
+			right 	 : -100%;
+			transform: translateX(-100%);
+		}
+
+		.p-spec.isSelected:before {			
+			content : "✓";
+			display : inline-block;
+			position: absolute;
+			left 	: 0;
+			bottom 	: -1px;
+			width 	: 1em;
+			height 	: #{($row_height - 6px)/14px}em;
+			padding : 0 0.25em;
+			transform: translateX(-100%);
+			font 	: #{(14px/12px)}em/#{(($row_height - 6px)/14px)} "Lucida Grande";
+			border 	: 1px solid $tag-border_color;
+			border-bottom-left-radius: 2em;
+			border-top-left-radius: 2em;
+			color 	: white;
+			background-color: $tag-border_color;
+		}	
+
+		figure { 
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 50%;
+			transform: translateX(-#{$column_width + 2*$gutter_width}); 
+
+			.e-description { 
+				margin-left: 1em;
+				transform: translateX(#{$column_width + 2*$gutter_width}) rotate(15deg); 
+			}
+		}
+	}
+}

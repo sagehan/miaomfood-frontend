@@ -1,0 +1,18 @@
+// global
+$rem_size 	: 16px;
+$row_height : 27px;
+
+// layout
+$column_width: 20.4px;
+$gutter_width: 6.8px;
+$layout_width: 12 * $column_width + 11 * $gutter_width;
+$group_width: 8 * $column_width + 7 * $gutter_width;
+
+// swatches
+$page_bg	: hsl(0, 0, 92);
+$tasty_bg	: hsl(67, 75, 95);
+$drink_bg	: hsl(341, 75, 95);
+$border_bg 	: hsl(0, 0, 75);
+
+$shadow_bg 	: hsl(0, 0, 50);
+$tag-border_color: hsl(174, 75, 33);
