@@ -42,9 +42,9 @@
             </ul>
             <figure>
               <img class="u-photo" src="./assets/imgs/pizza.png" alt="图片：内牛满面披萨" />
-              <div class="e-description">
+              <figcaption class="e-description">
                 <p>特色：牛肉</p>
-              </div>
+              </figcaption>
             </figure>
           </article>
           <article class="h-product">
@@ -55,9 +55,9 @@
             </ul>
             <figure>
               <img class="u-photo" src="./assets/imgs/pizza.png" alt="图片：热辣牛肉披萨" />
-              <div class="e-description">
+              <figcaption class="e-description">
                 <p>特色：牛肉，自制辣酱</p>
-              </div>
+              </figcaption>
             </figure>
           </article>
         </div>
@@ -71,9 +71,9 @@
             </ul>
             <figure>
               <img class="u-photo" src="./assets/imgs/pizza.png" alt="图片：辣味鸡肉披萨" />
-              <div class="e-description">
+              <figcaption class="e-description">
                 <p>特色：烤鸡肉，辣酱</p>
-              </div>
+              </figcaption>
             </figure>
           </article>
           <article class="h-product">
@@ -84,9 +84,9 @@
             </ul>
             <figure>
               <img class="u-photo" src="./assets/imgs/pizza.png" alt="图片：菌菇鸡肉披萨" />
-              <div class="e-description">
+              <figcaption class="e-description">
                 <p>特色：烤鸡肉，圆菇</p>
-              </div>
+              </figcaption>
             </figure>
           </article>
         </div>
@@ -100,9 +100,9 @@
             </ul>
             <figure>
               <img class="u-photo" src="./assets/imgs/pizza.png" alt="图片：情满金枪鱼披萨" />
-              <div class="e-description">
+              <figcaption class="e-description">
                 <p>特色：金枪鱼，酸黄瓜</p>
-              </div>
+              </figcaption>
             </figure>
           </article>
           <article class="h-product">
@@ -113,9 +113,9 @@
             </ul>
             <figure>
               <img class="u-photo" src="./assets/imgs/pizza.png" alt="图片：席卷天虾披萨" />
-              <div class="e-description">
+              <figcaption class="e-description">
                 <p>特色：金枪鱼，虾仁</p>
-              </div>
+              </figcaption>
             </figure>
           </article>
         </div>
@@ -129,9 +129,9 @@
             </ul>
             <figure>
               <img class="u-photo" src="./assets/imgs/pizza.png" alt="图片：大力水手披萨" />
-              <div class="e-description">
+              <figcaption class="e-description">
                 <p>特色：菠菜，蘑菇，酸黄瓜</p>
-              </div>
+              </figcaption>
             </figure>
           </article>
         </div>
@@ -145,9 +145,9 @@
             </ul>
             <figure>
               <img class="u-photo" src="./assets/imgs/pizza.png" alt="图片：缤纷果园披萨" />
-              <div class="e-description">
+              <figcaption class="e-description">
                 <p>特色：红薯边，菠萝，猕猴桃</p>
-              </div>
+              </figcaption>
             </figure>
           </article>
         </div>
@@ -161,9 +161,9 @@
             </ul>
             <figure>
               <img class="u-photo" src="./assets/imgs/pizza.png" alt="图片：榴恋榴莲披萨" />
-              <div class="e-description">
+              <figcaption class="e-description">
                 <p>特色：榴莲</p>
-              </div>
+              </figcaption>
             </figure>
           </article>
         </div>
@@ -172,29 +172,29 @@
       <section id="rice" class="cuisine">
         <h1>焗饭</h1>
 
-        <div class="group">
+        <div class="twins group">
           <article class="h-product">
             <h2 class="p-name">红绘牛肉</h2>
             <ul class="spec-tag">
-              <li class="p-spec"><b class="spec-price">¥35</b>/份</li>
+              <li class="p-spec isSelected"><b class="spec-price">¥35</b>/份 x1</li>
             </ul>
             <figure>
-              <img class="u-photo" src="" alt="图片：红绘牛肉焗饭" />
-              <div class="e-description">
+              <img class="u-photo" src="./assets/imgs/rice.png" alt="图片：红绘牛肉焗饭" />
+              <figcaption class="e-description">
                 <p>特色：牛肉，红酒</p>
-              </div>
+              </figcaption>
             </figure>
           </article>
           <article class="h-product">
             <h2 class="p-name">咖喱鸡肉</h2>
             <ul class="spec-tag">
-              <li class="p-spec"><b class="spec-price">¥35</b>/份</li>
+              <li class="p-spec isSelected"><b class="spec-price">¥35</b>/份 x1</li>
             </ul>
             <figure>
-              <img class="u-photo" src="" alt="图片：咖喱鸡肉焗饭" />
-              <div class="e-description">
+              <img class="u-photo" src="./assets/imgs/rice.png" alt="图片：咖喱鸡肉焗饭" />
+              <figcaption class="e-description">
                 <p>特色：鸡肉，咖喱</p>
-              </div>
+              </figcaption>
             </figure>
           </article>
         </div>  
