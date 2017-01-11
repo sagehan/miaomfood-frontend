@@ -19,6 +19,8 @@
 	-webkit-margin-end   : 0;
 }
 
+ul { list-style-type: none; }
+
 body { font-family: Helvetica, sans-serif; }
 main { width: 100%; background-color: $page-bg; }
 
@@ -29,6 +31,8 @@ main { width: 100%; background-color: $page-bg; }
 
 #tasty { background-color: $tasty-bg; }
 #drink { background-color: $drink_bg; }
+
+#pizza, #rice, #snack { padding-bottom: 3em; }
 
 @mixin absolutly__centered {
 	position: absolute;
@@ -69,11 +73,12 @@ main { width: 100%; background-color: $page-bg; }
 	border-top-right-radius: 2em;
 }
 
+#snack 	div.group,
 #rice 	div.group,
 #pizza 	div.group {
 	position: relative;
 	width : percentage($group_width/$layout_width);
-	margin: #{(3*$row_height/16px)}em auto;
+	margin: #{(2*$row_height/16px)}em auto;
 
 	.p-name {
 		width 			: #{24px/$rem_size}em;
@@ -94,7 +99,6 @@ main { width: 100%; background-color: $page-bg; }
 		height 	: -webkit-max-content;
 		height  : -moz-max-content;
 		font  	: #{12px/$rem_size}em/#{(($row_height - 5px)/12px)} -apple-system, BlinkMacSystemFont, 'Microsoft YaHei', Helvetica, sans-serif;
-		list-style-type: none;
 	}
 
 	.p-spec {
@@ -182,6 +186,7 @@ main { width: 100%; background-color: $page-bg; }
 	display	  : flex;
 	flex-wrap : nowrap;
 	justify-content: space-between;
+	margin: #{(4*$row_height/16px)}em auto;
 
 	.h-product {
 		width: 49%;
@@ -441,4 +446,31 @@ main { width: 100%; background-color: $page-bg; }
 			.e-description { transform: translateX(#{$column_width + 2*$gutter_width}) rotate(15deg); }
 		}
 	}
+}
+
+#snack 	div.group { 
+	margin: #{($row_height/16px)}em auto;
+	min-height: #{7*$row_height/$rem_size}em;
+}
+
+#snack .h-product {
+	.p-name, .spec-tag, .u-photo { position: absolute; }
+	.p-name { left: 50%; transform: translateX(-50%); }
+
+	.u-photo { 
+		left: calc(50% + #{24px/$rem_size}em + 1em);
+		top: 50%;
+		transform: translateY(-50%);
+		width: 49%;
+		height: auto;
+	}
+
+	.spec-tag { 
+		position: absolute;
+		right: calc(50% + #{24px/2/12px}em + #{($row_height/4/12px)}em + 1px);
+		top: 50%;
+		transform: translateY(-50%);
+	}
+	.p-spec.isSelected:before { @include pricetag__leading; }
+
 }

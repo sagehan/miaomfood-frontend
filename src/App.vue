@@ -203,24 +203,28 @@
       <section id="snack" class="cuisine">
         <h1>小吃</h1>
 
-        <article class="h-product">
-          <h2 class="p-name">奥尔良烤翅</h2>
-          <img class="u-photo" src="" alt="图片：奥尔良烤翅" />
-          <ul class="spec-tag">
-            <li><b class="spec-price">¥20</b>/一对</li>
-            <li><b class="spec-price">¥50</b>/五对</li>
-          </ul>
-        </article>
+        <div class="orphan group">
+          <article class="h-product">
+            <h2 class="p-name">奥尔良烤翅</h2>
+            <img class="u-photo" src="./assets/imgs/chicken-wings.png" alt="图片：奥尔良烤翅" />
+            <ul class="spec-tag">
+              <li class="p-spec"><b class="spec-price">¥20</b>/一对</li>
+              <li class="p-spec isSelected"><b class="spec-price">¥50</b>/五对 x1</li>
+            </ul>
+          </article>
+        </div>
 
-        <article class="h-product">
-          <h2 class="p-name">芝士焗</h2>
-          <img class="u-photo" src="" alt="图片：奥尔良烤翅" />
-          <ul class="spec-tag">
-            <li><b class="spec-price">¥28</b>/榴莲风味</li>
-            <li><b class="spec-price">¥12</b>/金枪鱼风味</li>
-            <li><b class="spec-price">¥9</b>/培根风味</li>
-          </ul>
-        </article>
+        <div class="orphan group">
+          <article class="h-product">
+            <h2 class="p-name">芝士焗土豆泥</h2>
+            <img class="u-photo" src="./assets/imgs/rice.png" alt="图片：焗土豆泥" />
+            <ul class="spec-tag">
+              <li class="p-spec isSelected"><b class="spec-price">¥28</b>/榴莲味 x2</li>
+              <li class="p-spec"><b class="spec-price">¥12</b>/金枪鱼味</li>
+              <li class="p-spec"><b class="spec-price">¥9</b>/培根味</li>
+            </ul>
+          </article>
+        </div>
       </section>
     </section>
 
