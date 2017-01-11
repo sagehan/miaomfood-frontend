@@ -29,10 +29,28 @@ main { width: 100%; background-color: $page-bg; }
 	text-align: center;
 }
 
+#tasty, 
+#drink {
+	margin-bottom: #{2*$row_height/$rem_size}em;
+	box-shadow: 0.5rem -1px 3px $shadow_bg, 0.5rem 1px 3px $shadow_bg;
+
+	&:before {
+		content: "";
+		display: block;
+		margin: 0 auto;
+		width: 0;
+		height: 0;
+		border-bottom: 1rem solid adjust-color($shadow_bg, $alpha: -0.15);
+		border-right: 1rem solid transparent;
+		transform: translateY(-50%) rotate(-45deg);
+		box-shadow: inset 0.5rem -1px 3px $shadow_bg;
+	}
+}
+
 #tasty { background-color: $tasty-bg; }
 #drink { background-color: $drink_bg; }
 
-#pizza, #rice, #snack { padding-bottom: 3em; }
+#pizza, #rice, #snack { padding-bottom: 2em; }
 
 @mixin absolutly__centered {
 	position: absolute;
