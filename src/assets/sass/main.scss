@@ -497,7 +497,6 @@ main { width: 100%; background-color: $page-bg; }
 	//justify-content: space-between;
 	width : percentage($drink_width/$layout_width);
 	margin: #{2*27px/$rem_size}em auto;
-	padding: #{($grid_size/2/$rem_size)}em;
 
 	.h-product { 
 		width: #{$grid_size/$rem_size}em; 
