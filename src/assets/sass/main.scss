@@ -490,5 +490,69 @@ main { width: 100%; background-color: $page-bg; }
 		transform: translateY(-50%);
 	}
 	.p-spec.isSelected:before { @include pricetag__leading; }
+}
 
+#drink div.group {
+	display: flex;
+	//justify-content: space-between;
+	width : percentage($drink_width/$layout_width);
+	margin: #{2*27px/$rem_size}em auto;
+	padding: #{($grid_size/2/$rem_size)}em;
+
+	.h-product { 
+		width: #{$grid_size/$rem_size}em; 
+		margin-left: #{($grid_size/$rem_size)}em; 
+	}
+
+	.p-name {
+		//min-height		: #{5*$grid_size/18px}em;
+		font 			: #{18px/$rem_size}em/#{$grid_size/18px)} "HanziPen SC";
+		text-align		: center;
+		vertical-align	: middle;
+		text-shadow 	:  
+			rgba(0,0,0,0.1) -1px 0, 
+			rgba(0,0,0,0.1) 0 -1px,
+			rgba(255,255,255,0.1) 1px 0, 
+			rgba(255,255,255,0.1) 0 1px,
+			rgba(0,0,0,0.1) -1px -1px, 
+			rgba(255,255,255,0.1) 1px 1px;  
+	}
+
+	.spec-tag { 
+		-webkit-padding-start: 0;
+		padding 	: 0;
+		width 		: $grid_size;
+		font  		: #{12px/$rem_size}em/#{($grid_size/12px)} -apple-system, BlinkMacSystemFont, 'Microsoft YaHei', Helvetica, sans-serif;
+		text-align 	: center;
+		vertical-align: middle;
+	}
+
+	.p-spec {
+		position  : relative;
+		-webkit-margin-after: #{$row_height/2/12px}em;
+		margin-bottom: 8px;
+		color: $tag-border_color;
+		outline   : 1px dashed $tag-border_color;
+	}
+	.p-spec.isSelected { outline-style: solid; }
+	.p-spec.isSelected:before { 
+		content: "✓";
+		display: block;
+		width: $grid_size;
+		height: $grid_size;
+		font 	: #{(18px/12px)}em/#{($grid_size/18px)} "Lucida Grande";
+		word-spacing: 0;
+		color 	: white;
+		background-color: $tag-border_color;
+	}
+}
+
+#coffee div.group {
+	background-image: 
+		linear-gradient(90deg, $border_bg, $border_bg 1px, transparent 1px, transparent #{(($grid_size - 1px)/$rem_size)}em),
+		linear-gradient(180deg, $border_bg, $border_bg 1px, transparent 1px, transparent #{(($grid_size - 1px)/$rem_size)}em);
+	background-size: 
+		#{($grid_size/$rem_size)}em #{($grid_size/$rem_size)}em,
+		100% #{($grid_size/$rem_size)}em;
+	background-position: -#{($grid_size/2/$rem_size)}em -#{($grid_size/2/$rem_size)}em; 
 }

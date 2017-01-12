@@ -229,42 +229,109 @@
     </section>
 
     <section id="drink">
-      <section id="coffee">
-        <article class="h-product">
-          <h2 class="p-name">卡布奇诺</h2>
-          <p>
-            <span><b class="spec-price">¥25</b></span>
-          </p>
-        </article>
+      <section id="coffee" class="cuisine">
+        <h1>咖啡</h1>
 
-        <article class="h-product">
-          <h2 class="p-name">巧克力摩卡</h2>
-          <p>
-            <span><b class="spec-price">¥25</b></span>
-          </p>
-        </article>
+        <div class="group">
+          <article class="h-product">
+            <h2 class="p-name">卡布奇诺</h2>
+            <ul class="spec-tag">
+              <li class="p-spec isSelected"><b class="spec-price">¥25</b> x2</li>
+            </ul>
+          </article>
 
-        <article class="h-product">
-          <h2 class="p-name">咖啡拿铁</h2>
-          <p>
-            <span><b class="spec-price">¥25</b></span>
-          </p>
-        </article>
+          <article class="h-product">
+            <h2 class="p-name">巧克力摩卡</h2>
+            <ul class="spec-tag">
+              <li class="p-spec"><b class="spec-price">¥25</b></li>
+            </ul>
+          </article>
 
-        <article class="h-product">
-          <h2 class="p-name">美式咖啡</h2>
-          <p>
-            <span><b class="spec-price">¥18</b></span>
-          </p>
-        </article>
+          <article class="h-product">
+            <h2 class="p-name">咖啡拿铁</h2>
+            <ul class="spec-tag">
+              <li class="p-spec"><b class="spec-price">¥25</b></li>
+            </ul>
+          </article>
+
+          <article class="h-product">
+            <h2 class="p-name">美式咖啡</h2>
+            <ul class="spec-tag">
+              <li class="p-spec"><b class="spec-price">¥18</b></li>
+            </ul>
+          </article>
+        </div>
       </section>
 
-      <section id="black-tea">
+      <section id="black-tea" class="cuisine">
+        <h1>红茶</h1>
 
+        <div class="group">
+          <article class="h-product">
+            <h2 class="p-name">菠萝伯爵茶</h2>
+            <p>
+              <span><b class="spec-price">¥18</b></span>
+            </p>
+          </article>
+
+          <article class="h-product">
+            <h2 class="p-name">花香柠檬茶</h2>
+            <p>
+              <span><b class="spec-price">¥18</b></span>
+            </p>
+          </article>
+
+          <article class="h-product">
+            <h2 class="p-name">玫瑰红枣茶</h2>
+            <p>
+              <span><b class="spec-price">¥18</b></span>
+            </p>
+          </article>
+
+          <article class="h-product">
+            <h2 class="p-name">红茶拿铁</h2>
+            <p>
+              <span><b class="spec-price">¥18</b></span>
+            </p>
+          </article>
+        </div>
       </section>
 
-      <section id="ice-tea">
+      <section id="ice-tea" class="cuisine">
+        <h1>气泡水•冰茶</h1>
 
+        <div class="group">
+          <article class="h-product">
+            <h2 class="p-name">荔枝芦荟</h2>
+            <p>
+              <span><b class="spec-price">¥18/冰茶</b></span>
+              <span><b class="spec-price">¥18/气泡水</b></span>
+            </p>
+          </article>
+
+          <article class="h-product">
+            <h2 class="p-name">青拧气泡水</h2>
+            <p>
+              <span><b class="spec-price">¥18/冰茶</b></span>
+              <span><b class="spec-price">¥18/气泡水</b></span>
+            </p>
+          </article>
+
+          <article class="h-product">
+            <h2 class="p-name">火龙果</h2>
+            <p>
+              <span><b class="spec-price">¥18/冰茶</b></span>
+              <span><b class="spec-price">¥18/气泡水</b></span>
+            </p>
+          </article>
+
+          <article class="h-product">
+            <h2 class="p-name">清香玫瑰</h2>
+            <p>
+              <span><b class="spec-price">¥18</b></span>
+            </p>
+          </article>
+        </div>
       </section>
     </section>
   </main>
