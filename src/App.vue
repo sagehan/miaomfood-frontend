@@ -269,30 +269,30 @@
         <div class="group">
           <article class="h-product">
             <h2 class="p-name">菠萝伯爵茶</h2>
-            <p>
-              <span><b class="spec-price">¥18</b></span>
-            </p>
+            <ul class="spec-tag">
+              <li class="p-spec"><b class="spec-price">¥18</b></li>
+            </ul>
           </article>
 
           <article class="h-product">
             <h2 class="p-name">花香柠檬茶</h2>
-            <p>
-              <span><b class="spec-price">¥18</b></span>
-            </p>
+            <ul class="spec-tag">
+              <li class="p-spec"><b class="spec-price">¥18</b></li>
+            </ul>
           </article>
 
           <article class="h-product">
             <h2 class="p-name">玫瑰红枣茶</h2>
-            <p>
-              <span><b class="spec-price">¥18</b></span>
-            </p>
+            <ul class="spec-tag">
+              <li class="p-spec"><b class="spec-price">¥18</b></li>
+            </ul>
           </article>
 
           <article class="h-product">
             <h2 class="p-name">红茶拿铁</h2>
-            <p>
-              <span><b class="spec-price">¥18</b></span>
-            </p>
+            <ul class="spec-tag">
+              <li class="p-spec"><b class="spec-price">¥18</b></li>
+            </ul>
           </article>
         </div>
       </section>

@@ -19,7 +19,7 @@
 	-webkit-margin-end   : 0;
 }
 
-ul { list-style-type: none; }
+ul { list-style-type: none; margin:0; }
 
 body { font-family: Helvetica, sans-serif; }
 main { width: 100%; background-color: $page-bg; }
@@ -496,17 +496,12 @@ main { width: 100%; background-color: $page-bg; }
 	display: flex;
 	//justify-content: space-between;
 	width : percentage($drink_width/$layout_width);
-	margin: #{2*27px/$rem_size}em auto;
+	margin: #{2*$grid_size/$rem_size}em auto;
 
-	.h-product { 
-		width: #{$grid_size/$rem_size}em; 
-		margin-left: #{($grid_size/$rem_size)}em;
-		margin-top : #{($grid_size/2/$rem_size)}em;
-	}
-	.h-product:nth-of-type(1) { margin-left: #{(0.5*$grid_size/$rem_size)}em; }
+	.h-product { width: #{$grid_size/$rem_size}em; }
 
 	.p-name {
-		//min-height		: #{5*$grid_size/18px}em;
+		margin			: 0; /* special for firefox */
 		font 			: #{18px/$rem_size}em/#{$grid_size/18px)} "HanziPen SC";
 		text-align		: center;
 		vertical-align	: middle;
@@ -549,28 +544,41 @@ main { width: 100%; background-color: $page-bg; }
 }
 
 #coffee div.group {
+	.h-product { 
+		margin-left: #{($grid_size/$rem_size)}em;
+		margin-top : #{($grid_size/2/$rem_size)}em;
+		margin-bottom: #{($grid_size/2/$rem_size)}em; 
+	}
+	.h-product:nth-of-type(1) { margin-left: #{(0.5*$grid_size/$rem_size)}em; }
+
 	background-image: 
 		linear-gradient(to right, $border_bg, $border_bg 1px, transparent 1px, transparent #{(($grid_size - 1px)/$rem_size)}em),
 		linear-gradient($border_bg, $border_bg 1px, transparent 1px, transparent #{(($grid_size - 1px)/$rem_size)}em);
 	background-size: 
 		#{($grid_size/$rem_size)}em #{($grid_size/$rem_size)}em,
 		100% #{($grid_size/$rem_size)}em;
-	background-position: -#{($grid_size/2/$rem_size)}em -#{($grid_size/2/$rem_size)}em; 
-	background-origin: content-box;
-	background-clip: content-box;
+	background-position	: -#{($grid_size/2/$rem_size)}em -#{($grid_size/2/$rem_size)}em; 
+	background-origin 	: content-box;
+	background-clip 	: content-box;
 }
 
-
 #black-tea div.group {
+	.h-product { 
+		margin-left: #{($grid_size/$rem_size)}em;
+		margin-top : #{($grid_size/2/$rem_size)}em;
+	}
+	.h-product:nth-of-type(1) { margin-left: #{(0.5*$grid_size/$rem_size)}em; }
+
+	.p-spec { 
+		transform: rotateZ(45deg) skew(-15deg) ;
+	}
+
 	background-image: 
-		/*repeating-linear-gradient(120deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6) 1px, transparent 1px, transparent 30px, rgba(255, 255, 255, 0.3) 30px, rgba(255, 255, 255, 0.3) 31px, transparent 31px, transparent 60px), 
-		repeating-linear-gradient(60deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6) 1px, transparent 1px, transparent 30px, rgba(255, 255, 255, 0.3) 30px, rgba(255, 255, 255, 0.3) 31px, transparent 31px, transparent 60px), 
-		repeating-linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3) 1px, transparent 1px, transparent 30px);
+		repeating-linear-gradient(153.43deg, $border_bg, $border_bg 1px, transparent 1px, transparent #{(($diamond-grid_size)/$rem_size)}em, $border_bg #{(($diamond-grid_size)/$rem_size)}em, #{(($diamond-grid_size)/$rem_size)}em, transparent #{(($diamond-grid_size)/$rem_size)}em, transparent #{((2*$diamond-grid_size)/$rem_size)}em), 
+		repeating-linear-gradient(26.57deg,  $border_bg, $border_bg 1px, transparent 1px, transparent #{(($diamond-grid_size)/$rem_size)}em, $border_bg #{(($diamond-grid_size)/$rem_size)}em, #{(($diamond-grid_size)/$rem_size)}em, transparent #{(($diamond-grid_size)/$rem_size)}em, transparent #{((2*$diamond-grid_size)/$rem_size)}em); 
+	
+		/*repeating-linear-gradient(153.43deg, $border_bg, $border_bg 1px, transparent 1px, transparent 32px, $border_bg 32px, $border_bg 33px, transparent 33px, transparent 64px), 
+		repeating-linear-gradient(26.57deg, $border_bg, $border_bg 1px, transparent 1px, transparent 32px, $border_bg 32px, $border_bg 33px, transparent 33px, transparent 64px);
 		*/
-		repeating-linear-gradient(30deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
-		repeating-linear-gradient(-30deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
-		linear-gradient(-30deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1)),
-		linear-gradient(30deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1));
-		background-size: 2em 3.4em;
 }
 
