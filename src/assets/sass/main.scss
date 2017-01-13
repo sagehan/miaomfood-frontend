@@ -59,6 +59,16 @@ main { width: 100%; background-color: $page-bg; }
 	transform: translate(-50%, -50%);
 }
 
+@mixin text__shadow {
+	text-shadow:
+		rgba(0,0,0,0.1) -1px 0, 
+		rgba(0,0,0,0.1) 0 -1px,
+		rgba(255,255,255,0.1) 1px 0, 
+		rgba(255,255,255,0.1) 0 1px,
+		rgba(0,0,0,0.1) -1px -1px, 
+		rgba(255,255,255,0.1) 1px 1px;  
+}
+
 @mixin pricetag {
 	content : "✓";
 	display : inline-block;
@@ -103,6 +113,7 @@ main { width: 100%; background-color: $page-bg; }
 		min-height		: #{5*$row_height/18px}em;
 		padding 		: #{($row_height/2/18px)}em #{($row_height/4/18px)}em;
 		font 			: #{18px/$rem_size}em/#{($row_height/18px)} "HanziPen SC";
+		//writing-mode 	: vertical-rl;
 		text-align		: center;
 		vertical-align	: middle;
 		box-shadow		: inset 1px 1px 3px $shadow_bg;
@@ -498,26 +509,18 @@ main { width: 100%; background-color: $page-bg; }
 	width : percentage($drink_width/$layout_width);
 	margin: #{2*$grid_size/$rem_size}em auto;
 
-	.h-product { width: #{$grid_size/$rem_size}em; }
+	.h-product { margin-top : #{($grid_size/2/$rem_size)}em; }
 
-	.p-name {
-		margin			: 0; /* special for firefox */
+ 	.p-name {
+ 		margin			: 0; /* special for firefox */
 		font 			: #{18px/$rem_size}em/#{$grid_size/18px)} "HanziPen SC";
 		text-align		: center;
 		vertical-align	: middle;
-		text-shadow 	:  
-			rgba(0,0,0,0.1) -1px 0, 
-			rgba(0,0,0,0.1) 0 -1px,
-			rgba(255,255,255,0.1) 1px 0, 
-			rgba(255,255,255,0.1) 0 1px,
-			rgba(0,0,0,0.1) -1px -1px, 
-			rgba(255,255,255,0.1) 1px 1px;  
-	}
+ 	}
 
-	.spec-tag { 
+ 	.spec-tag { 
 		-webkit-padding-start: 0;
 		padding 	: 0;
-		width 		: $grid_size;
 		font  		: #{12px/$rem_size}em/#{($grid_size/12px)} -apple-system, BlinkMacSystemFont, 'Microsoft YaHei', Helvetica, sans-serif;
 		color: $tag-border_color;
 		text-align 	: center;
@@ -525,12 +528,18 @@ main { width: 100%; background-color: $page-bg; }
 	}
 }
 
-#coffee div.group {
+#coffee, #black-tea{
 	.h-product { 
-		margin-left: #{($grid_size/$rem_size)}em;
-		margin-top : #{($grid_size/2/$rem_size)}em;
-		margin-bottom: #{($grid_size/2/$rem_size)}em; 
+		width: #{$grid_size/$rem_size}em;
+		margin-left: #{($grid_size/$rem_size)}em; 
 	}
+
+	.p-name { @include text__shadow; }
+	.spec-tag { padding: 0; width: $grid_size; }
+}
+
+#coffee div.group {
+	.h-product { margin-bottom: #{($grid_size/2/$rem_size)}em; }
 	.h-product:nth-of-type(1) { margin-left: #{(0.5*$grid_size/$rem_size)}em; }
 
 	.p-spec {
@@ -563,11 +572,6 @@ main { width: 100%; background-color: $page-bg; }
 }
 
 #black-tea div.group {
-	.h-product { 
-		margin-left: #{($grid_size/$rem_size)}em;
-		margin-top : #{($grid_size/2/$rem_size)}em;
-	}
- 
  	.p-name { min-height: #{4.5*$grid_size/$rem_size}em; }
 	.spec-price, .qty {position:relative; display: block}
 
@@ -593,3 +597,96 @@ main { width: 100%; background-color: $page-bg; }
 	background-position	: -#{($grid_size/$rem_size)}em -#{($grid_size/$rem_size)}em; 
 }
 
+#ice-tea div.group {
+	justify-content: space-between;
+
+	.h-product { 
+		position: relative;
+		max-width: 25%;
+		//min-height: #{17*$row_height/$rem_size}em;
+		margin-left: 0; 
+		padding-top: 3em;
+		padding-bottom: #{3*$grid_size/$rem_size}em;
+
+		&:after,
+		&:before,
+		.p-name:after,
+		.p-name:before { 
+			display : block;
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+			font-family: "HanziPen SC";
+			color 	: initial;
+			@include text__shadow;
+			border  : 1px dashed $border_bg;
+			border-radius: 100%;
+		}
+
+		&:before { 
+			top:0; 
+			width : #{$row_height/$rem_size}em;
+			height: #{$row_height/$rem_size}em;
+			transform: translateX(-50%);
+			font  : #{18px/$rem_size}em/#{($row_height/18px)} "HanziPen SC";
+			text-align: center;
+		}
+		&:after {
+			bottom: #{3*$grid_size/$rem_size}em;
+			width : #{2*$grid_size/$rem_size}em;
+			height: #{2*$grid_size/$rem_size}em; 
+			line-height: #{1.2*$grid_size/$rem_size}em; 
+			font  : #{18px/$rem_size}em/#{($row_height/18px)} "HanziPen SC";
+			text-align: center;
+		}
+	}
+
+	.p-name {
+		position 	: relative;
+		width 		: 1em;
+		//height 		: #{2.5*$grid_size/18px}em;
+		margin 		: 0 auto;
+		line-height : #{2.5*$grid_size/3/18px}em;
+		color 		: $drink_bg;
+
+		&:before { 
+			width : #{$grid_size/18px}em;
+			height: #{$grid_size/18px}em;
+			line-height: #{$grid_size/18px}em;
+			transform: translateX(-50%);
+			text-align: center;
+		}
+
+		&:after { 
+			top: 	#{1.5*$grid_size/18px}em;
+			width : #{1.5*$grid_size/18px}em;
+			height: #{1.5*$grid_size/18px}em;
+			line-height: #{1.2*$grid_size/18px}em;
+		}
+	}
+
+	.spec-tag { 
+		position: relative;
+		top: 64px;
+	}
+	.spec-price { display: block; }
+
+	.h-product:nth-of-type(1):before { content: "荔"}
+	.h-product:nth-of-type(1) .p-name:before { content: "枝"; }
+	.h-product:nth-of-type(1) .p-name:after { content: "芦"; }
+	.h-product:nth-of-type(1):after { content: "荟"}
+
+	.h-product:nth-of-type(2):before { content: "青"}
+	.h-product:nth-of-type(2) .p-name:before { content: "柠"; }
+	.h-product:nth-of-type(2) .p-name:after { content: "气"; }
+	.h-product:nth-of-type(2):after { content: "水"}
+
+	.h-product:nth-of-type(3):before { content: "火"}
+	.h-product:nth-of-type(3) .p-name:before { content: "龙"; }
+	.h-product:nth-of-type(3) .p-name:after { content: "果"; }
+
+	.h-product:nth-of-type(4):before { content: "清"}
+	.h-product:nth-of-type(4) .p-name:before { content: "香"; }
+	.h-product:nth-of-type(4) .p-name:after { content: "玫"; }
+	.h-product:nth-of-type(4):after { content: "瑰"}
+}
