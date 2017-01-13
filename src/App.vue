@@ -277,7 +277,7 @@
           <article class="h-product">
             <h2 class="p-name">花香柠檬茶</h2>
             <ul class="spec-tag">
-              <li class="p-spec"><b class="spec-price">¥18</b></li>
+              <li class="p-spec isSelected"><b class="spec-price">¥18</b><b class="qty">x1</b></li>
             </ul>
           </article>
 
