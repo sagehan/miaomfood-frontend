@@ -1,7 +1,7 @@
 <template>
   <main id="app">
     <section id="tasty">
-      <section id="pizza" class="cuisine">
+      <section id="pizza" class="topic">
         <h1>披萨</h1>
 
         <div class="twins group">
@@ -169,7 +169,7 @@
         </div>
       </section>
 
-      <section id="rice" class="cuisine">
+      <section id="rice" class="topic">
         <h1>焗饭</h1>
 
         <div class="twins group">
@@ -200,7 +200,7 @@
         </div>  
       </section>
 
-      <section id="snack" class="cuisine">
+      <section id="snack" class="topic">
         <h1>小吃</h1>
 
         <div class="orphan group">
@@ -229,7 +229,7 @@
     </section>
 
     <section id="drink">
-      <section id="coffee" class="cuisine">
+      <section id="coffee" class="topic">
         <h1>咖啡</h1>
 
         <div class="group">
@@ -265,7 +265,7 @@
         </div>
       </section>
 
-      <section id="black-tea" class="cuisine">
+      <section id="black-tea" class="topic">
         <h1>红茶</h1>
 
         <div class="group">
@@ -299,7 +299,7 @@
         </div>
       </section>
 
-      <section id="ice-tea" class="cuisine">
+      <section id="ice-tea" class="topic">
         <h1>气泡水•冰茶</h1>
 
         <div class="group">
@@ -334,6 +334,13 @@
           </article>
         </div>
       </section>
+    </section>
+
+    <section id="lazycat" class="topic">
+      <h1>送餐到家</h1>
+      <div class="illustration">
+        <img class="maps" src="./assets/imgs/to_layzcat.png" />
+      </div>
     </section>
   </main>
 </template>
