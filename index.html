@@ -14,26 +14,61 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
 <body>
-	<header id="topbar" role="banner">
-		<h1><img class="logo" src="./assets/logo.png" alt="喵姆餐厅"></h1>
+	<div class="console" style="display: none"></div>
+	<div class="cart" style="display: none"></div>
+
+	<header id="topbar">
+		<h1>
+			<a href="https://miaomfood.com/" rel="home">
+				<img class="logo" src="./assets/logo.png" alt="Logo" />
+				喵姆餐厅
+		</a>
+		</h1>
+
+		<div class="toggle">
+			<div class="toggle--cart"><a href="#cart"></a></div>
+			<div class="toggle--console"><a href="#console"></a></div>
+		</div>
 	</header>
 
-	<nav>
-		<a href="#" title="所有菜品"><b>菜单</b></a>
-		<ol id="menu">
-			<hr />
-			<li><a href="#pizza">披萨</a></li>
-			<li><a href="#rice">焗饭</a></li>
-			<li><a href="#snack">小吃</a></li>
-			<hr />
-			<li><a href="#coffee">咖啡</a></li>
-			<li><a href="#scented-tea">花茶</a></li>
-			<li><a href="#ice-tea">冰茶 • 气泡水</a></li>
-		</ol>
+	<div id="storyboard">
+		<span class="bullets">
+			<b class="bullet isActive"></b>	
+			<b class="bullet"></b>	
+			<b class="bullet"></b>	
+		</span>
+
+		<div class="slideshow">
+			<div class="slide"></div>
+			<div class="slide" style="display: none"></div>
+			<div class="slide" style="display: none"></div>
+		</div>
+	</div>
+
+	<nav id="menu">
+		<ul class="drawer-list">
+			<li class="drawer">
+				<a href="#tasty">好吃</a>
+				<ul>
+					<li><a href="#pizza">披萨</a></li>
+					<li><a href="#rice">焗饭</a></li>
+					<li><a href="#snack">小吃</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="#drink">好喝</a>
+				<ul>
+					<li><a href="#coffee">咖啡</a></li>
+					<li><a href="#scented-tea">花茶</a></li>
+					<li><a href="#ice-tea">冰茶 • 气泡水</a></li>
+				</ul>
+			</li>
+			<li><a href="#lazycat">好懒</a></li>
+			<li><a href="#happycat">好玩</a></li>
+		</ul>
 	</nav>   
 
-	<main id="app">
-	</main>
+	<main id="app"></main>
 
 	<footer>
 		<p><small>Logo by <a rel="author" href="" target="_blank">小毛</a>，设计&amp;制作 by <a rel="author" href="https://heysage.com/" title="Heysage" target="_blank">松志</a></small></p>
