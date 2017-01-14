@@ -314,7 +314,6 @@
           <article class="h-product">
             <h2 class="p-name">青柠气泡水</h2>
             <ul class="spec-tag">
-              <li class="p-spec"><span><b class="spec-price">¥18</b>/冰茶</span></li>
               <li class="p-spec"><span><b class="spec-price">¥18</b>/气泡水</span></li>
             </ul>
           </article>
@@ -327,7 +326,7 @@
             </ul>
           </article>
 
-          <article class="h-product">
+          <article class="h-product isSelected">
             <h2 class="p-name">清香玫瑰</h2>
             <ul class="spec-tag">
               <li class="p-spec isSelected"><span><b class="spec-price">¥18</b>/气泡水</span><span class="qty">x3</span></li>

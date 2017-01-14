@@ -69,6 +69,8 @@ main { width: 100%; background-color: $page-bg; }
 		rgba(255,255,255,0.1) 1px 1px;  
 }
 
+@mixin bubble__gradient {}
+
 @mixin pricetag {
 	content : "✓";
 	display : inline-block;
@@ -618,8 +620,16 @@ main { width: 100%; background-color: $page-bg; }
 			font-family: "HanziPen SC";
 			color 	: initial;
 			@include text__shadow;
+			//@include bubble__gradient;
 			border  : 1px dashed $border_bg;
 			border-radius: 100%;
+		}
+
+		&.isSelected {
+			&:after,
+			&:before,
+			.p-name:after,
+			.p-name:before { border-style: solid; }
 		}
 
 		&:before { 
@@ -645,7 +655,7 @@ main { width: 100%; background-color: $page-bg; }
 		width 		: 1em;
 		height 		: #{(1.5*$grid_size + 1.5*$grid_size + 0.5*$grid_size + 0.5*$grid_size + 1.8*$grid_size)/18px}em;
 		margin 		: 0 auto;
-		color 		: $drink_bg;
+		color 		: transparent;
 
 		&:before { 
 			width : #{$grid_size/18px}em;
