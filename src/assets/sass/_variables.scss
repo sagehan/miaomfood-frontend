@@ -1,23 +1,27 @@
 // global
-$rem_size 	: 16px;
-$row_height : 27px;
-$grid_size  : 32px;
-$min_cover_ht: 560px;
+$rem_size 		: 16px;
+$row_height		: 27px;
+$grid_size  	: 32px;
+$canvas_width	: 320px;
+$min_cover_ht	: 568px - 64px;
 //$diamond-grid_size:  1 * $grid_size / 2.23606797749978969640917366873127623544061835961152572427089;
 
 // layout
-$column_width: 20.4px;
-$gutter_width: 6.8px;
-$layout_width: 12 * $column_width + 11 * $gutter_width;
-$group_width: 8 * $column_width + 7 * $gutter_width;
-$drink_width: 10 * $column_width + 11 * $gutter_width;
+$column_width	: 20.4px;
+$gutter_width	: 6.8px;
+$layout_width	: 12 * $column_width + 11 * $gutter_width;
+$menu_width  	: 11 * $column_width + 10 * $gutter_width;
+$group_width 	: 8 * $column_width + 7 * $gutter_width;
+$drink_width 	: 10 * $column_width + 11 * $gutter_width;
 
 // swatches
+$black      : hsla(0, 0, 15%, 1);
+$primary_cl : hsl(42, 90, 50);
 $page_bg	: hsl(0, 0, 92);
 $tasty_bg	: hsl(67, 75, 95);
 $drink_bg	: hsl(341, 75, 95);
 $lazycat_bg : hsl(186, 16, 85);
 $border_bg 	: hsl(0, 0, 75);
 
-$shadow_bg 	: hsl(0, 0, 50);
+$shadow_bg 		 : hsl(0, 0, 50);
 $tag-border_color: hsl(174, 75, 33);

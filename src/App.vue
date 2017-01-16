@@ -1,8 +1,8 @@
 <template>
   <main id="app">
-    <section id="tasty">
-      <section id="pizza" class="topic">
-        <h1>披萨</h1>
+    <section id="tasty" class="tasty">
+      <section id="pizza" class="category">
+        <h1 class="p-category">披萨</h1>
 
         <div class="twins group">
           <article class="h-product">
@@ -169,8 +169,8 @@
         </div>
       </section>
 
-      <section id="rice" class="topic">
-        <h1>焗饭</h1>
+      <section id="rice" class="category">
+        <h1 class="p-category">焗饭</h1>
 
         <div class="twins group">
           <article class="h-product">
@@ -200,8 +200,8 @@
         </div>  
       </section>
 
-      <section id="snack" class="topic">
-        <h1>小吃</h1>
+      <section id="snack" class="category">
+        <h1 class="p-category">小吃</h1>
 
         <div class="orphan group">
           <article class="h-product">
@@ -228,9 +228,9 @@
       </section>
     </section>
 
-    <section id="drink">
-      <section id="coffee" class="topic">
-        <h1>咖啡</h1>
+    <section id="drink" class="drink">
+      <section id="coffee" class="category">
+        <h1 class="p-category">咖啡</h1>
 
         <div class="group">
           <article class="h-product">
@@ -265,8 +265,8 @@
         </div>
       </section>
 
-      <section id="black-tea" class="topic">
-        <h1>红茶</h1>
+      <section id="black-tea" class="category">
+        <h1 class="p-category">红茶</h1>
 
         <div class="group">
           <article class="h-product">
@@ -299,8 +299,8 @@
         </div>
       </section>
 
-      <section id="ice-tea" class="topic">
-        <h1>气泡水•冰茶</h1>
+      <section id="ice-tea" class="category">
+        <h1 class="p-category">气泡水•冰茶</h1>
 
         <div class="group">
           <article class="h-product">
@@ -336,7 +336,7 @@
       </section>
     </section>
 
-    <section id="lazycat" class="topic">
+    <section id="lazycat" class="category lazycat">
       <h1>送餐到家</h1>
       <div class="illustration">
         <img class="maps" src="./assets/imgs/to_layzcat.png" />
@@ -346,6 +346,10 @@
 </template>
 
 <script lang="">
+  if (!('ontouchstart' in document.documentElement)) {
+    document.documentElement.className += ' no-touch'
+  }
+
   export default {
 
     data () {

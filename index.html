@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8" />
 	<title>喵姆餐厅•好多好多的芝士和肉，给你认真生活的力量！</title>
-	<link rel="apple-touch-icon" href="/logo.png"/>
-	<link rel="shortcut icon" href="/favicon.ico" />
+	<link rel="apple-touch-icon" href="./static/imgs/icon.png"/>
+	<link rel="shortcut icon" href="./static/imgs/icon.png" />
 	<link rel="self" href="https://miaomfood.com/"/>
 	<meta name="author" content="Sage Han" />
 	<meta name="description" content="美味披萨,焗饭,沙拉,还有各种小吃,乌鲁木齐全城外送!" />
@@ -18,11 +18,11 @@
 	<div class="cart" style="display: none"></div>
 
 	<header id="topbar">
-		<h1>
-			<a href="https://miaomfood.com/" rel="home">
-				<img class="logo" src="./assets/logo.png" alt="Logo" />
-				喵姆餐厅
-		</a>
+		<h1 class="h-card">
+			<a class="u-url" href="https://miaomfood.com/" rel="home">
+				<img class="u-logo" src="./static/imgs/logo.png" alt="Logo" />
+				<span class="p-name">喵姆餐厅<small>•好多好多的芝士和肉，给你认真生活的力量！</small></span>
+			</a>
 		</h1>
 
 		<div class="toggle">
@@ -46,25 +46,26 @@
 	</div>
 
 	<nav id="menu">
-		<ul class="drawer-list">
-			<li class="drawer">
-				<a href="#tasty">好吃</a>
-				<ul>
-					<li><a href="#pizza">披萨</a></li>
-					<li><a href="#rice">焗饭</a></li>
-					<li><a href="#snack">小吃</a></li>
+		<h1 class="u-hidden" id="navigation__title">喵姆餐厅 目录</h1>
+		<ul class="category-drawers">
+			<li class="drawer-item tasty">
+				<span class="p-category">好吃</span>
+				<ul class="sub-drawer-list">
+					<li class="sub-drawer-item"><a href="#pizza">披萨</a></li>
+					<li class="sub-drawer-item"><a href="#rice">焗饭</a></li>
+					<li class="sub-drawer-item"><a href="#snack">小吃</a></li>
 				</ul>
 			</li>
-			<li>
-				<a href="#drink">好喝</a>
-				<ul>
-					<li><a href="#coffee">咖啡</a></li>
-					<li><a href="#scented-tea">花茶</a></li>
-					<li><a href="#ice-tea">冰茶 • 气泡水</a></li>
+			<li class="drawer-item drink">
+				<sapn class="p-category">好喝</sapn>
+				<ul class="sub-drawer-list">
+					<li class="sub-drawer-item"><a href="#coffee">咖啡</a></li>
+					<li class="sub-drawer-item"><a href="#scented-tea">花茶</a></li>
+					<li class="sub-drawer-item"><a href="#ice-tea">冰茶 • 气泡水</a></li>
 				</ul>
+			<li class="drawer-item lazycat">
+				<a href="#lazycat"><span class="p-category">好懒</span></a>
 			</li>
-			<li><a href="#lazycat">好懒</a></li>
-			<li><a href="#happycat">好玩</a></li>
 		</ul>
 	</nav>   
 
