@@ -12,6 +12,11 @@
 	src: local('Lucida Grande');
 }
 
+@font-face {
+	font-family: 'icomiaomfood';
+	src: url(~assets/fonts/icomiaomfood.woff);
+}
+
 * { 
 	-webkit-margin-before: 0;
 	-webkit-margin-after : 0;
@@ -133,6 +138,38 @@ h1 { margin: 0; }
 			background: no-repeat url(~assets/imgs/logo_text.png) center/contain content-box;
 		}
 	}
+
+	.toggle { 
+		position: absolute;
+		right 	: #{32px/$rem_size}em;
+		top 	: 50%;
+		transform: translateY(-50%);
+
+		a { 
+			display: inline-block;
+			margin-left: 1em;
+			color: white;
+			text-decoration: none; 
+
+			.no-touch &:hover { 
+				color: $primary_cl;
+				@include text__shadow;
+			}
+		}
+
+		&--cart,&--vip { 
+			display: table-cell;
+			width: #{2*24px/$rem_size}em;
+			height: #{2*24px/$rem_size}em;
+			border : 1px solid $primary_cl;
+			border-radius: 100%;
+			text-align: center; 
+			vertical-align: middle;
+			&:before { font: #{24px/$rem_size}em "icomiaomfood"; } 
+		}
+		&--cart:before { content: "\e917"; }
+		&--vip:before { content: "\e92f"; }
+	}
 }
 
 #storyboard {
@@ -214,58 +251,6 @@ h1 { margin: 0; }
 			opacity: 1; 
 			.sub-drawers { display : block; }
 		}
-
-		/*&.dink:hover { 
-			background: transparent; 
-			border-bottom-width:0;
-			transition: background-color .5s ease; 
-		}*/
-		//&.dink.lazycat a{ background-color: $lazycat_bg; }
-		/*.no-touch &.dink.lazycat:hover  a {
-			width: calc(100% - #{42px/$rem_size}em);
-			border-bottom: 1px solid $black;
-			background: $lazycat_bg; 
-
-			.category { margin-left: #{0.5*42px/$rem_size}em; }
-		}*/
-
-		//.no-touch &:hover .sub-drawers .sub-drawer-item:last-of-type,
-		/*.no-touch &.dink:hover:before { 
-			content: "";
-			display: inline-block;
-			float: right;
-			margin-left: -1px;
-			width: #{42px/$rem_size}em;
-			height: #{42px/$rem_size}em;
-			border-width: 0;
-			background: linear-gradient(
-				-45deg, 
-				transparent, 
-				transparent 45%, 
-				#ddd 50%, 
-				#aaa 50%, 
-				#bbb 56%, 
-				#ccc 62%, 
-				#f3f3f3 80%,
-				#fff 100%
-			);
-			transition: background-color .5s ease;
-		}*/
-		/*.no-touch &.dink:hover:after {
-			content : "";
-			display : block;
-			position: absolute;
-			z-index : -2;
-			top 	: 0;
-			right 	: 0;
-			width 	: 0;
-			height 	: 0;
-			border-top: #{0.5*42px/$rem_size}em solid adjust-color($shadow_bg, $alpha: -0.15);
-			border-right: #{0.5*42px/$rem_size}em solid transparent;
-			background-color: transparent;
-			box-shadow: 4px -1px 15px rgba(0, 0, 0, .3);
-			transform: translateX(-100%) skew(-15deg) rotate(5deg);
-		}*/
 	}
 
 	.sub-drawers {
