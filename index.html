@@ -15,7 +15,97 @@
 </head>
 <body>
 	<div id="vip" style="display: none"></div>
-	<div id="cart" style="display: block"></div>
+	<article id="cart" style="display: block">
+		<header>
+			<h1>购物车</h1>
+		</header>
+
+		<div class="toggle">
+			<a href="#cart"><div class="toggle--cart"></div></a>
+		</div>
+
+		<section class="empty-cart" style="display: none;">
+			<p>您还没有选择菜品哦!</p>
+			<p class="toggle">
+				<a href="#menu">寻找美味</a>
+			</p>
+		</div>
+		</section>
+
+		<section class="cart-content">
+			<table class="cart-items">
+				<thead>
+					<tr>
+						<th>餐品</th><th>单价</th><th>数量</th>
+					</tr>
+				</thead>
+
+				<tfoot>
+					<tr class="coupon isOpen">
+						<td colspan="2">
+							<label>优惠蜜语:
+								<input class="coupon-input" type="text" name="" lang="zh-cn" maxlength="10">
+							</label>
+						</td>
+						<td>-5</td>
+					</tr>
+
+					<tr>
+						<td colspan="2">合计</td>
+						<td>195</td>
+					</tr>
+				</tfoot>
+
+				<tr class="h-item">
+					<td class="p-name">激情培根(八寸)</td>
+					<td class="spec-price">39</td>
+					<td class="qty">1</td>
+				</tr>
+
+				<tr class="h-item">
+					<td class="p-name">风情夏威夷(十寸)</td>
+					<td class="spec-price">59</td>
+					<td class="qty">2</td>
+				</tr>
+
+				<tr class="h-item">
+					<td class="p-name">风情夏威夷(十寸)</td>
+					<td class="spec-price">59</td>
+					<td class="qty">2</td>
+				</tr>
+
+				<tr class="h-item">
+					<td class="p-name">荔枝芦荟(气泡水)</td>
+					<td class="spec-price">18</td>
+					<td class="qty">1</td>
+				</tr>
+							<tr class="h-item">
+					<td class="p-name">卡布奇诺</td>
+					<td class="spec-price">25</td>
+					<td class="qty">1</td>
+				</tr>
+			</table>
+
+			<label for="comment">订单备注</label>
+			<input class="comment" type="text" name="comment"  maxlength="15" placeholder="订单备注" />
+			
+
+			<fieldset class="customor">
+				<legend>送餐地址</legend>
+				<label>姓名/称呼<span class="required">*</span>
+					<input class="customor-name" type="text" name="custom-name" required="required" maxlength="10"/>
+				</label>
+
+				<label>手机<span class="required">*</span>
+					<input class="customor-phone" type="tel" name="custom-tel" required="required" maxlength="11" />
+				</label>
+
+				<label>地址<span class="required">*</span>
+					<input class="customor-addr" type="addr" name="custom-addr" required="required" maxlength="50"/>
+				</label>
+			</fieldset>
+		</section>
+	</article>
 
 	<header id="topbar">
 		<h1 class="h-card">

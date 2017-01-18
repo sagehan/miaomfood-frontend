@@ -25,6 +25,8 @@
 	box-sizing 			 : border-box ;
 }
 
+::selection { color: white; background: $primary_cl; }
+
 ul { list-style-type: none; margin:0; padding: 0; }
 
 body { 
@@ -108,12 +110,81 @@ h1 { margin: 0; }
 
 .u-hidden { @include absoutly__hidden; }
 
+#cart {
+	position: relative;
+	z-index : 10;
+	max-height: #{($min_cover_ht - 3*$row_height - $row_height)/$rem_size}em;
+	overflow: scroll;
+	padding : 1em 0.5em;
+	border 	: 1em solid $black;
+	background-color: white;
+	font-family: "HanziPen Sc";
+
+	header {
+		min-height 	: #{48px/$rem_size}em;
+		margin  : #{$row_height/$rem_size}em auto;
+
+		h1 { font: #{24px/$rem_size}em/#{(42px/24px)} "HanziPen SC";}
+	}
+}
+
+.cart-content {
+	display: flex;
+	flex-flow: column wrap;
+
+	input 	 { font-family : "HanziPen SC"; }
+	fieldset { border-width: 0; padding: 0; }
+
+	label[for="comment"] { position: absolute; color: transparent; }
+	label .required { 
+		font-weight : 800;
+		color 		: $primary_cl; 
+		margin-left : 0.25em; }
+
+	table.cart-items {
+		border-collapse: collapse;
+		table-layout: fixed;
+		text-align 	: left;
+
+		thead, tbody { border-bottom: 1px solid $border_bg; }
+		th { font-size: #{$small_size/$rem_size}em; color: $border_bg; white-space: nowrap; }
+     	
+     	.coupon input {
+		  margin-left: 1em;
+		  max-width  : percentage(152px / (320px - 44px - 16px));
+		  text-align : center;
+		}
+	}
+
+	input.comment { 
+		width: 100%;
+		margin-top: 1em;
+		padding: 0.3em  0.2em;
+		overflow: hidden;
+		border-width: 0;
+		background: white;
+		border-bottom: 1px solid $border_bg;
+	}
+
+	fieldset.customor label { 
+		display: block;
+		width: 100%; 
+	}
+
+	fieldset.customor input { 
+		//width 	: calc(100% - 5em);
+		border-width: 0;
+		border-bottom: 1px solid $border_bg;
+	}
+}
+
 #topbar {
 	position: absolute;
 	z-index : 10;
-	width: 100%;
-	//height 	: #{48px/$rem_size}em;
-	padding : #{32px/$rem_size}em;
+	width 	: 100%;
+	height 	: #{3*$row_height/$rem_size}em;
+	margin 	: #{$row_height/$rem_size}em auto;
+	padding : 0 1em;
 
 	h1.h-card {
 		display: inline;
@@ -141,13 +212,13 @@ h1 { margin: 0; }
 
 	.toggle { 
 		position: absolute;
-		right 	: #{32px/$rem_size}em;
-		top 	: 50%;
-		transform: translateY(-50%);
+		right 	: #{16px/$rem_size}em;
+		top 	: 0;
+		//transform: translateY(-50%);
 
 		a { 
 			display: inline-block;
-			margin-left: 1em;
+			margin-left: 0.5em;
 			color: white;
 			text-decoration: none; 
 
@@ -159,13 +230,13 @@ h1 { margin: 0; }
 
 		&--cart,&--vip { 
 			display: table-cell;
-			width: #{2*24px/$rem_size}em;
-			height: #{2*24px/$rem_size}em;
+			width: #{2*18px/$rem_size}em;
+			height: #{2*18px/$rem_size}em;
 			border : 1px solid $primary_cl;
 			border-radius: 100%;
 			text-align: center; 
 			vertical-align: middle;
-			&:before { font: #{24px/$rem_size}em "icomiaomfood"; } 
+			&:before { font: #{18px/$rem_size}em "icomiaomfood"; } 
 		}
 		&--cart:before { content: "\e917"; }
 		&--vip:before { content: "\e92f"; }
@@ -219,22 +290,19 @@ h1 { margin: 0; }
 	left: 50%;
 	transform: translate(-50%, -100%);
 	width: percentage($menu_width/$layout_width);
-	overflow: hidden;
 	z-index : 2;
 
 	a { 
 		display: inline-block;
 		width: 100%;
-		height: 2.625em;
-		line-height: 2.625; 
+		height: #{42px/$rem_size}em;
+		line-height: #{42px/$rem_size}; 
 		color: initial; text-decoration: none; 
 	}
 
 	.category-drawers {
 		margin : 1em auto;
 		display : flex;
-		flex-flow: column;
-		//@include box__shadow;
 	}
 
 	.drawer-item {
@@ -247,14 +315,14 @@ h1 { margin: 0; }
 		opacity: 0.9;
 		transition: background-color .5s ease;
 
-		.no-touch &:hover { 
-			opacity: 1; 
-			.sub-drawers { display : block; }
-		}
+		.no-touch &:hover .sub-drawers { visibility: visible; }
 	}
 
 	.sub-drawers {
-		display : none;
+		visibility: hidden;
+		position: absolute;
+		width 	: 100%;
+		bottom 	: #{42px/$rem_size}em;
 
 		.sub-drawer-item a { font-family: "HanziPen SC"; } 
 	}
@@ -304,9 +372,9 @@ h1 { margin: 0; }
 	}
 }
 
-.tasty 	 { background-color: $tasty-bg; 	&:after { background: $tasty_bg;} }
-.drink 	 { background-color: $drink_bg;  	&:after { background: $drink_bg;} }
-.lazycat { background-color: $lazycat_bg; 	&:after { background: $lazycat_bg;} }
+.tasty, .tasty .sub-drawers { background-color: $tasty-bg; 	&:after { background: $tasty_bg;} }
+.drink, .drink .sub-drawers { background-color: $drink_bg;  	&:after { background: $drink_bg;} }
+.lazycat, .lazycat .sub-drawers { background-color: $lazycat_bg; 	&:after { background: $lazycat_bg;} }
 
 #pizza, #rice, #snack { padding-bottom: 2em; }
 
@@ -339,7 +407,7 @@ h1 { margin: 0; }
 		height 	: -webkit-max-content;
 		height  : -moz-max-content;
 		color 	: $tag-border_color;
-		font  	: #{12px/$rem_size}em/#{(($row_height - 5px)/12px)} -apple-system, BlinkMacSystemFont, 'Microsoft YaHei', Helvetica, sans-serif;
+		font  	: #{$small_size/$rem_size}em/#{(($row_height - 5px)/$small_size)} -apple-system, BlinkMacSystemFont, 'Microsoft YaHei', Helvetica, sans-serif;
 	}
 
 	.p-spec {
@@ -357,7 +425,7 @@ h1 { margin: 0; }
 		top: 0;
 		margin-top: -3em;
 		padding-top: 0.5em;
-		font 		: #{12px/$rem_size}em/#{($row_height/12px)} "HanziPen SC"; 
+		font 		: #{$small_size/$rem_size}em/#{($row_height/$small_size)} "HanziPen SC"; 
 		white-space : nowrap;
 		word-break 	: keep-all;
 	}

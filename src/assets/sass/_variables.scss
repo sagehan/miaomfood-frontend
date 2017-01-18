@@ -1,5 +1,6 @@
 // global
 $rem_size 		: 16px;
+$small_size		: 12px;
 $row_height		: 27px;
 $grid_size  	: 32px;
 $canvas_width	: 320px;
@@ -16,7 +17,7 @@ $drink_width 	: 10 * $column_width + 11 * $gutter_width;
 
 // swatches
 $black      : hsla(0, 0, 15%, 1);
-$primary_cl : hsl(42, 90, 50);
+$primary_cl : #ec224f;
 $page_bg	: hsl(0, 0, 92);
 $tasty_bg	: hsl(67, 75, 95);
 $drink_bg	: hsl(341, 75, 95);
