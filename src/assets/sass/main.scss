@@ -1,6 +1,7 @@
 @import "variables";
 @import '~normalize.css/normalize';
 
+// global //////////////////////////////////////////////////////////////////////////////////
 @font-face {
 	font-family: 'HanziPen SC';
 	src: local('HanziPen SC');
@@ -29,7 +30,7 @@
 
 ul { list-style-type: none; margin:0; padding: 0; }
 
-body { 
+body {
 	background-color: $page-bg; 
 	font-family: Helvetica, sans-serif; 
 }
@@ -38,6 +39,7 @@ main { width: 100%; margin-top: 1em; }
 
 h1 { margin: 0; }
 
+// mixin 
 @mixin absolutly__centered {
 	position: absolute;
 	top 	: 50%;
@@ -109,7 +111,11 @@ h1 { margin: 0; }
 }
 
 .u-hidden { @include absoutly__hidden; }
+.tasty, .tasty .sub-drawers { background-color: $tasty-bg; 		 &:after { background: $tasty_bg !important;} }
+.drink, .drink .sub-drawers { background-color: $drink_bg;  	 &:after { background: $drink_bg !important;} }
+.lazycat, .lazycat .sub-drawers { background-color: $lazycat_bg; &:after { background: $lazycat_bg !important;} }
 
+// cart ///////////////////////////////////////////////////////////////////////////////////
 #cart {
 	position: relative;
 	z-index : 10;
@@ -178,42 +184,62 @@ h1 { margin: 0; }
 	}
 }
 
+// topbar ///////////////////////////////////////////////////////////////////////////////////
+@media screen and (max-width: 400px) and (orientation: portrait) {
+	#topbar .h-card .p-name { position: absolute; left:-9999999px; top: -99999999px; }
+}
+
+@media screen and (max-width: 568px) {
+	#topbar .h-card .p-slogan { position: absolute; left:-9999999px; top: -99999999px; }
+}
 #topbar {
+	display : flex;
 	position: absolute;
 	z-index : 10;
 	width 	: 100%;
 	height 	: #{3*$row_height/$rem_size}em;
 	margin 	: #{$row_height/$rem_size}em auto;
 	padding : 0 1em;
+	align-items: center;
+	justify-content: space-between;
 
 	h1.h-card {
-		display: inline;
-		position: relative;
+		position 	: relative;
+		height 		: 42px;
+		display		: inline-flex;
+		font-size 	: #{24px/$rem_size}em;
+		line-height	: #{(42px/24px)};
+		align-items : center;
+
+		color: white; 
 
 		a:any-link { color: initial; text-decoration: none; }
 
 		.u-logo { 
-			width: percentage(84px/$canvas_width); 
+			//width: percentage(84px/$canvas_width); 
 			max-width: 2.5em;
+			margin-right: 0.5em;
 			border-radius: 100%;
-			background: $primary_cl;
+			background: white;//$primary_cl;
 		}
-		.p-name { 
-			position: absolute;
-			width: 100%;
-			height: 1em;
-			left: 50%;
-			top: 100%;
-			transform: translateX(-50%);
-			color: transparent; 
-			background: no-repeat url(~assets/imgs/logo_text.png) center/contain content-box;
+		.p-name { flex-shrink: 0; }
+		.p-slogan { 
+			text-indent  : 0.25em; 
+			font-size 	 : #{$rem_size/24px}em;
+			font-weight  : 300; 
+			white-space  : nowrap;
+			overflow 	 : hidden;
+			text-overflow: clip;
 		}
 	}
 
 	.toggle { 
-		position: absolute;
-		right 	: #{16px/$rem_size}em;
-		top 	: 0;
+		flex-shrink: 0;
+		z-index: 4;
+		//align-self: center;
+		//position: absolute;
+		//right 	: #{16px/$rem_size}em;
+		//top 	: 0;
 		//transform: translateY(-50%);
 
 		a { 
@@ -243,6 +269,7 @@ h1 { margin: 0; }
 	}
 }
 
+// coverstory ////////////////////////////////////////////////////////////////////////////////
 #storyboard {
 	position: relative;
 	width 	: 100%;
@@ -259,7 +286,7 @@ h1 { margin: 0; }
 		background: url(~assets/imgs/cover-bottom-texture.png) top left/cover;
 	}
 	&:before {
-		top 	:  0;
+		top:  0;
 		transform: rotateX(180deg) rotateY(180deg) rotateZ(-0.35deg) translateY(70%);
 		z-index: 2;
 	}
@@ -285,6 +312,7 @@ h1 { margin: 0; }
 	}
 }
 
+// menu //////////////////////////////////////////////////////////////////////////////////
 #menu {
 	position: absolute;
 	left: 50%;
@@ -340,6 +368,13 @@ h1 { margin: 0; }
 	cursor    : pointer;
 }
 
+// main ///////////////////////////////////////////////////////////////////////////////////
+#pizza, #rice, #snack, #coffee, #black-tea, #ice-tea { 
+	margin-top: #{2*$row_height/$rem_size}em;
+	padding-bottom: 1em; 
+	flex-grow: 1;
+ }
+
 #tasty, 
 #drink,
 #lazycat {
@@ -348,15 +383,14 @@ h1 { margin: 0; }
 	@include box__shadow;
 
 	&:before {
-		content: "";
+		content: "▾";
 		display: block;
-		margin: 0 auto;
-		width: 0;
-		height: 0;
-		border-bottom: 1rem solid adjust-color($shadow_bg, $alpha: -0.15);
-		border-right: 1rem solid transparent;
-		transform: translateY(-50%) rotate(-45deg);
-		box-shadow: inset 0.5rem -1px 3px $shadow_bg;
+		color: adjust-color($shadow_bg, $lightness: -10%);
+		text-shadow: 3px -1px 3px 3px $page_bg;
+		font-size: 2em;
+		line-height: 0.15;
+		text-align: center;
+		flex-basis: 100%; // special for media queries
 	}
 	&:after {
 		content: "";
@@ -372,12 +406,26 @@ h1 { margin: 0; }
 	}
 }
 
-.tasty, .tasty .sub-drawers { background-color: $tasty-bg; 	&:after { background: $tasty_bg;} }
-.drink, .drink .sub-drawers { background-color: $drink_bg;  	&:after { background: $drink_bg;} }
-.lazycat, .lazycat .sub-drawers { background-color: $lazycat_bg; 	&:after { background: $lazycat_bg;} }
+@media screen and (min-width: 640px) {
+	#drink  { 
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-around;
+		//align-items: baseline;
 
-#pizza, #rice, #snack { padding-bottom: 2em; }
+		.category { min-width: 320px; }
+	}
+}
 
+@media screen and (min-width: 960px) {
+	#tasty, #drink, #lazycat {
+		
+	}
+	div.group {
+		//width : percentage($group_width/(3*$layout_width)) !important;
+		//margin: #{(2*$row_height/16px)}em auto !important;
+	}
+}
 #lazycat div.illustration,
 #snack 	div.group,
 #rice 	div.group,
@@ -431,6 +479,7 @@ h1 { margin: 0; }
 	}
 }
 
+// drink ///////////////////////////////////////
 #pizza div.group {
 	border: 1.5px dashed $border_bg; 
 
@@ -782,6 +831,8 @@ h1 { margin: 0; }
 	.p-spec.isSelected:before { @include pricetag__leading; }
 }
 
+
+// drink ///////////////////////////////////////
 #drink div.group {
 	display: flex;
 	//justify-content: space-between;
@@ -991,6 +1042,7 @@ h1 { margin: 0; }
 	.h-product:nth-of-type(4):after { content: "瑰"}
 }
 
+// laycat ///////////////////////////////////////
 #lazycat .maps { 
 	margin: auto auto;
 	max-width : 100%; 
