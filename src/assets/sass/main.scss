@@ -37,6 +37,17 @@ body {
 
 main { width: 100%; margin-top: 1em; }
 
+footer {
+	padding 	: 1em;
+	line-height : #{$row_height/$rem_size};
+	color 		: adjust-color($black, $alpha: -0.65);
+	font-weight : 200;
+	text-transform: capitalize; 
+
+	a:link { color: inherit; text-decoration: none; }
+	a:hover{ color: $black; font-weight: bold; }
+}
+
 h1 { margin: 0; }
 
 // mixin 
