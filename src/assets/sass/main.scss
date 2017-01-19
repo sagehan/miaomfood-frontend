@@ -500,42 +500,34 @@ h1 { margin: 0; }
 		display: block;
 		position: relative; 
 		margin: 3em auto 0; 
-		width  : 100%;
+		width: #{153px/$rem_size}em;
+		height: #{153px/$rem_size}em;
+
+		.u-photo {
+			display: block;
+			width : 140px;
+			height 		: auto;
+			@include absolutly__centered;
+			z-index: 9999;
+			/*shape-outside: circle();*/
+		}
 
 		&:after,
 		&:before {
 			content: "";
 			display: block;
 			width  : 100%;
-			padding-top : 100%;
+			height : 100%; 
+			@include absolutly__centered;
 			background-color: white;
 			border-radius: 100%;
 		}
-
-		&:before { 
-			transform: scale(1.35, 1.35); 
-			box-shadow: 1px 2px 1px 1px adjust-color($shadow_bg, $alpha: -0.5);
-		}
-
 		&:after {
-			@include absolutly__centered;
-			width: 100%;
-			transform 	: translate(-50%, -50%) scale(1.19, 1.19);
+			width: 140px;
+			height: 140px;
 			box-shadow: 1px 1px 1px 1px adjust-color($shadow_bg, $alpha: -0.5);
-			z-index: 9998
 		}
-	}
-
-	.u-photo {
-		display: block;
-		position: absolute;
-		width 		: 100%;
-		height 		: auto;
-		@include absolutly__centered;
-		/*-webkit-shape-outside: circle() padding-box;
-		shape-outside: circle();*/
-		transform 	: translate(-50%, -50%) scale(1.2, 1.2);
-		z-index: 9999;
+		&:before { box-shadow: 1px 2px 1px 1px adjust-color($shadow_bg, $alpha: -0.5); }
 	}
 }
 
@@ -553,7 +545,7 @@ h1 { margin: 0; }
 			.p-spec.isSelected:after { @include pricetag__trailing; }
 
 			figure { 
-				transform: translateX(-#{$column_width + 2*$gutter_width}); 
+				transform: translateX(-#{1*$column_width + 2*$gutter_width}); 
 
 				.e-description { 
 					margin-left: 1em;
@@ -568,7 +560,7 @@ h1 { margin: 0; }
 			.p-spec.isSelected:before { @include pricetag__leading; }
 
 			figure { 
-				transform: translateX(#{$column_width + 2*$gutter_width}); 
+				transform: translateX(#{1*$column_width + 2*$gutter_width}); 
 
 				.e-description { 
 					right: 0;
@@ -657,7 +649,7 @@ h1 { margin: 0; }
 	}
 
 	&:nth-of-type(2) {
-		&:before { background: url(~assets/imgs/beef.png) left top/contain no-repeat content-box; }
+		&:before { background: url(~assets/imgs/beef.png) right top/contain no-repeat content-box; }
 
 		article.h-product:nth-child(1):after {
 			transform: translate(-50%, 0) scale(1.15, 1.15);
@@ -683,7 +675,7 @@ h1 { margin: 0; }
 	}
 
 	&:nth-of-type(4) {
-		//&:before { background: url(~assets/imgs/chicken.png) left top/contain no-repeat content-box; }
+		//&:before { background: url(~assets/imgs/chicken.png) right top/contain no-repeat content-box; }
 
 		article.h-product:nth-child(1):after {
 			transform: translate(-50%, -25%) scale(1.15, 1.15);
@@ -711,7 +703,6 @@ h1 { margin: 0; }
 			position: absolute;
 			top: 0;
 			right: 0;
-			width: 50%;
 			transform: translateX(#{$column_width + 2*$gutter_width}); 
 
 			.e-description { 
@@ -731,7 +722,6 @@ h1 { margin: 0; }
 			position: absolute;
 			top: 0;
 			left: 0;
-			width: 50%;
 			transform: translateX(-#{$column_width + 2*$gutter_width}); 
 
 			.e-description { 
