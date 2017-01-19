@@ -544,8 +544,8 @@ h1 { margin: 0; }
 			.p-name { transform: translateX(-100%); }
 			.p-spec.isSelected:after { @include pricetag__trailing; }
 
-			figure { 
-				transform: translateX(-#{1*$column_width + 2*$gutter_width}); 
+			figure {
+				margin-left: -3em;
 
 				.e-description { 
 					margin-left: 1em;
@@ -559,8 +559,8 @@ h1 { margin: 0; }
 			.spec-tag {right: -100%; transform: translateX(-100%); }
 			.p-spec.isSelected:before { @include pricetag__leading; }
 
-			figure { 
-				transform: translateX(#{1*$column_width + 2*$gutter_width}); 
+			figure {
+				margin-right: -3em;
 
 				.e-description { 
 					right: 0;
@@ -703,7 +703,7 @@ h1 { margin: 0; }
 			position: absolute;
 			top: 0;
 			right: 0;
-			transform: translateX(#{$column_width + 2*$gutter_width}); 
+			margin-right: -3em;
 
 			.e-description { 
 				right: 0;
@@ -722,7 +722,7 @@ h1 { margin: 0; }
 			position: absolute;
 			top: 0;
 			left: 0;
-			transform: translateX(-#{$column_width + 2*$gutter_width}); 
+			margin-left: -3em;
 
 			.e-description { 
 				margin-left: 1em;
