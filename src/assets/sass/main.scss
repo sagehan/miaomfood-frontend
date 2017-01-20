@@ -26,6 +26,16 @@
 	box-sizing 			 : border-box ;
 }
 
+button,
+input,
+optgroup,
+select,
+textarea,
+ul,
+ol, {
+	padding: 0;
+}
+
 ::selection { color: white; background: $primary_cl; }
 
 ul { list-style-type: none; margin:0; padding: 0; }
@@ -33,6 +43,10 @@ ul { list-style-type: none; margin:0; padding: 0; }
 body {
 	background-color: $page-bg; 
 	font-family: Helvetica, sans-serif; 
+
+	//test below
+	//position    : fixed; //for fixed cart on top, but not have fun at all
+	//overflow 	: hidden; //for fixed cart on top
 }
 
 main { width: 100%; margin-top: 1em; }
@@ -130,68 +144,88 @@ h1 { margin: 0; }
 #cart {
 	position: relative;
 	z-index : 10;
-	max-height: #{($min_cover_ht - 3*$row_height - $row_height)/$rem_size}em;
+	width 	: calc(100% - 1em);
+	height 	: calc(100vh - #{$topbar_ht} - #{$row_height/$rem_size}em);
+	margin 	: 0 auto;
 	overflow: scroll;
-	padding : 1em 0.5em;
-	border 	: 1em solid $black;
+	border-top: 0;
+	@include box__shadow;
 	background-color: white;
 	font-family: "HanziPen Sc";
+	line-height: #{$row_height/$rem_size}em;
+
+	&:before {
+		content : "";
+		display : block;
+		width 	: 100%;
+		height 	: 0.5rem;
+	    background-size	 : 0.5rem 0.5rem;
+		background-image : radial-gradient( 6px at top  center, $shadow_bg 0, grey 3px, transparent 3px); 
+	    background-repeat: repeat-x;
+	}
 
 	header {
-		min-height 	: #{48px/$rem_size}em;
-		margin  : #{$row_height/$rem_size}em auto;
+		margin  : #{$row_height/$rem_size}em 1rem;
+		text-align: center;
 
 		h1 { font: #{24px/$rem_size}em/#{(42px/24px)} "HanziPen SC";}
 	}
 }
 
-.cart-content {
-	display: flex;
-	flex-flow: column wrap;
-
-	input 	 { font-family : "HanziPen SC"; }
-	fieldset { border-width: 0; padding: 0; }
-
-	label[for="comment"] { position: absolute; color: transparent; }
-	label .required { 
-		font-weight : 800;
-		color 		: $primary_cl; 
-		margin-left : 0.25em; }
+.non-empty-cart {
+	margin: auto 1rem;
 
 	table.cart-items {
-		border-collapse: collapse;
-		table-layout: fixed;
-		text-align 	: left;
+		width : 100%;
+		margin: #{$row_height/$rem_size}em auto #{$row_height/$rem_size}em;
+		border-collapse	: collapse;
+		//table-layout	: fixed;
+		text-align 		: left;
+		line-height 	:  #{($row_height - 2px)/$rem_size}em;
 
 		thead, tbody { border-bottom: 1px solid $border_bg; }
-		th { font-size: #{$small_size/$rem_size}em; color: $border_bg; white-space: nowrap; }
-     	
-     	.coupon input {
-		  margin-left: 1em;
-		  max-width  : percentage(152px / (320px - 44px - 16px));
-		  text-align : center;
+		th:last-child, td:last-child:not(:only-child) { text-align: right; }
+
+		th { 
+			font-size: #{$small_size/$rem_size}em;
+			line-height: #{($row_height -2px)/$small_size}em;
+			color: $border_bg;
+			white-space: nowrap;
 		}
 	}
 
-	input.comment { 
+	fieldset { border-width: 0; padding: 0; }
+
+	input {
+		font-family : "HanziPen SC";
+		border-width: 0;
+	 	border-bottom: 1px dashed $border_bg;
+	 	background-color: transparent;
+
+	 	&.coupon-input { width: 8em; }
+	 	&.comment-input { 
+			width: 100%;
+			margin-top: 1em;
+			padding: 0.3em  0.2em;
+			overflow: hidden;
+			border-width: 0;
+			border-bottom: 1px solid $border_bg;
+		}
+
+		&:not(:checked) + label + .reservation-option { @include absoutly__hidden; }
+	}
+
+	label {
+		display:block;
 		width: 100%;
-		margin-top: 1em;
-		padding: 0.3em  0.2em;
-		overflow: hidden;
-		border-width: 0;
-		background: white;
-		border-bottom: 1px solid $border_bg;
-	}
 
-	fieldset.customor label { 
-		display: block;
-		width: 100%; 
-	}
+		&[for="comment"] { @include absoutly__hidden; }
 
-	fieldset.customor input { 
-		//width 	: calc(100% - 5em);
-		border-width: 0;
-		border-bottom: 1px solid $border_bg;
+		.required { 
+			font-weight : 800;
+			color 		: $primary_cl;
+			margin-left : 0.25em;
+		}
 	}
 }
 
@@ -200,7 +234,7 @@ h1 { margin: 0; }
 	#topbar .h-card .p-name { position: absolute; left:-9999999px; top: -99999999px; }
 }
 
-@media screen and (max-width: 568px) {
+@media screen and (max-width: 640px) {
 	#topbar .h-card .p-slogan { position: absolute; left:-9999999px; top: -99999999px; }
 }
 #topbar {
@@ -208,7 +242,7 @@ h1 { margin: 0; }
 	position: absolute;
 	z-index : 10;
 	width 	: 100%;
-	height 	: #{3*$row_height/$rem_size}em;
+	height 	: $topbar_ht;
 	margin 	: #{$row_height/$rem_size}em auto;
 	padding : 0 1em;
 	align-items: center;
@@ -247,11 +281,6 @@ h1 { margin: 0; }
 	.toggle { 
 		flex-shrink: 0;
 		z-index: 4;
-		//align-self: center;
-		//position: absolute;
-		//right 	: #{16px/$rem_size}em;
-		//top 	: 0;
-		//transform: translateY(-50%);
 
 		a { 
 			display: inline-block;
@@ -399,7 +428,7 @@ h1 { margin: 0; }
 		color: adjust-color($shadow_bg, $lightness: -10%);
 		text-shadow: 3px -1px 3px 3px $page_bg;
 		font-size: 2em;
-		line-height: 0.15;
+		line-height: 0.25;
 		text-align: center;
 		flex-basis: 100%; // special for media queries
 	}

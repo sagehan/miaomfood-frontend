@@ -15,7 +15,7 @@
 </head>
 <body>
 	<div id="vip" style="display: none"></div>
-	<article id="cart" style="display: none">
+	<article id="cart">
 		<header>
 			<h1>购物车</h1>
 		</header>
@@ -32,78 +32,115 @@
 		</div>
 		</section>
 
-		<section class="cart-content">
+		<section class="non-empty-cart">
 			<table class="cart-items">
 				<thead>
 					<tr>
-						<th>餐品</th><th>单价</th><th>数量</th>
+						<th>餐品</th><th>数量</th><th>单价</th>
 					</tr>
 				</thead>
 
 				<tfoot>
-					<tr class="coupon isOpen">
+					<tr class="coupon toggle--coupon">
 						<td colspan="2">
 							<label>优惠蜜语:
-								<input class="coupon-input" type="text" name="" lang="zh-cn" maxlength="10">
+								<input class="coupon-input" type="text" name="" lang="zh-cn" maxlength="15" />
 							</label>
 						</td>
-						<td>-5</td>
+						<td class="money">-5</td>
+					</tr>
+
+					<tr>
+						<td colspan="2">外送费</td>
+						<td class="money">3</td>
 					</tr>
 
 					<tr>
 						<td colspan="2">合计</td>
-						<td>195</td>
+						<td class="money">268</td>
+					</tr>
+
+					<tr>
+						<td colspan="3">
+							<label for="comment">备注说明：</label>
+							<input class="comment-input" type="text" name="comment"  maxlength="15" placeholder="备注说明" />
+						</td>
 					</tr>
 				</tfoot>
 
 				<tr class="h-item">
 					<td class="p-name">激情培根(八寸)</td>
-					<td class="spec-price">39</td>
 					<td class="qty">1</td>
+					<td class="spec-price">39</td>
 				</tr>
 
 				<tr class="h-item">
 					<td class="p-name">风情夏威夷(十寸)</td>
-					<td class="spec-price">59</td>
 					<td class="qty">2</td>
+					<td class="spec-price">59</td>
 				</tr>
 
 				<tr class="h-item">
-					<td class="p-name">风情夏威夷(十寸)</td>
-					<td class="spec-price">59</td>
+					<td class="p-name">大力水手(八寸)</td>
 					<td class="qty">2</td>
+					<td class="spec-price">35</td>
 				</tr>
 
 				<tr class="h-item">
 					<td class="p-name">荔枝芦荟(气泡水)</td>
-					<td class="spec-price">18</td>
 					<td class="qty">1</td>
+					<td class="spec-price">18</td>
 				</tr>
 							<tr class="h-item">
 					<td class="p-name">卡布奇诺</td>
-					<td class="spec-price">25</td>
 					<td class="qty">1</td>
+					<td class="spec-price">25</td>
 				</tr>
 			</table>
 
-			<label for="comment">订单备注</label>
-			<input class="comment" type="text" name="comment"  maxlength="15" placeholder="订单备注" />
-			
-
 			<fieldset class="customor">
-				<legend>送餐地址</legend>
+				<legend>配送信息</legend>
+
 				<label>姓名/称呼<span class="required">*</span>
-					<input class="customor-name" type="text" name="custom-name" required="required" maxlength="10"/>
+					<input class="customor-name" type="text" name="custom-name" required maxlength="10"/>
 				</label>
 
 				<label>手机<span class="required">*</span>
-					<input class="customor-phone" type="tel" name="custom-tel" required="required" maxlength="11" />
+					<input class="customor-phone" type="tel" name="custom-tel" required maxlength="11" />
 				</label>
 
-				<label>地址<span class="required">*</span>
-					<input class="customor-addr" type="addr" name="custom-addr" required="required" maxlength="50"/>
-				</label>
+				<div class="customor-addr">
+					<label>城市
+						<select name="city"><option value="乌鲁木齐" selected>乌鲁木齐市</option></select>
+					</label>
+
+					<label>地址<span class="required">*</span>
+						<textarea type="addr" name="custom-addr" required maxlength="50"></textarea> 
+					</label>
+				</div>
 			</fieldset>
+
+				<div>
+					<input type="checkbox" id="is-reservation" name="is-reservation" />
+					<label for="is-reservation">预订</label>
+					<div class="reservation-option">
+							<select>
+								<option value="today" selected>今日</option>
+								<option value="tomorrow">明日</option>
+							</select>
+							<input type="time" name="delivery-time" placeholder="请输入时间" maxlength="8" value="20:00" />
+						</div>
+				</div>
+			</div>
+
+			<fieldset class="payment-method">
+				<legend>付款方式</legend>
+				<label><input type="radio" name="payment" checked />现金</label>
+				<label><input type="radio" name="payment" />微信支付</label>
+				<label><input type="radio" name="payment" />支付宝</label>
+			</fieldset>
+
+			<button>提交订单</button>
 		</section>
 	</article>
 
@@ -165,11 +202,11 @@
 	<footer>
 		<p class="contributor">
 			<small>
-				// Logo by <a rel="author" href="" target="_blank">小毛</a>，设计&amp;制作 by <a rel="author" href="https://heysage.com/" title="Heysage" target="_blank">松志</a>，Powered by <cite><a href="http://clojure.org/" title="Clojure" target="_blank">Clojure</a></cite>
+				Logo by <a rel="author" href="" target="_blank">小毛</a>，设计&amp;制作 by <a rel="author" href="https://heysage.com/" title="Heysage" target="_blank">松志</a>，Powered by <cite><a href="http://clojure.org/" title="Clojure" target="_blank">Clojure</a></cite>
 			</small>
 		</p>
 		<p class="copyright">
-			<small>// Copyright 2017 &copy; 新疆乌鲁木齐市喵姆餐厅（<b>miaomfood.com</b>）版权所有</small>
+			<small>Copyright 2017 &copy; 新疆乌鲁木齐市喵姆餐厅（<b>miaomfood.com</b>）版权所有</small>
 		</p>
 	</footer>
 	<script src="/dist/build.js"></script>

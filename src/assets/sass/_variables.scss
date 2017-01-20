@@ -5,6 +5,7 @@ $row_height		: 27px;
 $grid_size  	: 32px;
 $canvas_width	: 320px;
 $min_cover_ht	: 320px - 92px;
+$topbar_ht 		: #{3*$row_height/$rem_size}em;
 //$diamond-grid_size:  1 * $grid_size / 2.23606797749978969640917366873127623544061835961152572427089;
 
 // layout
@@ -18,6 +19,7 @@ $drink_width 	: 10 * $column_width + 11 * $gutter_width;
 // swatches
 $black      : hsla(0, 0, 15%, 1);
 $primary_cl : #ec224f;
+$cart_bg 	: #ffffff;
 $page_bg	: hsl(0, 0, 92);
 $tasty_bg	: hsl(67, 75, 95);
 $drink_bg	: hsl(341, 75, 95);
