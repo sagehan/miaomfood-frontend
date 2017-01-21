@@ -38,7 +38,7 @@ ol, {
 
 ::selection { color: white; background: $primary_cl; }
 
-ul { list-style-type: none; margin:0; padding: 0; }
+ol,ul { list-style-type: none; margin:0; padding: 0; }
 
 body {
 	background-color: $page-bg; 
@@ -141,6 +141,19 @@ h1 { margin: 0; }
 .lazycat, .lazycat .sub-drawers { background-color: $lazycat_bg; &:after { background: $lazycat_bg !important;} }
 
 // cart ///////////////////////////////////////////////////////////////////////////////////
+@media screen and (max-width: 640px) and (orientation: portrait) {
+	//.non-empty-cart { display: flex; }
+	.cart-items { width: 100%; }
+}
+@media screen and (min-width: 640px) and (orientation: landscape) {
+	.non-empty-cart { display: flex; align-items: center; }
+	.cart-items { width: initial; }
+	fieldset.customer li label {
+		display   : inline-block;
+		width 	  : 6em;
+		text-align: right;
+	}
+}
 #cart {
 	position: relative;
 	z-index : 10;
@@ -148,7 +161,6 @@ h1 { margin: 0; }
 	height 	: calc(100vh - #{$topbar_ht} - #{$row_height/$rem_size}em);
 	margin 	: 0 auto;
 	overflow: scroll;
-	border-top: 0;
 	@include box__shadow;
 	background-color: white;
 	font-family: "HanziPen Sc";
@@ -165,68 +177,101 @@ h1 { margin: 0; }
 	}
 
 	header {
-		margin  : #{$row_height/$rem_size}em 1rem;
+		margin  : #{$row_height/$rem_size}em 1rem #{0.5*$row_height/$rem_size}em;
 		text-align: center;
 
 		h1 { font: #{24px/$rem_size}em/#{(42px/24px)} "HanziPen SC";}
 	}
 }
 
-.non-empty-cart {
-	margin: auto 1rem;
+.non-empty-cart { margin: auto 1rem; }
 
-	table.cart-items {
-		width : 100%;
-		margin: #{$row_height/$rem_size}em auto #{$row_height/$rem_size}em;
-		border-collapse	: collapse;
-		//table-layout	: fixed;
-		text-align 		: left;
-		line-height 	:  #{($row_height - 2px)/$rem_size}em;
+.spec-price:before, .CNY:before {
+	content: "¥";
+	margin-left: -1em;
+	font-size: 80%;
+}
 
-		thead, tbody { border-bottom: 1px solid $border_bg; }
-		th:last-child, td:last-child:not(:only-child) { text-align: right; }
+.required { 
+	font-weight : 800;
+	color 		: $primary_cl;
+	margin-left : 0.25em;
+}
 
-		th { 
-			font-size: #{$small_size/$rem_size}em;
-			line-height: #{($row_height -2px)/$small_size}em;
-			color: $border_bg;
-			white-space: nowrap;
-		}
+fieldset { border-width: 0; padding: 0; }
+caption,legend { text-align: center; }
+
+input, textarea, select, button { 
+	font-family : "HanziPen SC";
+	outline 	: none;
+	border-width: 0;
+ 	background-color: transparent;
+}
+
+input {
+
+ 	&.comment-input,
+ 	&.coupon-input { width: 8em; border-width: 0; overflow: hidden;}
+	&:not(:checked) + label + .reservation-option { @include absoutly__hidden; }
+}
+
+table.cart-items {
+	//width : 100%;
+	margin: 0 auto #{$row_height/$rem_size}em;
+	border-collapse	: collapse;
+	text-align 		: left;
+	line-height 	: #{($row_height - 2px)/$rem_size}em;
+	white-space 	: nowrap;
+
+	thead, tbody { border-bottom: 1px solid $border_bg; }
+
+	th { color: $border_bg; }
+	th:last-child,
+	td:last-child:not(:only-child) { text-align: right; }
+
+	th, tfoot tr:not(:last-child) { 
+		font-size: #{$small_size/$rem_size}em;
+		line-height: #{($row_height -2px)/$small_size}em;
 	}
 
-	fieldset { border-width: 0; padding: 0; }
+	td label { float: left; }
+	td input { width: calc( #{$canvas_width} - 10em); }
+}
 
-	input {
-		font-family : "HanziPen SC";
-		border-width: 0;
-	 	border-bottom: 1px dashed $border_bg;
-	 	background-color: transparent;
+fieldset.customer li input,
+fieldset.customer li select {
+	width: calc(100% - 8em);
+	border-bottom: 1px dashed $border_bg;
+}
 
-	 	&.coupon-input { width: 8em; }
-	 	&.comment-input { 
-			width: 100%;
-			margin-top: 1em;
-			padding: 0.3em  0.2em;
-			overflow: hidden;
-			border-width: 0;
-			border-bottom: 1px solid $border_bg;
-		}
+fieldset.payment ol {
+	display: inline-table;
+	width: 100%;
 
-		&:not(:checked) + label + .reservation-option { @include absoutly__hidden; }
-	}
-
-	label {
-		display:block;
-		width: 100%;
-
-		&[for="comment"] { @include absoutly__hidden; }
-
-		.required { 
-			font-weight : 800;
+	li 	  { display : table-cell; text-align: center; }
+	input { @include absoutly__hidden; }
+	input:checked + label {
+			//border-style: solid;
+			outline-style: solid;
 			color 		: $primary_cl;
-			margin-left : 0.25em;
-		}
+			background-color: initial;
 	}
+	label {
+		display : inline-block;
+		margin-left: 1px;
+		padding : 0.25em;
+		width 	: 5em;
+		//border 	: 1px dashed $primary_cl;
+		outline : 1px dashed $primary_cl;
+		color 	: $border_bg;
+		background-color: $page_bg;
+		text-align: center;
+	}
+}
+
+button[name="place-order-button"] {
+	display: block;
+	margin: #{1.5*$row_height/$rem_size}em auto;
 }
 
 // topbar ///////////////////////////////////////////////////////////////////////////////////

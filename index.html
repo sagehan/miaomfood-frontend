@@ -15,182 +15,183 @@
 </head>
 <body>
 	<div id="vip" style="display: none"></div>
+
 	<article id="cart">
-		<header>
+		<header class="cart-header">
 			<h1>购物车</h1>
 		</header>
 
-		<div class="toggle">
-			<a href="#cart"><div class="toggle--cart"></div></a>
-		</div>
-
-		<section class="empty-cart" style="display: none;">
+		<div class="empty-cart" style="display: none;">
 			<p>您还没有选择菜品哦!</p>
 			<p class="toggle">
 				<a href="#menu">寻找美味</a>
 			</p>
 		</div>
-		</section>
-
-		<section class="non-empty-cart">
+		<!-- or -->
+		<form class="non-empty-cart">
 			<table class="cart-items">
+				<caption>订购信息</caption>
+
 				<thead>
 					<tr>
-						<th>餐品</th><th>数量</th><th>单价</th>
+						<th>餐品</th><th>单价</th><th>数量</th><th>金额</th>
 					</tr>
 				</thead>
 
 				<tfoot>
-					<tr class="coupon toggle--coupon">
-						<td colspan="2">
-							<label>优惠蜜语:
-								<input class="coupon-input" type="text" name="" lang="zh-cn" maxlength="15" />
-							</label>
-						</td>
-						<td class="money">-5</td>
-					</tr>
-
 					<tr>
-						<td colspan="2">外送费</td>
-						<td class="money">3</td>
-					</tr>
-
-					<tr>
-						<td colspan="2">合计</td>
-						<td class="money">268</td>
-					</tr>
-
-					<tr>
-						<td colspan="3">
+						<td colspan="4">
 							<label for="comment">备注说明：</label>
-							<input class="comment-input" type="text" name="comment"  maxlength="15" placeholder="备注说明" />
+							<input class="comment-input" type="text" name="comment"  maxlength="15" placeholder="姐姐，麻麻说多放芝士更好吃！" />
 						</td>
+					</tr>
+
+					<tr class="coupon toggle--coupon">
+						<td colspan="3">
+							<label>优惠蜜语：</label>
+							<input class="coupon-input" type="text" name="coupon-code" placeholder="菠萝波罗蜜" lang="zh-cn" maxlength="15" />
+						</td>
+						<td class="CNY">-5</td>
+					</tr>
+
+					<tr>
+						<td colspan="3">外送费</td>
+						<td class="CNY">3</td>
+					</tr>
+
+					<tr>
+						<td colspan="3">总额</td>
+						<td class="CNY">150</td>
 					</tr>
 				</tfoot>
 
 				<tr class="h-item">
 					<td class="p-name">激情培根(八寸)</td>
-					<td class="qty">1</td>
 					<td class="spec-price">39</td>
-				</tr>
-
-				<tr class="h-item">
-					<td class="p-name">风情夏威夷(十寸)</td>
-					<td class="qty">2</td>
-					<td class="spec-price">59</td>
+					<td class="qty">1</td>
+					<td class="sub-total CNY">39</td>
 				</tr>
 
 				<tr class="h-item">
 					<td class="p-name">大力水手(八寸)</td>
-					<td class="qty">2</td>
 					<td class="spec-price">35</td>
+					<td class="qty">2</td>
+					<td class="sub-total CNY">70</td>
 				</tr>
 
 				<tr class="h-item">
 					<td class="p-name">荔枝芦荟(气泡水)</td>
-					<td class="qty">1</td>
 					<td class="spec-price">18</td>
-				</tr>
-							<tr class="h-item">
-					<td class="p-name">卡布奇诺</td>
 					<td class="qty">1</td>
+					<td class="sub-total CNY">18</td>
+				</tr>
+				<tr class="h-item">
+					<td class="p-name">卡布奇诺</td>
 					<td class="spec-price">25</td>
+					<td class="qty">1</td>
+					<td class="sub-total CNY">25</td>
 				</tr>
 			</table>
 
-			<fieldset class="customor">
+			<fieldset class="customer">
 				<legend>配送信息</legend>
 
-				<label>姓名/称呼<span class="required">*</span>
-					<input class="customor-name" type="text" name="custom-name" required maxlength="10"/>
-				</label>
+				<ol>
+					<li>
+						<label>姓名/称呼<span class="required">*</span></label>
+						<input class="customer-name" type="text" name="custom-name" required maxlength="10"/>
+					</li>
 
-				<label>手机<span class="required">*</span>
-					<input class="customor-phone" type="tel" name="custom-tel" required maxlength="11" />
-				</label>
+					<li>
+						<label>手机<span class="required">*</span></label>
+						<input class="customer-phone" type="tel" name="custom-tel" required maxlength="11" />
 
-				<div class="customor-addr">
-					<label>城市
+					</li>
+
+					<li>
+						<label>城市<span class="required">*</span></label>
 						<select name="city"><option value="乌鲁木齐" selected>乌鲁木齐市</option></select>
-					</label>
+					</li>		
 
-					<label>地址<span class="required">*</span>
-						<textarea type="addr" name="custom-addr" required maxlength="50"></textarea> 
-					</label>
-				</div>
+					<li>
+						<label>地址<span class="required">*</span></label>
+							<textarea type="addr" name="custom-addr" required maxlength="50"></textarea>
+					</li>
+				</ol>
 			</fieldset>
 
-				<div>
-					<input type="checkbox" id="is-reservation" name="is-reservation" />
-					<label for="is-reservation">预订</label>
-					<div class="reservation-option">
-							<select>
-								<option value="today" selected>今日</option>
-								<option value="tomorrow">明日</option>
-							</select>
-							<input type="time" name="delivery-time" placeholder="请输入时间" maxlength="8" value="20:00" />
-						</div>
-				</div>
+		<fieldset class="reservation">
+			<input type="checkbox" id="is--reserved" name="is--reserved" />
+			<label for="is--reserved">预订</label>
+			<div class="reservation-option">
+				<select>
+					<option value="today" selected>今日</option>
+					<option value="tomorrow">明日</option>
+				</select>
+				<input type="time" name="delivery-time" placeholder="请输入时间" maxlength="8" value="20:00" />
 			</div>
+		</fieldset>
 
-			<fieldset class="payment-method">
-				<legend>付款方式</legend>
-				<label><input type="radio" name="payment" checked />现金</label>
-				<label><input type="radio" name="payment" />微信支付</label>
-				<label><input type="radio" name="payment" />支付宝</label>
-			</fieldset>
+	<fieldset class="payment">
+		<legend>付款方式</legend>
+		<ol>
+			<li><input type="radio" name="payment" id="cash" checked /><label for="cash">现金付</label></li>
+			<li><input type="radio" name="payment" id="wechat" /><label for="wechat">微信支付</label></li>
+			<li><input type="radio" name="payment" id="alipay" /><label for="alipay">支付宝</label></li>
+		</ol>
+	</fieldset>
 
-			<button>提交订单</button>
-		</section>
-	</article>
+	<button name="place-order-button" type="submit" disabled>提交订单</button>
+</form>
+</article>
 
-	<header id="topbar">
-		<h1 class="h-card">
-			<a class="u-url" href="https://miaomfood.com/" rel="home">
-				<img class="u-logo" src="./static/imgs/logo.png" alt="Logo" />
-			</a>
-			<span  class="p-name">喵姆餐厅</span>
-			<small class="p-slogan">•好多好多的芝士和肉，给你认真生活的力量！</small>
-		</h1>
+<header id="topbar">
+	<h1 class="h-card">
+		<a class="u-url" href="https://miaomfood.com/" rel="home">
+			<img class="u-logo" src="./static/imgs/logo.png" alt="Logo" />
+		</a>
+		<span  class="p-name">喵姆餐厅</span>
+		<small class="p-slogan">•好多好多的芝士和肉，给你认真生活的力量！</small>
+	</h1>
 
-		<div class="toggle">
-			<a href="#cart"><div class="toggle--cart"></div></a>
-			<a href="#console"><div class="toggle--vip"></div></a>
-		</div>
-	</header>
-
-	<div id="storyboard">
-		<span class="bullets">
-			<b class="bullet isActive"></b>	
-			<b class="bullet"></b>	
-			<b class="bullet"></b>	
-		</span>
-
-		<div class="slideshow">
-			<div class="slide"></div>
-			<div class="slide" style="display: none"></div>
-			<div class="slide" style="display: none"></div>
-		</div>
+	<div class="toggle">
+		<a href="#cart"><button type="button" class="toggle--cart"></button></a>
+		<a href="#console"><button type="button" class="toggle--vip"></button></a>
 	</div>
+</header>
 
-	<nav id="menu">
-		<h1 class="u-hidden" id="navigation__title">喵姆餐厅 目录</h1>
-		<ul class="category-drawers">
-			<li class="drawer-item tasty">
-				<span class="category">好吃</span>
-				<ul class="sub-drawers">
-					<li class="sub-drawer-item"><a href="#pizza">披萨</a></li>
-					<li class="sub-drawer-item"><a href="#rice">焗饭</a></li>
-					<li class="sub-drawer-item"><a href="#snack">小吃</a></li>
-				</ul>
-			</li>
-			<li class="drawer-item drink">
-				<sapn class="category">好喝</sapn>
-				<ul class="sub-drawers">
-					<li class="sub-drawer-item"><a href="#coffee">咖啡</a></li>
-					<li class="sub-drawer-item"><a href="#black-tea">红茶</a></li>
-					<li class="sub-drawer-item"><a href="#ice-tea">冰茶 • 气泡水</a></li>
-				</ul>
+<div id="storyboard">
+	<span class="bullets">
+		<b class="bullet isActive"></b>	
+		<b class="bullet"></b>	
+		<b class="bullet"></b>	
+	</span>
+
+	<div class="slideshow">
+		<div class="slide"></div>
+		<div class="slide" style="display: none"></div>
+		<div class="slide" style="display: none"></div>
+	</div>
+</div>
+
+<nav id="menu">
+	<h1 class="u-hidden" id="navigation__title">喵姆餐厅 目录</h1>
+	<ul class="category-drawers">
+		<li class="drawer-item tasty">
+			<span class="category">好吃</span>
+			<ul class="sub-drawers">
+				<li class="sub-drawer-item"><a href="#pizza">披萨</a></li>
+				<li class="sub-drawer-item"><a href="#rice">焗饭</a></li>
+				<li class="sub-drawer-item"><a href="#snack">小吃</a></li>
+			</ul>
+		</li>
+		<li class="drawer-item drink">
+			<sapn class="category">好喝</sapn>
+			<ul class="sub-drawers">
+				<li class="sub-drawer-item"><a href="#coffee">咖啡</a></li>
+				<li class="sub-drawer-item"><a href="#black-tea">红茶</a></li>
+				<li class="sub-drawer-item"><a href="#ice-tea">冰茶 • 气泡水</a></li>
+			</ul>
 			<li class="drawer-item lazycat dink">
 				<a href="#lazycat"><span class="category">好懒</span></a>
 			</li>
@@ -202,7 +203,7 @@
 	<footer>
 		<p class="contributor">
 			<small>
-				Logo by <a rel="author" href="" target="_blank">小毛</a>，设计&amp;制作 by <a rel="author" href="https://heysage.com/" title="Heysage" target="_blank">松志</a>，Powered by <cite><a href="http://clojure.org/" title="Clojure" target="_blank">Clojure</a></cite>
+				Logo by <a rel="author" href="" target="_blank">小毛</a>，设计&amp;制作 by <a rel="author" href="https://heysage.com/" title="Heysage" target="_blank">松志</a>
 			</small>
 		</p>
 		<p class="copyright">
