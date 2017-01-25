@@ -49,7 +49,7 @@
 					<tr class="coupon toggle--coupon">
 						<td colspan="3">
 							<label>优惠蜜语：</label>
-							<input class="coupon-input" type="text" name="coupon-code" placeholder="菠萝波罗蜜" lang="zh-cn" maxlength="15" />
+							<input class="coupon-input" type="text" name="coupon-code" placeholder="波罗菠萝蜜" lang="zh-cn" maxlength="15" />
 						</td>
 						<td class="CNY">-5</td>
 					</tr>
@@ -98,39 +98,39 @@
 
 				<ol>
 					<li>
-						<label>姓名/称呼<span class="required">*</span></label>
-						<input class="customer-name" type="text" name="custom-name" required maxlength="10"/>
+						<label for="customer-name">称呼<span class="required">*</span></label>
+						<input id="customer-name" type="text" name="customer-name" required maxlength="10"/>
 					</li>
 
 					<li>
-						<label>手机<span class="required">*</span></label>
-						<input class="customer-phone" type="tel" name="custom-tel" required maxlength="11" />
+						<label for="customer-tel">手机<span class="required">*</span></label>
+						<input id="customer-tel" type="tel" name="customer-tel" required maxlength="11" />
 
 					</li>
 
 					<li>
-						<label>城市<span class="required">*</span></label>
-						<select name="city"><option value="乌鲁木齐" selected>乌鲁木齐市</option></select>
+						<label for="customer-city">城市<span class="required">*</span></label>
+						<select id="customer-city" name="customer-city"><option value="乌鲁木齐" selected>乌鲁木齐市</option></select>
 					</li>		
 
 					<li>
-						<label>地址<span class="required">*</span></label>
-							<textarea type="addr" name="custom-addr" required maxlength="50"></textarea>
+						<label for="customer-addr">地址<span class="required">*</span></label>
+							<textarea id="customer-addr" type="addr" name="customer-addr" required maxlength="50"></textarea>
 					</li>
 				</ol>
-			</fieldset>
 
-		<fieldset class="reservation">
-			<input type="checkbox" id="is--reserved" name="is--reserved" />
-			<label for="is--reserved">预订</label>
-			<div class="reservation-option">
-				<select>
-					<option value="today" selected>今日</option>
-					<option value="tomorrow">明日</option>
-				</select>
-				<input type="time" name="delivery-time" placeholder="请输入时间" maxlength="8" value="20:00" />
-			</div>
-		</fieldset>
+				<fieldset class="reservation">
+					<input type="checkbox" id="is--reserved" name="is--reserved" />
+					<label for="is--reserved">预订</label>
+					<div class="reservation-option">
+						<select>
+							<option value="today" selected>今日</option>
+							<option value="tomorrow">明日</option>
+						</select>
+						<input type="time" name="delivery-time" placeholder="请输入时间" maxlength="8" value="20:00" />
+					</div>
+				</fieldset>
+			</fieldset>
 
 	<fieldset class="payment">
 		<legend>付款方式</legend>
@@ -139,9 +139,8 @@
 			<li><input type="radio" name="payment" id="wechat" /><label for="wechat">微信支付</label></li>
 			<li><input type="radio" name="payment" id="alipay" /><label for="alipay">支付宝</label></li>
 		</ol>
-	</fieldset>
-
 	<button name="place-order-button" type="submit" disabled>提交订单</button>
+	</fieldset>
 </form>
 </article>
 
@@ -207,7 +206,7 @@
 			</small>
 		</p>
 		<p class="copyright">
-			<small>Copyright 2017 &copy; 新疆乌鲁木齐市喵姆餐厅（<b>miaomfood.com</b>）版权所有</small>
+			<small>Copyright 2017 &copy; 乌鲁木齐市喵姆餐厅（<b>miaomfood.com</b>）版权所有</small>
 		</p>
 	</footer>
 	<script src="/dist/build.js"></script>

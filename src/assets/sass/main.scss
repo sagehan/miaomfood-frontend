@@ -142,17 +142,24 @@ h1 { margin: 0; }
 
 // cart ///////////////////////////////////////////////////////////////////////////////////
 @media screen and (max-width: 640px) and (orientation: portrait) {
-	//.non-empty-cart { display: flex; }
-	.cart-items { width: 100%; }
+	.cart-items { width: calc(100% - 2em); } 
 }
-@media screen and (min-width: 640px) and (orientation: landscape) {
-	.non-empty-cart { display: flex; align-items: center; }
-	.cart-items { width: initial; }
-	fieldset.customer li label {
-		display   : inline-block;
-		width 	  : 6em;
-		text-align: right;
+@media screen and (min-width: 640px) {
+	.non-empty-cart {
+		display  : flex;
+		flex-flow: column wrap;
+		height 	 : calc(100vh - #{$topbar_ht} - #{$row_height/$rem_size}em - #{(42px/$rem_size)}em - #{2*$row_height/$rem_size}em);
+		align-items: center;
 	}
+
+	.cart-items { flex: 1 0 100%; }
+	.customer  	{ flex: 0 1 50%; }
+	.reservation{ flex: 0 1 ; }
+	.payment 	{ flex: 1 0 ; }
+	button[name="place-order-button"] { flex: 1 0; }
+
+	fieldset.customer li label { display: inline-block; }
+	fieldset.payment li { display: inline-block !important; margin: 1em;}
 }
 #cart {
 	position: relative;
@@ -177,16 +184,16 @@ h1 { margin: 0; }
 	}
 
 	header {
-		margin  : #{$row_height/$rem_size}em 1rem #{0.5*$row_height/$rem_size}em;
+		margin  : #{$row_height/$rem_size}em 1rem;
 		text-align: center;
 
 		h1 { font: #{24px/$rem_size}em/#{(42px/24px)} "HanziPen SC";}
 	}
 }
 
-.non-empty-cart { margin: auto 1rem; }
+.cart-items, .customer, .payment { margin: 1em; min-width: 20em; }
 
-.spec-price:before, .CNY:before {
+tr.h-item .spec-price:before, .CNY:before {
 	content: "¥";
 	margin-left: -1em;
 	font-size: 80%;
@@ -199,7 +206,7 @@ h1 { margin: 0; }
 }
 
 fieldset { border-width: 0; padding: 0; }
-caption,legend { text-align: center; }
+legend { text-align: center; margin: 1em auto; }
 
 input, textarea, select, button { 
 	font-family : "HanziPen SC";
@@ -208,16 +215,14 @@ input, textarea, select, button {
  	background-color: transparent;
 }
 
-input {
-
- 	&.comment-input,
- 	&.coupon-input { width: 8em; border-width: 0; overflow: hidden;}
-	&:not(:checked) + label + .reservation-option { @include absoutly__hidden; }
-}
+input.comment-input,
+input.coupon-input { width: 8em; border-width: 0; overflow: hidden;}
+input[name="is--reserved"] { @include absoutly__hidden; }
+input:not(:checked) + label + .reservation-option { @include absoutly__hidden; }
 
 table.cart-items {
 	//width : 100%;
-	margin: 0 auto #{$row_height/$rem_size}em;
+	//margin: 0 auto #{$row_height/$rem_size}em;
 	border-collapse	: collapse;
 	text-align 		: left;
 	line-height 	: #{($row_height - 2px)/$rem_size}em;
@@ -230,8 +235,8 @@ table.cart-items {
 	td:last-child:not(:only-child) { text-align: right; }
 
 	th, tfoot tr:not(:last-child) { 
-		font-size: #{$small_size/$rem_size}em;
-		line-height: #{($row_height -2px)/$small_size}em;
+		font-size 	: #{$small_size/$rem_size}em;
+		line-height : #{($row_height -2px)/$small_size}em;
 	}
 
 	td label { float: left; }
@@ -239,14 +244,42 @@ table.cart-items {
 }
 
 fieldset.customer li input,
-fieldset.customer li select {
+fieldset.customer li select,
+fieldset.customer li textarea {
 	width: calc(100% - 8em);
 	border-bottom: 1px dashed $border_bg;
+}
+fieldset.customer li textarea {
+	padding-top: 1em;
+	line-height: #{$row_height/$rem_size}em;
+	resize: none;
+}
+
+fieldset.reservation {
+	margin: 1em 0;
+
+	label { position: relative; }
+	input:checked + label:after {
+		content: "✓";
+		position: absolute;
+		left: 0;
+		color: $primary_cl;
+		font-family: "Lucida Grande";
+	}
+	label:before {
+		content: "☐";
+		font-family: "Lucida Grande";
+		margin-right: 0.5em;
+	}
+
+
+	div.reservation-option { display: inline-block; }
 }
 
 fieldset.payment ol {
 	display: inline-table;
 	width: 100%;
+	text-align: center;
 
 	li 	  { display : table-cell; text-align: center; }
 	input { @include absoutly__hidden; }
@@ -271,7 +304,8 @@ fieldset.payment ol {
 
 button[name="place-order-button"] {
 	display: block;
-	margin: #{1.5*$row_height/$rem_size}em auto;
+	margin : #{1.5*$row_height/$rem_size}em auto;
+	text-align: center;
 }
 
 // topbar ///////////////////////////////////////////////////////////////////////////////////
