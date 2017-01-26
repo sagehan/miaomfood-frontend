@@ -161,17 +161,29 @@ h1 { margin: 0; }
 	fieldset.customer li label { display: inline-block; }
 	fieldset.payment li { display: inline-block !important; margin: 1em;}
 }
+
+[data-cart-expanded="true"] #cart {
+	width 	: calc(100% - 1em);
+	height 	: calc(100vh - #{$topbar_ht} - #{$row_height/$rem_size}em);
+	transition-property: height;
+	transition-delay: .1s;
+}
+
 #cart {
 	position: relative;
 	z-index : 10;
-	width 	: calc(100% - 1em);
-	height 	: calc(100vh - #{$topbar_ht} - #{$row_height/$rem_size}em);
+	//width 	: calc(100% - 1em);
+	//height 	: calc(100vh - #{$topbar_ht} - #{$row_height/$rem_size}em);
+	width 	: 0;
+	height 	: 0;
 	margin 	: 0 auto;
 	overflow: scroll;
 	@include box__shadow;
 	background-color: white;
 	font-family: "HanziPen Sc";
 	line-height: #{$row_height/$rem_size}em;
+	transition-duration: .2s;
+	transition-timing-function: ease-out;
 
 	&:before {
 		content : "";
@@ -246,7 +258,7 @@ table.cart-items {
 fieldset.customer li input,
 fieldset.customer li select,
 fieldset.customer li textarea {
-	width: calc(100% - 8em);
+	width: calc(100% - 4em);
 	border-bottom: 1px dashed $border_bg;
 }
 fieldset.customer li textarea {
@@ -259,12 +271,15 @@ fieldset.reservation {
 	margin: 1em 0;
 
 	label { position: relative; }
-	input:checked + label:after {
+	input:checked + label:after { visibility: visible;}
+	label:after {
 		content: "✓";
 		position: absolute;
 		left: 0;
 		color: $primary_cl;
 		font-family: "Lucida Grande";
+		visibility: hidden;
+		transition: visibility .2s ease;
 	}
 	label:before {
 		content: "☐";
@@ -288,6 +303,7 @@ fieldset.payment ol {
 			outline-style: solid;
 			color 		: $primary_cl;
 			background-color: initial;
+			cursor: default;
 	}
 	label {
 		display : inline-block;
@@ -299,6 +315,8 @@ fieldset.payment ol {
 		color 	: $border_bg;
 		background-color: $page_bg;
 		text-align: center;
+		cursor: pointer;
+		transition: all .2s ease;
 	}
 }
 
