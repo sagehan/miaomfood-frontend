@@ -4,14 +4,14 @@
       <h1>购物车</h1>
     </header>
 
-    <div class="empty-cart" style="display: none;">
+    <div v-if="isCartEmpty" class="empty-cart">
       <p>您还没有选择菜品哦!</p>
       <p class="toggle">
         <a href="#menu">寻找美味</a>
       </p>
     </div>
     <!-- or -->
-    <form class="non-empty-cart">
+    <form v-else class="non-empty-cart">
       <table class="cart-items">
         <caption>订购信息</caption>
 
@@ -94,7 +94,7 @@
           <li>
             <label for="customer-city">城市<span class="required">*</span></label>
             <select id="customer-city" name="customer-city"><option value="乌鲁木齐" selected>乌鲁木齐市</option></select>
-          </li>       
+          </li>
 
           <li>
             <label for="customer-addr">地址<span class="required">*</span></label>
@@ -126,10 +126,19 @@
       </fieldset>
     </form>
   </article>
-</template>
+ </template>
 
 <script>
+  import { mapState, mapGetters, mapActions } from 'vuex'
+
   export default {
-    name: 'cart'
+    name: 'cart',
+
+    computed: {
+      ...mapState(['items', 'customer', 'reservation', 'payment']),
+      ...mapGetters(['isCartEmpty', 'total'])
+    },
+
+    methods: mapActions(['Checkout'])
   }
 </script>
