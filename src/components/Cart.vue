@@ -39,41 +39,25 @@
 
           <tr>
             <td colspan="3">外送费</td>
-            <td class="CNY">3</td>
+            <td class="CNY">{{gratuity}}</td>
           </tr>
 
           <tr>
             <td colspan="3">总额</td>
-            <td class="CNY">150</td>
+            <td class="CNY">{{total}}</td>
           </tr>
         </tfoot>
 
-        <tr class="h-item">
-          <td class="p-name">激情培根(八寸)</td>
-          <td class="spec-price">39</td>
-          <td class="qty">1</td>
-          <td class="sub-total CNY">39</td>
-        </tr>
-
-        <tr class="h-item">
-          <td class="p-name">大力水手(八寸)</td>
-          <td class="spec-price">35</td>
-          <td class="qty">2</td>
-          <td class="sub-total CNY">70</td>
-        </tr>
-
-        <tr class="h-item">
-          <td class="p-name">荔枝芦荟(气泡水)</td>
-          <td class="spec-price">18</td>
-          <td class="qty">1</td>
-          <td class="sub-total CNY">18</td>
-        </tr>
-        <tr class="h-item">
-          <td class="p-name">卡布奇诺</td>
-          <td class="spec-price">25</td>
-          <td class="qty">1</td>
-          <td class="sub-total CNY">25</td>
-        </tr>
+        <tbody>
+          <template v-for="i in cartItems" >
+            <tr class="h-item">
+              <td class="p-name">{{i.cname}}({{i.spec}})</td>
+              <td class="spec-price">{{i.specPrice}}</td>
+              <td class="qty">{{i.qty}}</td>
+              <td class="sub-total CNY">{{i.specPrice * i.qty}}</td>
+            </tr>
+          </template>
+        </tbody>
       </table>
 
       <fieldset class="customer">
@@ -82,23 +66,23 @@
         <ol>
           <li>
             <label for="customer-name">称呼<span class="required">*</span></label>
-            <input id="customer-name" type="text" name="customer-name" required maxlength="10"/>
+            <input :value="name" @input="updateCustomer" id="customer-name" type="text" name="customer-name" required maxlength="10"/>
           </li>
 
           <li>
             <label for="customer-tel">手机<span class="required">*</span></label>
-            <input id="customer-tel" type="tel" name="customer-tel" required maxlength="11" />
+            <input :value="tel" @input="updateCustomer" id="customer-tel" type="tel" name="customer-tel" required maxlength="11" />
 
           </li>
 
           <li>
-            <label for="customer-city">城市<span class="required">*</span></label>
+            <label for="customerCity">城市<span class="required">*</span></label>
             <select id="customer-city" name="customer-city"><option value="乌鲁木齐" selected>乌鲁木齐市</option></select>
           </li>
 
           <li>
             <label for="customer-addr">地址<span class="required">*</span></label>
-            <textarea id="customer-addr" type="addr" name="customer-addr" required maxlength="50"></textarea>
+            <textarea :value="addr" @input="updateCustomer" id="customer-addr" type="addr" name="customer-addr" required maxlength="50"></textarea>
           </li>
         </ol>
 
@@ -110,7 +94,7 @@
               <option value="today" selected>今日</option>
               <option value="tomorrow">明日</option>
             </select>
-            <input type="time" name="delivery-time" placeholder="请输入时间" maxlength="8" value="20:00" />
+            <input type="time" name="delivery-time" placeholder="请输入时间" maxlength="8" />
           </div>
         </fieldset>
       </fieldset>
@@ -118,15 +102,15 @@
       <fieldset class="payment">
         <legend>付款方式</legend>
         <ol>
-          <li><input type="radio" name="payment" id="cash" checked /><label for="cash">现金付</label></li>
-          <li><input type="radio" name="payment" id="wechat" /><label for="wechat">微信支付</label></li>
-          <li><input type="radio" name="payment" id="alipay" /><label for="alipay">支付宝</label></li>
+          <li><input v-model="payment" value="cash" type="radio" name="payment" id="cash" /><label for="cash">现金付</label></li>
+          <li><input v-model="payment" value="wechat" type="radio" name="payment" id="wechat" /><label for="wechat">微信支付</label></li>
+          <li><input v-model="payment" value="alipay" type="radio" name="payment" id="alipay" /><label for="alipay">支付宝</label></li>
         </ol>
         <button name="place-order-button" type="submit" disabled>提交订单</button>
       </fieldset>
     </form>
   </article>
- </template>
+</template>
 
 <script>
   import { mapState, mapGetters, mapActions } from 'vuex'
@@ -135,10 +119,30 @@
     name: 'cart',
 
     computed: {
-      ...mapState(['items', 'customer', 'reservation', 'payment']),
-      ...mapGetters(['isCartEmpty', 'total'])
+      ...mapState(['gratuity', 'cartItems', 'reservation', 'payment']),
+      ...mapState({
+        name: state => state.customer.name,
+        tel: state => state.customer.tel,
+        addr: state => state.customer.addr
+      }),
+      ...mapGetters(['isCartEmpty', 'total']),
+      payment: {
+        get () {
+          return this.$store.state.payment
+        },
+        set (value) {
+          this.$store.commit('updatePayment', value)
+        }
+      }
     },
 
-    methods: mapActions(['Checkout'])
+    methods: {
+      updateCustomer (e) {
+        let attr = e.target.getAttribute('name').substring(9)
+        let value = e.target.value
+        this.$store.commit('updateCustomer', [attr, value])
+      },
+      ...mapActions(['Checkout'])
+    }
   }
 </script>
