@@ -66,12 +66,12 @@
         <ol>
           <li>
             <label for="customer-name">称呼<span class="required">*</span></label>
-            <input :value="name" @input="updateCustomer" id="customer-name" type="text" name="customer-name" required maxlength="10"/>
+            <input :value="name" @input="updateCustomer" :class="{inValid: !nameValidity}"id="customer-name" type="text" name="customer-name" required maxlength="10"/>
           </li>
 
           <li>
             <label for="customer-tel">手机<span class="required">*</span></label>
-            <input :value="tel" @input="updateCustomer" id="customer-tel" type="tel" name="customer-tel" required maxlength="11" />
+            <input :value="tel" @input="updateCustomer" :class="{inValid: !telValidity}" id="customer-tel" type="tel" name="customer-tel" required maxlength="11" />
 
           </li>
 
@@ -82,7 +82,7 @@
 
           <li>
             <label for="customer-addr">地址<span class="required">*</span></label>
-            <textarea :value="addr" @input="updateCustomer" id="customer-addr" type="addr" name="customer-addr" required maxlength="50"></textarea>
+            <textarea :value="addr" @input="updateCustomer" :class="{inValid: !addrValidity}" id="customer-addr" type="addr" name="customer-addr" required maxlength="50"></textarea>
           </li>
         </ol>
 
@@ -90,11 +90,12 @@
           <input type="checkbox" id="is--reserved" name="is--reserved" />
           <label for="is--reserved">预订</label>
           <div class="reservation-option">
-            <select>
-              <option value="today" selected>今日</option>
-              <option value="tomorrow">明日</option>
+            <select :value="delayday" @input="updateReservation" name="delayday">
+              <option v-for="o in delayDayOptions" v-bind:value="o.value">
+                {{o.text}}
+              </option>
             </select>
-            <input type="time" name="delivery-time" placeholder="请输入时间" maxlength="8" />
+            <input :value="scheduledtime" @input="updateReservation" type="time" name="scheduledtime" placeholder="请输入时间" maxlength="8" />
           </div>
         </fieldset>
       </fieldset>
@@ -106,7 +107,7 @@
           <li><input v-model="payment" value="wechat" type="radio" name="payment" id="wechat" /><label for="wechat">微信支付</label></li>
           <li><input v-model="payment" value="alipay" type="radio" name="payment" id="alipay" /><label for="alipay">支付宝</label></li>
         </ol>
-        <button name="place-order-button" type="submit" disabled>提交订单</button>
+        <button :disabled="!(nameValidity && telValidity && addrValidity)" name="place-order-button" type="submit" >提交订单</button>
       </fieldset>
     </form>
   </article>
@@ -115,17 +116,25 @@
 <script>
   import { mapState, mapGetters, mapActions } from 'vuex'
 
+  const phoneRE = /^1[3|5|7|8|][0-9]{9}$/
+  const nameRE = /^[a-zA-Z\u4e00-\u9fa5]{2,8}$/
+
   export default {
     name: 'cart',
 
     computed: {
-      ...mapState(['gratuity', 'cartItems', 'reservation', 'payment']),
+      ...mapGetters(['isCartEmpty', 'total']),
+      ...mapState(['gratuity', 'cartItems', 'delayDayOptions', 'reservation']),
       ...mapState({
         name: state => state.customer.name,
         tel: state => state.customer.tel,
-        addr: state => state.customer.addr
+        addr: state => state.customer.addr,
+        delayday: state => state.reservation.delayday,
+        scheduledtime: state => state.reservation.scheduledtime,
+        nameValidity: state => nameRE.test(state.customer.name),
+        telValidity: state => phoneRE.test(state.customer.tel),
+        addrValidity: state => !!state.customer.addr.trim()
       }),
-      ...mapGetters(['isCartEmpty', 'total']),
       payment: {
         get () {
           return this.$store.state.payment
@@ -134,6 +143,9 @@
           this.$store.commit('updatePayment', value)
         }
       }
+      // submitValidity () {
+      //  return nameValidity && telValidity && addrValidity && !isCartEmpty
+      // }
     },
 
     methods: {
@@ -141,6 +153,11 @@
         let attr = e.target.getAttribute('name').substring(9)
         let value = e.target.value
         this.$store.commit('updateCustomer', [attr, value])
+      },
+      updateReservation (e) {
+        let attr = e.target.getAttribute('name')
+        let value = e.target.value
+        this.$store.commit('updateReservation', [attr, value])
       },
       ...mapActions(['Checkout'])
     }
