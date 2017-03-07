@@ -1,5 +1,5 @@
 <template>
-  <div class="modal-bg" @click="$emit('closeModal')">
+  <div class="modal-bg" @click.self="$emit('closeModal')">
     <div class="modal-fg">
       <slot></slot>
     </div>

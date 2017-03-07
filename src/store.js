@@ -19,10 +19,17 @@ export default new Vuex.Store({
         'species': [
           {'spec': '八寸', 'specPrice': 59, 'inventory': 500},
           {'spec': '十寸', 'specPrice': 79, 'inventory': 500}
+        ]},
+      { 'cid': 'NNMM',
+        'cname': '内牛满面',
+        'species': [
+          {'spec': '八寸', 'specPrice': 59, 'inventory': 500},
+          {'spec': '十寸', 'specPrice': 79, 'inventory': 500}
         ]}
     ],
     cartItems: [
       {'cid': 'JQPG', 'spec': '八寸', 'qty': 2},
+      {'cid': 'JQPG', 'spec': '十寸', 'qty': 1},
       {'cid': 'FQXWY', 'spec': '八寸', 'qty': 1}
     ],
     customer: {'name': '霸气老板娘', 'tel': '18690890381', 'addr': '高新街桂林路东四巷锦林二巷8号1楼'},
@@ -38,7 +45,7 @@ export default new Vuex.Store({
     isCartEmpty: state => !state.cartItems.length,
     cuisineDetailsOf: state => {
       return function (cid) {
-        return state.allCuisines.filter((c) => c.cid === cid)
+        return state.allCuisines.filter(c => c.cid === cid)
       }
     },
     cuisineNameOf: state => {
@@ -53,6 +60,12 @@ export default new Vuex.Store({
         return c.species
       }
     },
+    qtyOf: state => {
+      return function (cid, spec) {
+        let [c] = state.cartItems.filter(i => i.cid === cid && i.spec === spec)
+        return !!c && c.qty
+      }
+    },
     total: (state) => state.cartItems.reduce(
       (total, p) => { return total + p.specPrice * p.qty },
       0
@@ -60,12 +73,24 @@ export default new Vuex.Store({
   },
 
   mutations: {
-    closeModal (state) {
-      state.summonedCid = ''
+    closeModal (state) { state.summonedCid = '' },
+    summonCuisine (state, cid) { state.summonedCid = cid },
+    incCuisine (state, [cid, spec]) {
+      let [c] = state.cartItems.filter(i => i.cid === cid && i.spec === spec)
+      if (!c) {
+        state.cartItems.push({'cid': cid, 'spec': spec, 'qty': 1})
+      } else {
+        c.qty = c.qty + 1
+      }
     },
-    summonCuisine (state, cid) {
-      state.summonedCid = cid
-      console.log(state.summonedCid)
+    decCuisine (state, [cid, spec]) {
+      let [c] = state.cartItems.filter(i => i.cid === cid && i.spec === spec)
+      let i = state.cartItems.findIndex(i => i.cid === cid && i.spec === spec)
+      if (c.qty === 1) {
+        state.cartItems.splice(i, 1)
+      } else {
+        c.qty = c.qty - 1
+      }
     },
     updateCustomer (state, [k, v]) {
       state.customer[k] = v
