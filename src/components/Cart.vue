@@ -51,7 +51,7 @@
         <tbody>
           <template v-for="i in cartItems" >
             <tr class="h-item">
-              <td class="p-name">{{i.cname}}({{i.spec}})</td>
+              <td class="p-name">{{cuisineNameOf(i.cid)}}({{i.spec}})</td>
               <td class="spec-price">{{i.specPrice}}</td>
               <td class="qty">{{i.qty}}</td>
               <td class="sub-total CNY">{{i.specPrice * i.qty}}</td>
@@ -123,7 +123,7 @@
     name: 'cart',
 
     computed: {
-      ...mapGetters(['isCartEmpty', 'total']),
+      ...mapGetters(['isCartEmpty', 'cuisineDetailsOf', 'cuisineNameOf', 'total']),
       ...mapState(['gratuity', 'cartItems', 'delayDayOptions', 'reservation']),
       ...mapState({
         name: state => state.customer.name,
@@ -143,9 +143,6 @@
           this.$store.commit('updatePayment', value)
         }
       }
-      // submitValidity () {
-      //  return nameValidity && telValidity && addrValidity && !isCartEmpty
-      // }
     },
 
     methods: {
