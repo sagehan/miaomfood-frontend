@@ -22,7 +22,7 @@
 
     computed: {
       ...mapState(['summonedCid']),
-      ...mapGetters(['cuisineDetailsOf', 'specNameOf', 'speciesOf', 'qtyOf']),
+      ...mapGetters(['cuisineDetailsOf', 'speciesOf', 'qtyOf']),
       species () { return this.speciesOf(this.summonedCid) }
     },
 

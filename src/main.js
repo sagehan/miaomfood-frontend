@@ -4,7 +4,7 @@ import 'src/assets/sass/main.scss'
 import Vue from 'vue'
 import Cart from './components/Cart'
 import AdditionModal from './components/AdditionModal'
-// import SpecTag from './components/Spectag'
+import SpecTag from './components/SpecTag'
 import store from './store'
 
 if (!('ontouchstart' in document.documentElement)) {
@@ -18,6 +18,15 @@ new Vue({
   render: h => h(Cart)
 })
 
+const SpecTagWidget = Vue.extend({
+  store,
+  render (h) {
+    return h(SpecTag, {
+      props: { cid: this.$el.parentNode.getAttribute('data-cid') }
+    })
+  }
+})
+
 const panelVm = new Vue({
   store,
   render: (h) => h(AdditionModal)
@@ -27,6 +36,12 @@ new Vue({
   el: '#poster',
   store,
   template: document.body.querySelector('#poster').outerHTML,
+  mounted () {
+    let nodes = document.querySelectorAll('.h-product > .spec-tag')
+    for (var i = 0; i < nodes.length; ++i) {
+      new SpecTagWidget({ el: nodes[i] })
+    }
+  },
   methods: {
     showModal (e) {
       let target = e.currentTarget.parentNode

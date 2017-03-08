@@ -156,7 +156,7 @@ h1 { margin: 0; }
     display: table;
     margin: auto;
     width: 50%;
-    table-layout: fixed;
+    // table-layout: fixed;
   }
 
   li {
@@ -168,9 +168,10 @@ h1 { margin: 0; }
     .btn-retract {
       display: table-cell;
       padding: 1em;
-      //width: 5em;
       text-align: center;
+      white-space: nowrap;
     }
+    .item-tag { text-align: left; }
   }
 
   .btn-add:before {
@@ -191,7 +192,7 @@ h1 { margin: 0; }
   vertical-align: middle;
   box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
   transition: all .3s ease;
-  // background: white;
+  background: white;
 }
 
 // cart ///////////////////////////////////////////////////////////////////////////////////
