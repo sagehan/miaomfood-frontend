@@ -52,9 +52,9 @@
           <template v-for="i in cartItems" >
             <tr class="h-item">
               <td class="p-name">{{cuisineNameOf(i.cid)}}({{i.spec}})</td>
-              <td class="spec-price">{{i.specPrice}}</td>
+              <td class="spec-price">{{specPriceOf(i.cid, i.spec)}}</td>
               <td class="qty">{{i.qty}}</td>
-              <td class="sub-total CNY">{{i.specPrice * i.qty}}</td>
+              <td class="sub-total CNY">{{specPriceOf(i.cid, i.spec) * i.qty}}</td>
             </tr>
           </template>
         </tbody>
@@ -123,8 +123,19 @@
     name: 'cart',
 
     computed: {
-      ...mapGetters(['isCartEmpty', 'cuisineDetailsOf', 'cuisineNameOf', 'total']),
-      ...mapState(['gratuity', 'cartItems', 'delayDayOptions', 'reservation']),
+      ...mapGetters([
+        'isCartEmpty',
+        'cuisineDetailsOf',
+        'cuisineNameOf',
+        'specPriceOf',
+        'total'
+      ]),
+      ...mapState([
+        'gratuity',
+        'cartItems',
+        'delayDayOptions',
+        'reservation'
+      ]),
       ...mapState({
         name: state => state.customer.name,
         tel: state => state.customer.tel,

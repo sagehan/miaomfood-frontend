@@ -60,6 +60,14 @@ export default new Vuex.Store({
         return c.species
       }
     },
+    specPriceOf: state => {
+      return function (cid, spec) {
+        let [c] = this.cuisineDetailsOf(cid)
+        let ss = c.species
+        let [s] = ss.filter(i => i.spec === spec)
+        return !!s && s.specPrice
+      }
+    },
     qtyOf: state => {
       return function (cid, spec) {
         let [c] = state.cartItems.filter(i => i.cid === cid && i.spec === spec)
