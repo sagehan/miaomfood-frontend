@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import api from './api'
+// import api from './api'
 
 Vue.use(Vuex)
 
@@ -9,12 +9,9 @@ const state = {
   gratuity: 3,
   Cuisines: [
     /*
-      TransitMap {:cuisine/id => "FGZSKF", :cuisine/name => "??????", :cuisine/depict => [Bacon.JPG], :cuisine/species => [TransitMap {:spec/name => TransitMap {:db/ident => :spec.name/?}, :currency/Abbr => TransitMap {:db/ident => :currency.Abbr/CNY}, :spec/price => 25, :spec/inventory => 100}]},TransitMap {:cuisine/id => "QKLMK", :cuisine/name => "?????", :cuisine/depict => [Bacon.JPG], :cuisine/species => [TransitMap {:spec/name => TransitMap {:db/ident => :spec.name/?}, :currency/Abbr => TransitMap {:db/ident => :currency.Abbr/CNY}, :spec/price => 28, :spec/inventory => 100}]},TransitMap {:cuisine/id => "SGSL", :cuisine/name => "????", :cuisine/depict => [Salad.jpg], :cuisine/species => [TransitMap {:spec/name => TransitMap {:db/ident => :spec.name/?}, :spec/duplexable => true, :spec/price => 25, :spec/inventory => 100}]},TransitMap {:cuisine/id => "FQXWY", :cuisine/name => "?????", :cuisine/depict => [Hawaii.JPG], :cuisine/species => [TransitMap {:spec/name => TransitMap {:db/ident => :spec.name/??}, :currency/Abbr => TransitMap {:db/ident => :currency.Abbr/CNY}, :spec/duplexable => true, :spec/price => 39, :spec/inventory => 100},TransitMap {:spec/name => TransitMap {:db/ident => :spec.name/??}, :currency/Abbr => TransitMap {:db/ident => :currency.Abbr/CNY}, :spec/duplexable => true, :spec/price => 59, :spec/inventory => 100}]},TransitMap {:cuisine/id => "JQPG", :cuisine/name => "????", :cuisine/depict => [Bacon.JPG], :cuisine/species => [TransitMap {:spec/name => TransitMap {:db/ident => :spec.name/??}, :currency/Abbr => TransitMap {:db/ident => :currency.Abbr/CNY}, :spec/duplexable => true, :spec/price => 39, :spec/inventory => 100},TransitMap {:spec/name => TransitMap {:db/ident => :spec.name/??}, :currency/Abbr => TransitMap {:db/ident => :currency.Abbr/CNY}, :spec/duplexable => true, :spec/price => 59, :spec/inventory => 100}]}
     */
   ],
-  cartItems: [
-    {':cuisine/id': 'JQPG', ':spec/name': ':spec.name/八寸', ':spec/qty': 2},
-  ],
+  cartItems: [],
   customer: {
     'name': '霸气老板娘',
     'tel': '18690890381',
@@ -32,27 +29,27 @@ const getters = {
   isCartEmpty: state => !state.cartItems.length,
   cuisineDetailsOf: state => {
     return function (cid) {
-      return state.Cuisines.filter(c => c[':cuisine/id'] === cid)
+      return state.Cuisines.filter(c => c.id === cid)
     }
   },
   cuisineNameOf: state => {
     return function (cid) {
       let [c] = this.cuisineDetailsOf(cid)
-      return c[':cuisine/name']
+      return c.name
     }
   },
   speciesOf: state => {
     return function (cid) {
       let [c] = this.cuisineDetailsOf(cid)
-      return c[':cuisine/species']
+      return c.species
     }
   },
   specPriceOf: state => {
     return function (cid, spec) {
       let [c] = this.cuisineDetailsOf(cid)
       let ss = c.species
-      let [s] = ss.filter(i => i.spec === spec)
-      return !!s && s.specPrice
+      let [s] = ss.filter(i => i.name.ident === spec)
+      return !!s && s.price
     }
   },
   qtyOf: state => {
@@ -76,7 +73,7 @@ const mutations = {
     if (!c) {
       state.cartItems.push({'cid': cid, 'spec': spec, 'qty': 1})
     } else {
-      c.qty = c.qaty + 1
+      c.qty = c.qty + 1
     }
   },
   decCuisine (state, [cid, spec]) {
@@ -103,5 +100,4 @@ export default new Vuex.Store({
   state,
   getters,
   mutations,
-  actions,
 })

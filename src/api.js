@@ -1,6 +1,3 @@
-import transit from 'transit-js'
-
-var r = transit.reader('json')
 
 const config = {
   apiServer: 'https://api.miaomfood.com',
@@ -13,13 +10,13 @@ export function fetchCuisines () {
     let url = config.apiLocalServer + '/cuisines'
     xhr.open('GET', url)
     xhr.onreadystatechange = handler
-    xhr.responseType = 'text'
-    xhr.setRequestHeader('Accept', 'application/transit+json')
+    // xhr.responseType = 'text'
+    xhr.setRequestHeader('Accept', 'application/json')
     xhr.send()
 
     function handler () {
       if (xhr.status === 200) {
-        var cuisines = r.read(this.responseText)
+        var cuisines = JSON.parse(this.responseText)
         resolve(cuisines)
       } else {
         reject(new Error(this.status))
