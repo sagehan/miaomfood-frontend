@@ -7,7 +7,7 @@ const config = {
 export function fetchCuisines () {
   return new Promise(function (resolve, reject) {
     let xhr = new XMLHttpRequest() // eslint-disable-line no-undef
-    let url = config.apiLocalServer + '/cuisines'
+    let url = config.apiServer + '/cuisines'
     xhr.open('GET', url)
     xhr.onreadystatechange = handler
     // xhr.responseType = 'text'

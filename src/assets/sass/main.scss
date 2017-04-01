@@ -1214,14 +1214,10 @@ button[name="place-order-button"] {
     .h-product:nth-of-type(2) .p-name:after { content: "气"; }
     .h-product:nth-of-type(2):after { content: "水"}
 
-    .h-product:nth-of-type(3):before { content: "火"}
-    .h-product:nth-of-type(3) .p-name:before { content: "龙"; }
-    .h-product:nth-of-type(3) .p-name:after { content: "果"; }
-
-    .h-product:nth-of-type(4):before { content: "清"}
-    .h-product:nth-of-type(4) .p-name:before { content: "香"; }
-    .h-product:nth-of-type(4) .p-name:after { content: "玫"; }
-    .h-product:nth-of-type(4):after { content: "瑰"}
+    .h-product:nth-of-type(3):before { content: "清"}
+    .h-product:nth-of-type(3) .p-name:before { content: "香"; }
+    .h-product:nth-of-type(3) .p-name:after { content: "玫"; }
+    .h-product:nth-of-type(3):after { content: "瑰"}
 }
 
 // laycat ///////////////////////////////////////
