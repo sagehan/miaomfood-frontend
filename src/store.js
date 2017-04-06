@@ -1,8 +1,11 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-// import api from './api'
+import {submitOrder} from './api'
+import transit from 'transit-js'
 
 Vue.use(Vuex)
+
+const writer = transit.writer('json')
 
 const state = {
   summonedCid: 'JQPG',
@@ -12,6 +15,7 @@ const state = {
     */
   ],
   cartItems: [],
+  comment: '',
   customer: {
     'name': '霸气老板娘',
     'tel': '18690890381',
@@ -62,7 +66,17 @@ const getters = {
     (total, p) => { return total + p.specPrice * p.qty },
     0
   ) + state.gratuity,
-}
+  stagedOrder: state => {
+    return transit.map([
+      transit.keyword('customerName'), state.customer.name,
+      transit.keyword('customerPhone'), state.customer.tel,
+      transit.keyword('customerAddress'), state.customer.addr,
+      transit.keyword('comment'), state.comment,
+      transit.keyword('schedule-day'), state.reservation.delayday,
+      transit.keyword('schedule-time'), state.reservation.scheduledtime,
+      transit.keyword('cuisineItems'), state.cartItems,
+    ])
+  }}
 
 const mutations = {
   ensureCuisines (state, cuisines) { state.Cuisines = cuisines },
@@ -93,11 +107,20 @@ const mutations = {
   },
   updatePayment (state, value) {
     state.payment = value
-  },
+  }
+}
+
+const actions = {
+  submitOrder ({state, getters}) {
+    let cartDatoms = writer.write(getters.stagedOrder)
+    console.log(cartDatoms)
+    submitOrder(cartDatoms)
+  }
 }
 
 export default new Vuex.Store({
   state,
   getters,
   mutations,
+  actions
 })

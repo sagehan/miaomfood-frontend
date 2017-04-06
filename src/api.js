@@ -7,7 +7,7 @@ const config = {
 export function fetchCuisines () {
   return new Promise(function (resolve, reject) {
     let xhr = new XMLHttpRequest() // eslint-disable-line no-undef
-    let url = config.apiServer + '/cuisines'
+    let url = config.apiLocalServer + '/cuisines'
     xhr.open('GET', url)
     xhr.onreadystatechange = handler
     // xhr.responseType = 'text'
@@ -25,11 +25,27 @@ export function fetchCuisines () {
   })
 }
 
-export function sumbitOrder (cartDatoms, cb, errorCb) {
+export function submitOrder (cartDatoms) {
   setTimeout(() => {
-    // simulate random checkout failure.
-    (Math.random() > 0.5 || navigator.userAgent.indexOf('PhantomJS') > -1)
-      ? cb()
-      : errorCb()
+    return new Promise(function (resolve, reject) {
+      let xhr = new XMLHttpRequest() // eslint-disable-line no-undef
+      let url = config.apiLocalServer + '/orders'
+      xhr.open('POST', url)
+      xhr.onreadystatechange = handler
+      xhr.setRequestHeader('Content-Type', 'application/transit+json')
+      xhr.setRequestHeader('Accept', 'application/json')
+      xhr.send(cartDatoms)
+
+      function handler () {
+        if (xhr.status === 200) {
+          var receipt = JSON.parse(this.responseText)
+          console.log('200')
+          resolve(receipt)
+        } else {
+          console.log('failure')
+          reject(new Error(this.status))
+        }
+      }
+    })
   }, 100)
 }

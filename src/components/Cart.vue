@@ -107,7 +107,7 @@
           <li><input v-model="payment" value="wechat" type="radio" name="payment" id="wechat" /><label for="wechat">微信支付</label></li>
           <li><input v-model="payment" value="alipay" type="radio" name="payment" id="alipay" /><label for="alipay">支付宝</label></li>
         </ol>
-        <button :disabled="!(nameValidity && telValidity && addrValidity)" name="place-order-button" type="submit" >提交订单</button>
+        <button :disabled="!(nameValidity && telValidity && addrValidity)" name="place-order-button" @click.prevent="checkout" >提交订单</button>
       </fieldset>
     </form>
   </article>
@@ -128,13 +128,14 @@
         'cuisineDetailsOf',
         'cuisineNameOf',
         'specPriceOf',
-        'total'
+        'total',
       ]),
       ...mapState([
         'gratuity',
         'cartItems',
+        'comment',
         'delayDayOptions',
-        'reservation'
+        'reservation',
       ]),
       ...mapState({
         name: state => state.customer.name,
@@ -144,7 +145,7 @@
         scheduledtime: state => state.reservation.scheduledtime,
         nameValidity: state => nameRE.test(state.customer.name),
         telValidity: state => phoneRE.test(state.customer.tel),
-        addrValidity: state => !!state.customer.addr.trim()
+        addrValidity: state => !!state.customer.addr.trim(),
       }),
       payment: {
         get () {
@@ -152,7 +153,7 @@
         },
         set (value) {
           this.$store.commit('updatePayment', value)
-        }
+        },
       }
     },
 
@@ -167,7 +168,9 @@
         let value = e.target.value
         this.$store.commit('updateReservation', [attr, value])
       },
-      ...mapActions(['Checkout'])
+      ...mapActions({
+        checkout: 'submitOrder'
+      })
     }
   }
 </script>
