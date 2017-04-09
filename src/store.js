@@ -68,13 +68,13 @@ const getters = {
   ) + state.gratuity,
   stagedOrder: state => {
     return transit.map([
-      transit.keyword('customerName'), state.customer.name,
-      transit.keyword('customerPhone'), state.customer.tel,
-      transit.keyword('customerAddress'), state.customer.addr,
-      transit.keyword('comment'), state.comment,
-      transit.keyword('schedule-day'), state.reservation.delayday,
-      transit.keyword('schedule-time'), state.reservation.scheduledtime,
-      transit.keyword('cuisineItems'), state.cartItems,
+      transit.keyword('order/customer-name'), state.customer.name,
+      transit.keyword('order/customer-phone'), state.customer.tel,
+      transit.keyword('order/street-addr'), state.customer.addr,
+      transit.keyword('order/comment'), state.comment,
+      transit.keyword('order/schedule-day'), state.reservation.delayday,
+      transit.keyword('order/schedule-time'), state.reservation.scheduledtime,
+      transit.keyword('order/items'), state.cartItems,
     ])
   }}
 

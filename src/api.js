@@ -37,9 +37,8 @@ export function submitOrder (cartDatoms) {
       xhr.send(cartDatoms)
 
       function handler () {
-        if (xhr.status === 200) {
+        if (xhr.status === 201) {
           var receipt = JSON.parse(this.responseText)
-          console.log('200')
           resolve(receipt)
         } else {
           console.log('failure')
