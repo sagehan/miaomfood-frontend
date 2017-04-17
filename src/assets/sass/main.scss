@@ -561,7 +561,7 @@ button[name="place-order-button"] {
 }
 
 // main ///////////////////////////////////////////////////////////////////////////////////
-#pizza, #rice, #snack, #coffee, #black-tea, #ice-tea {
+#pizza, #meal, #snack, #coffee, #black-tea, #ice-tea {
     margin-top: #{2*$row_height/$rem_size}em;
     padding-bottom: 1em;
     flex-grow: 1;
@@ -620,7 +620,7 @@ button[name="place-order-button"] {
 }
 #lazycat div.illustration,
 #snack  div.group,
-#rice   div.group,
+#meal   div.group,
 #pizza  div.group {
     position: relative;
     width : percentage($group_width/$layout_width);
@@ -924,7 +924,7 @@ button[name="place-order-button"] {
     }
 }
 
-#rice div.twins:before {
+#meal div.twins:before {
     content : "";
     display : block;
     @include absolutly__centered;
@@ -933,7 +933,7 @@ button[name="place-order-button"] {
     background: url(~assets/imgs/cheese.png) left top/contain no-repeat;
 }
 
-#rice .h-product {
+#meal .h-product {
     position: relative;
     width : 100%;
     border: 1.5px dashed $border_bg;
