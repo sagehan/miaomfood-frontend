@@ -1,18 +1,695 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
-  <meta charset="utf-8" />
   <title>喵姆餐厅•好多好多的芝士和肉，给你认真生活的力量！</title>
+  <link rel="self" href="https://miaomfood.com/" />
+  <link rel="meta" type="application/rdf+xml" title="FOAF" href="/static/foaf.rdf" />
+  <link rel="alternate" type="application/ld+json" title="JSON-LD representation of this site" href="/static/about.jsonld" />
   <link rel="apple-touch-icon" href="./static/imgs/icon.png"/>
   <link rel="shortcut icon" href="./static/imgs/icon.png" />
   <link rel="manifest" href="/static/manifest.json">
-  <link rel="self" href="https://miaomfood.com/"/>
-  <meta name="author" content="Sage Han" />
-  <meta name="description" content="美味披萨,焗饭,还有各种小吃,乌鲁木齐全城外送!" />
+  <meta charset="utf-8" />
+  <meta property="og:title" content="喵姆餐厅•好多好多的芝士和肉，给你认真生活的力量！" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://miaomfood.com" />
+  <meta property="og:description" content="好多好多的芝士和肉，给你认真生活的力量！"/>
+  <meta property="og:local" content="zh_CN" />
+  <meta property="og:image" content="https://miaomfood.com/resources/doorface.jpg" />
+  <meta name="author" content="松志" />
+  <meta name="description" content="好多好多的芝士和肉，给你认真生活的力量！" />
   <meta name="keywords" content="喵姆餐厅 喵姆 Miaom pizza 快餐 美味 乌鲁木齐快餐 披萨 焗饭 小吃 烤翅" />
   <meta name="viewport" content="initial-scale=1.0, width=device-width, maximum-scale=1, user-scalable=0" />
   <meta name="msapplication-tap-highlight" content="no" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <script type="application/ld+json">{
+  "@context": {
+    "@vocab": "http://schema.org/",
+    "@language": "zh",
+    "foaf": "http://xmlns.com/foaf/0.1/"
+  },
+  "@graph": [
+    {
+      "@id": "https://miaomfood.com/",
+      "@type": "WebSite",
+      "name": "喵姆餐厅",
+      "alternateName": "喵姆餐厅•好多好多的芝士和肉，给你认真生活的力量！",
+      "keywords": "喵姆餐厅,喵姆,Miaom,pizza,快餐,美味,乌鲁木齐快餐,披萨,焗饭,小吃,烤翅",
+      "copyrightYear": "2017",
+      "locationCreated": "Urumqi",
+      "mainEntity": {
+        "@type": "Restaurant",
+        "@id": "https://miaomfood.com/about"
+      },
+      "author": {
+        "@id": "https://heysage.com/about",
+        "@type": "Person",
+        "name": "松志",
+        "url": "https://heysage.com/about",
+        "contactPoint": {
+          "@id": "https://heysage.com/about#contact",
+          "@type": "ContactPoint",
+          "contactType": "technical support",
+          "email": "zongshian@gmail.com",
+          "telephone": "+8618611552172",
+          "productSupported": "网站制作,软件开发,Software Development",
+          "availableLanguage": "zh-cmn-Hans-CN,en"
+        },
+        "nationality": "CHN",
+        "workLocation": "Urumqi",
+        "knows": [
+          "http://samael.cn/"
+        ]
+      }
+    },
+    {
+      "@id": "https://miaomfood.com/about",
+      "@type": [
+        "Organization",
+        "Restaurant",
+        "CafeOrCoffeeShop"
+      ],
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://miaomfood.com"
+      },
+      "name": "喵姆餐厅",
+      "description": "好多好多的芝士和肉，给你认真生活的力量！",
+      "url": "https://miaomfood.com",
+      "image": "https://miaomfood.com/Branding/doorface.jpeg",
+      "logo": "https://miaomfood.com/resources/logo.png",
+      "telephone": "+8618690890381",
+      "foundingDate": "2015-11-15",
+      "openingHours": "Mo-Su 11:00-22:00",
+      "hasMap": "http://f.amap.com/1bwbT_0452CUD",
+      "acceptsReservations": true,
+      "currenciesAccepted": "CNY",
+      "priceRange": "￥￥",
+      "paymentAccepted": "现金到付,支付宝",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "CHN",
+        "addressRegion": "新疆",
+        "addressLocality": "乌鲁木齐",
+        "postalCode": "830000",
+        "streetAddress": "高新街桂林路东四巷锦林二巷8号1楼"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "43.853485",
+        "longitude": "87.573932"
+      },
+      "contactPoint": {
+        "@id": "https://miaomfood.com/contact",
+        "@type": "ContactPoint",
+        "contactType": [
+          "sales",
+          "customer support",
+          "reservations"
+        ],
+        "telephone": "+8618690890381",
+        "email": "roubaozi.baorou@gmail.com",
+        "areaServed": "乌鲁木齐",
+        "hoursAvailable": "Mo-Su 11:00-22:00",
+        "productSupported": "外卖点餐，进店堂食，派对策划，甜品教学，商业合作",
+        "availableLanguage": "zh-cmn-Hans-CN,en"
+      },
+      "servesCuisine": [
+        "激情培根",
+        "风情夏威夷",
+        "内牛满面",
+        "意式肉酱披萨",
+        "土耳其烤肉披萨",
+        "情满金枪鱼",
+        "席卷天虾",
+        "蘑菇菠菜",
+        "榴恋榴莲",
+        "红烩牛肉焗饭",
+        "咖喱鸡肉焗饭",
+        "土耳其烤肉焗饭",
+        "意式肉酱焗饭",
+        "土豆肉酱千层",
+        "奥尔良烤翅",
+        "芝士焗土豆泥",
+        "芝士焗榴莲",
+        "炸鸡翅",
+        "炸鸡柳",
+        "鸡肉洋葱卷",
+        "芝士虾球",
+        "美式咖啡",
+        "卡布奇诺",
+        "咖啡拿铁",
+        "巧克力摩卡"
+      ],
+      "makesOffer": {
+        "itemOffered": {
+          "@type": "Service",
+          "provider": "https://miaomfood.com",
+          "description": "由喵姆餐厅提供的送餐上门服务,向您收取的送餐费将全额补贴到送餐员，请知悉。",
+          "serviceType": "送餐上门",
+          "areaServed": "乌鲁木齐",
+          "hoursAvailable": [
+            "Mo-Su 11:00-22:00"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": 3,
+            "priceCurrency": "CNY",
+            "seller": "https://miaomfood.com",
+            "BusinessFunction": "http://purl.org/goodrelations/v1#ProvideService",
+            "deliveryLeadTime": {
+              "@type": "QuantitativeValue",
+              "value": 20,
+              "unitText": "分钟",
+              "unitCode": "MIN"
+            }
+          }
+        }
+      },
+      "hasMenu": {
+        "@type": "Menu",
+        "@id": "https://miaomfood.com/menu",
+        "inLanguage": "zh-CN",
+        "hasMenuSection": [
+          {
+            "@id": "https://miaomfood.com/menu/tasty",
+            "@type": "MenuSection",
+            "name": "好吃的",
+            "description": "",
+            "hasMenuSection": [
+              {
+                "@type": "MenuSection",
+                "@id": "https://miaomfood.com/menu/tasty/pizza",
+                "name": "披萨",
+                "description": "",
+                "hasMenuItem": [
+                  {
+                    "@id": "https://miaomfood.com/menu/pizza/JQPG",
+                    "@type": [
+                      "MenuItem",
+                      "Product"
+                    ],
+                    "name": "激情培根",
+                    "alternateName": "",
+                    "productID": "JQPG",
+                    "description": "特色:双层培根，圆菇",
+                    "image": "https://miaomfood.com/resources/jqpg.jpg",
+                    "offers": [
+                      {
+                        "@type": "Offer",
+                        "name": "八寸",
+                        "price": 39,
+                        "availability": "http://schema.org/SoldOut"
+                      },
+                      {
+                        "@type": "Offer",
+                        "name": "十寸",
+                        "price": 59,
+                        "availability": "http://schema.org/SoldOut"
+                      }
+                    ],
+                    "potentialAction": {
+                      "@type": "CookAction",
+                      "recipe": {
+                        "@type": "Recipe",
+                        "name": "激情培根",
+                        "image": "https://miaomfood.com/resources/jqpg.jpg",
+                        "cookingMethod": "烤",
+                        "cookTime": "PT20M",
+                        "recipeIngredient": [
+                          "https://www.wikiwand.com/zh-hans/培根",
+                          "https://www.wikiwand.com/zh-hans/双孢蘑菇"
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "@id": "https://miaomfood.com/menu/pizza/FQXWY",
+                    "@type": [
+                      "MenuItem",
+                      "Product"
+                    ],
+                    "name": "风情夏威夷",
+                    "alternateName": "",
+                    "productID": "FQWXY",
+                    "description": "特色:培根，菠萝",
+                    "image": "https://miaomfood.com/resources/fqxwy.jpg",
+                    "offers": [
+                      {
+                        "@type": "Offer",
+                        "name": "八寸",
+                        "price": 39,
+                        "availability": "http://schema.org/SoldOut"
+                      },
+                      {
+                        "@type": "Offer",
+                        "name": "十寸",
+                        "price": 59,
+                        "availability": "http://schema.org/SoldOut"
+                      }
+                    ],
+                    "potentialAction": {
+                      "@type": "CookAction",
+                      "recipe": {
+                        "@type": "Recipe",
+                        "name": "风情夏威夷",
+                        "image": "https://miaomfood.com/resources/fqxwy.jpg",
+                        "description": "特色:双层培根，圆菇",
+                        "cookingMethod": "烤",
+                        "cookTime": "PT20M",
+                        "recipeIngredient": [
+                          "https://www.wikiwand.com/zh-hans/培根",
+                          "https://www.wikiwand.com/zh-hans/菠萝"
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "@id": "https://miaomfood.com/menu/pizza/NNMM",
+                    "@type": [
+                      "MenuItem",
+                      "Product"
+                    ],
+                    "name": "内牛满面",
+                    "alternateName": "",
+                    "productID": "NNMM",
+                    "description": "特色:牛肉",
+                    "image": "https://miaomfood.com/resources/nnmm.jpg",
+                    "offers": [
+                      {
+                        "@type": "Offer",
+                        "name": "八寸",
+                        "price": 46,
+                        "availability": "http://schema.org/SoldOut"
+                      },
+                      {
+                        "@type": "Offer",
+                        "name": "十寸",
+                        "price": 69,
+                        "availability": "http://schema.org/SoldOut"
+                      }
+                    ],
+                    "potentialAction": {
+                      "@type": "CookAction",
+                      "recipe": {
+                        "@type": "Recipe",
+                        "name": "内牛满面",
+                        "image": "https://miaomfood.com/resources/nnmm.jpg",
+                        "cookingMethod": "烤",
+                        "cookTime": "PT20M",
+                        "recipeIngredient": [
+                          "https://https://www.wikiwand.com/zh-hans/牛肉"
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "@id": "https://miaomfood.com/menu/pizza/ITALY",
+                    "@type": [
+                      "MenuItem",
+                      "Product"
+                    ],
+                    "name": "意式肉酱披萨",
+                    "alternateName": "",
+                    "productID": "ITALY",
+                    "description": "特色:牛肉，自制辣酱",
+                    "image": "https://miaomfood.com/resources/italy.jpg",
+                    "offers": [
+                      {
+                        "@type": "Offer",
+                        "name": "八寸",
+                        "price": 58,
+                        "availability": "http://schema.org/SoldOut"
+                      },
+                      {
+                        "@type": "Offer",
+                        "name": "十寸",
+                        "price": 87,
+                        "availability": "http://schema.org/SoldOut"
+                      }
+                    ],
+                    "potentialAction": {
+                      "@type": "CookAction",
+                      "recipe": {
+                        "@type": "Recipe",
+                        "name": "意式肉酱披萨",
+                        "image": "https://miaomfood.com/resources/italy.jpg",
+                        "cookingMethod": "烤",
+                        "prepTime": "PT1H",
+                        "cookTime": "PT20M",
+                        "recipeIngredient": [
+                          "https://https://www.wikiwand.com/zh-hans/牛肉",
+                          "https://www.wikiwand.com/zh-hans/辣酱"
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "@id": "https://miaomfood.com/menu/pizza/TURKEY",
+                    "@type": [
+                      "MenuItem",
+                      "Product"
+                    ],
+                    "name": "土耳其烤鸡肉披萨",
+                    "alternateName": "",
+                    "productID": "TURKEY",
+                    "description": "特色:烤鸡肉，自制辣酱",
+                    "image": "https://miaomfood.com/resources/turkey.jpg",
+                    "offers": [
+                      {
+                        "@type": "Offer",
+                        "name": "八寸",
+                        "price": 46,
+                        "availability": "http://schema.org/SoldOut"
+                      },
+                      {
+                        "@type": "Offer",
+                        "name": "十寸",
+                        "price": 69,
+                        "availability": "http://schema.org/SoldOut"
+                      }
+                    ],
+                    "potentialAction": {
+                      "@type": "CookAction",
+                      "recipe": {
+                        "@type": "Recipe",
+                        "name": "土耳其烤鸡肉披萨",
+                        "image": "https://miaomfood.com/resources/turkey.jpg",
+                        "cookingMethod": "烤",
+                        "prepTime": "PT50M",
+                        "cookTime": "PT20M",
+                        "recipeIngredient": [
+                          "https://www.wikiwand.com/zh-hans/辣酱"
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "@id": "https://miaomfood.com/menu/pizza/QMJQY",
+                    "@type": [
+                      "MenuItem",
+                      "Product"
+                    ],
+                    "name": "情满金枪鱼",
+                    "alternateName": "",
+                    "productID": "QMJQY",
+                    "description": "特色:金枪鱼，酸黄瓜",
+                    "image": "https://miaomfood.com/resources/qmjqy.jpg",
+                    "offers": [
+                      {
+                        "@type": "Offer",
+                        "name": "八寸",
+                        "price": 58,
+                        "availability": "http://schema.org/SoldOut"
+                      },
+                      {
+                        "@type": "Offer",
+                        "name": "十寸",
+                        "price": 87,
+                        "availability": "http://schema.org/SoldOut"
+                      }
+                    ],
+                    "potentialAction": {
+                      "@type": "CookAction",
+                      "recipe": {
+                        "@type": "Recipe",
+                        "name": "情满金枪鱼",
+                        "image": "https://miaomfood.com/resources/qmjqy.jpg",
+                        "cookingMethod": "烤",
+                        "prepTime": "PT50M",
+                        "cookTime": "PT20M",
+                        "recipeIngredient": [
+                          "https://www.wikiwand.com/zh-hans/金枪鱼属"
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "@id": "https://miaomfood.com/menu/pizza/XJTX",
+                    "@type": [
+                      "MenuItem",
+                      "Product"
+                    ],
+                    "name": "席卷天虾",
+                    "alternateName": "",
+                    "productID": "XJTX",
+                    "description": "特色:金枪鱼，虾仁",
+                    "image": "https://miaomfood.com/resources/xjtx.jpg",
+                    "offers": [
+                      {
+                        "@type": "Offer",
+                        "name": "八寸",
+                        "price": 58,
+                        "availability": "http://schema.org/SoldOut"
+                      },
+                      {
+                        "@type": "Offer",
+                        "name": "十寸",
+                        "price": 87,
+                        "availability": "http://schema.org/SoldOut"
+                      }
+                    ],
+                    "potentialAction": {
+                      "@type": "CookAction",
+                      "recipe": {
+                        "@type": "Recipe",
+                        "name": "席卷天虾",
+                        "image": "https://miaomfood.com/resources/qmjqy.jpg",
+                        "cookingMethod": "烤",
+                        "prepTime": "PT50M",
+                        "cookTime": "PT20M",
+                        "recipeIngredient": [
+                          "https://www.wikiwand.com/zh-hans/金枪鱼属",
+                          "https://www.wikiwand.com/zh-hans/虾仁"
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "@id": "https://miaomfood.com/menu/pizza/MGBC",
+                    "@type": [
+                      "MenuItem",
+                      "Product"
+                    ],
+                    "name": "蘑菇菠菜",
+                    "alternateName": "",
+                    "productID": "XJTX",
+                    "description": "特色:菠菜，蘑菇，酸黄瓜",
+                    "image": "https://miaomfood.com/resources/mgbc.jpg",
+                    "offers": [
+                      {
+                        "@type": "Offer",
+                        "name": "八寸",
+                        "price": 35,
+                        "availability": "http://schema.org/SoldOut"
+                      },
+                      {
+                        "@type": "Offer",
+                        "name": "十寸",
+                        "price": 53,
+                        "availability": "http://schema.org/SoldOut"
+                      }
+                    ],
+                    "potentialAction": {
+                      "@type": "CookAction",
+                      "recipe": {
+                        "@type": "Recipe",
+                        "name": "蘑菇菠菜",
+                        "image": "https://miaomfood.com/resources/mgbc.jpg",
+                        "cookingMethod": "烤",
+                        "prepTime": "PT50M",
+                        "cookTime": "PT20M",
+                        "recipeIngredient": [
+                          "https://https://www.wikiwand.com/zh-hans/菠菜"
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "@id": "https://miaomfood.com/menu/pizza/LLLL",
+                    "@type": [
+                      "MenuItem",
+                      "Product"
+                    ],
+                    "name": "榴恋榴莲",
+                    "alternateName": "",
+                    "productID": "LLLL",
+                    "description": "特色:榴莲",
+                    "image": "https://miaomfood.com/resources/llll.jpg",
+                    "offers": [
+                      {
+                        "@type": "Offer",
+                        "name": "八寸",
+                        "price": 68,
+                        "availability": "http://schema.org/SoldOut"
+                      },
+                      {
+                        "@type": "Offer",
+                        "name": "十寸",
+                        "price": 97,
+                        "availability": "http://schema.org/SoldOut"
+                      }
+                    ],
+                    "potentialAction": {
+                      "@type": "CookAction",
+                      "recipe": {
+                        "@type": "Recipe",
+                        "name": "榴恋榴莲",
+                        "image": "https://miaomfood.com/resources/llll.jpg",
+                        "cookingMethod": "烤",
+                        "prepTime": "PT50M",
+                        "cookTime": "PT20M",
+                        "recipeIngredient": [
+                          "https://https://www.wikiwand.com/zh-hans/榴莲"
+                        ]
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "@type": "MenuSection",
+                "@id": "https://miaomfood.com/menu/tasty/meal",
+                "name": "饭类",
+                "description": "",
+                "hasMenuItem": [
+                  {
+                    "@id": "https://miaomfood.com/menu/meal/HHNRJF",
+                    "@type": [
+                      "MenuItem",
+                      "Product"
+                    ],
+                    "name": "红烩牛肉焗饭",
+                    "alternateName": "",
+                    "productID": "HHNRJF",
+                    "description": "特色:牛肉，红酒",
+                    "image": "https://miaomfood.com/resources/hhnrjf.jpg",
+                    "offers": {
+                      "@type": "Offer",
+                      "name": "份",
+                      "price": 35,
+                      "availability": "http://schema.org/InStock"
+                    }
+                  },
+                  {
+                    "@id": "https://miaomfood.com/menu/meal/GLJRJF",
+                    "@type": [
+                      "MenuItem",
+                      "Product"
+                    ],
+                    "name": "咖喱鸡肉焗饭",
+                    "alternateName": "",
+                    "productID": "HHNRJF",
+                    "description": "特色:鸡肉，咖喱",
+                    "image": "https://miaomfood.com/resources/gljrjf.jpg",
+                    "offers": [
+                      {
+                        "@type": "Offer",
+                        "name": "份",
+                        "price": 35,
+                        "availability": "http://schema.org/InStock"
+                      }
+                    ]
+                  },
+                  {
+                    "@id": "https://miaomfood.com/menu/meal/TURKEYJF",
+                    "@type": [
+                      "MenuItem",
+                      "Product"
+                    ],
+                    "name": "土耳其烤肉焗饭",
+                    "alternateName": "",
+                    "productID": "TERKEYJF",
+                    "description": "特色:土耳其风味烤肉",
+                    "image": "https://miaomfood.com/resources/turkeyjf.jpg",
+                    "offers": [
+                      {
+                        "@type": "Offer",
+                        "name": "份",
+                        "price": 38,
+                        "availability": "http://schema.org/InStock"
+                      }
+                    ]
+                  },
+                  {
+                    "@id": "https://miaomfood.com/menu/meal/ITALYJF",
+                    "@type": [
+                      "MenuItem",
+                      "Product"
+                    ],
+                    "name": "意式肉酱焗饭",
+                    "alternateName": "",
+                    "productID": "ITALYJF",
+                    "description": "特色:意式肉酱",
+                    "image": "https://miaomfood.com/resources/italyjf.jpg",
+                    "offers": [
+                      {
+                        "@type": "Offer",
+                        "name": "份",
+                        "price": 42,
+                        "availability": "http://schema.org/InStock"
+                      }
+                    ]
+                  },
+                  {
+                    "@id": "https://miaomfood.com/menu/meal/TUDOUROU",
+                    "@type": [
+                      "MenuItem",
+                      "Product"
+                    ],
+                    "name": "土豆肉酱千层",
+                    "alternateName": "",
+                    "productID": "TUDOUROU",
+                    "description": "特色:土豆肉酱",
+                    "image": "https://miaomfood.com/resources/tudourou.jpg",
+                    "offers": [
+                      {
+                        "@type": "Offer",
+                        "name": "份",
+                        "price": 42,
+                        "availability": "http://schema.org/InStock"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "@type": "MenuSection",
+                "@id": "https://miaomfood.com/menu/tasty/meal",
+                "name": "小吃",
+                "description": ""
+              }
+            ]
+          },
+          {
+            "@id": "https://miaomfood.com/drinks",
+            "@type": "MenuSection",
+            "name": "好喝的",
+            "hasMenuSection": [
+              {
+                "@type": "MenuSection",
+                "@id": "https://miaomfood.com/menu/tasty/pizza",
+                "name": "咖啡",
+                "description": ""
+              },
+              {
+                "@type": "MenuSection",
+                "@id": "https://miaomfood.com/menu/tasty/pizza",
+                "name": "红茶",
+                "description": ""
+              },
+              {
+                "@type": "MenuSection",
+                "@id": "https://miaomfood.com/menu/tasty/pizza",
+                "name": "气泡水•冰茶",
+                "description": ""
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}</script>
 </head>
 <body data-cart-expanded="true">
   <div id="vip" style="display: none"></div>
@@ -56,7 +733,7 @@
         <span class="category">好吃</span>
         <ul class="sub-drawers">
           <li class="sub-drawer-item"><a href="#pizza">披萨</a></li>
-          <li class="sub-drawer-item"><a href="#rice">焗饭</a></li>
+          <li class="sub-drawer-item"><a href="#meal">焗饭</a></li>
           <li class="sub-drawer-item"><a href="#snack">小吃</a></li>
         </ul>
       </li>
@@ -227,7 +904,7 @@
           </div>
         </section>
 
-        <section id="rice" class="category">
+        <section id="meal" class="category">
           <h1 class="p-category">饭类</h1>
 
           <div class="twins group">
@@ -243,7 +920,7 @@
                 </figcaption>
               </figure>
             </article>
-            <article class="h-product" data-cid="HHNRJF">
+            <article class="h-product" data-cid="ITALYJF">
                 <h2 class="p-name">意式肉酱焗饭</h2>
                 <ul class="spec-tag">
                     <li class="p-spec"><span><b class="spec-price">¥42</b>/份</span></li>
@@ -265,7 +942,7 @@
               <figure @click="showModal">
                 <img class="u-photo" src="./static/imgs/rice.png" alt="图片：土耳其烤鸡肉焗饭" />
                 <figcaption class="e-description">
-                    <p>特色：鸡肉，咖喱</p>
+                    <p>特色：土耳其风味烤鸡肉</p>
                 </figcaption>
               </figure>
             </article>
@@ -506,7 +1183,7 @@
         <section id="lazycat" class="category lazycat">
           <h1>送餐到家</h1>
           <div class="illustration">
-            <img class="maps" src="./static/imgs/to_layzcat.png" />
+            <img class="maps" src="./static/imgs/location.png" />
           </div>
         </section>
       </main>
@@ -518,8 +1195,9 @@
           </small>
         </p>
         <p class="copyright">
-          <small>Copyright 2017 &copy; 乌鲁木齐市喵姆餐厅（<b>miaomfood.com</b>）版权所有</small>
+            <small>Copyright 2017 &copy; 乌鲁木齐市喵姆餐厅（<b>miaomfood.com</b>）版权所有</small>
         </p>
+        <a href="http://json-ld.org/" title="JSON-LD Data"><img style="border:0px;" width="24" src="http://json-ld.org/images/json-ld-data-24.png" alt="JSON-LD-logo-24"/></a>
       </footer>
       <script src="/dist/build.js"></script>
     </body>

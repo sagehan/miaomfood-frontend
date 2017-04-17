@@ -1,0 +1,12 @@
+{
+  "name": "喵姆餐厅•好多好多的芝士和肉，给你认真生活的力量！",
+  "short_name": "喵姆餐厅",
+  "icons": [{
+      "src": "/static/imgs/logo.png",
+      "sizes": "120x120",
+      "type": "image/png"
+    }],
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "landscape",
+}

@@ -1,0 +1,12 @@
+{
+  "@context": {
+    "foaf": "http://xmlns.com/foaf/0.1/"
+  },
+  "language": "zh-hans",
+  "@type": "foaf:Organization",
+  "foaf:name": "喵姆餐厅",
+  "foaf:phone": "tel:+8618611552172",
+  "foaf:homepage": "https://miaomfood.com",
+  "foaf:logo": "https://miaomfood.com/resources/logo.png",
+  "foaf:mbox": "mailto:roubaozi.baorou@gmail.com"
+}
