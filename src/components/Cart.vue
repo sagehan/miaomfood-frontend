@@ -51,10 +51,10 @@
         <tbody>
           <template v-for="i in cartItems" >
             <tr class="h-item">
-              <td class="p-name">{{cuisineNameOf(i.cid)}}({{i.spec}})</td>
-              <td class="spec-price">{{specPriceOf(i.cid, i.spec)}}</td>
+              <td class="p-name">{{cuisineNameOf(i.productID)}}({{i.offers.name}})</td>
+              <td class="spec-price">{{specPriceOf(i.productID, i.offers.name)}}</td>
               <td class="qty">{{i.qty}}</td>
-              <td class="sub-total CNY">{{specPriceOf(i.cid, i.spec) * i.qty}}</td>
+              <td class="sub-total CNY">{{specPriceOf(i.productID, i.offers.name) * i.qty}}</td>
             </tr>
           </template>
         </tbody>
@@ -66,12 +66,12 @@
         <ol>
           <li>
             <label for="customer-name">称呼<span class="required">*</span></label>
-            <input :value="name" @input="updateCustomer" :class="{inValid: !nameValidity}"id="customer-name" type="text" name="customer-name" required maxlength="10"/>
+            <input :value="name" @input="updateCustomer" :class="{inValid: !nameValidity}" id="customer-name" type="text" name="customer-name" required maxlength="10"/>
           </li>
 
           <li>
             <label for="customer-tel">手机<span class="required">*</span></label>
-            <input :value="tel" @input="updateCustomer" :class="{inValid: !telValidity}" id="customer-tel" type="tel" name="customer-tel" required maxlength="11" />
+            <input :value="telephone" @input="updateCustomer" :class="{inValid: !telValidity}" id="customer-tel" type="tel" name="customer-tel" required maxlength="11" />
 
           </li>
 
@@ -82,7 +82,7 @@
 
           <li>
             <label for="customer-addr">地址<span class="required">*</span></label>
-            <textarea :value="addr" @input="updateCustomer" :class="{inValid: !addrValidity}" id="customer-addr" type="addr" name="customer-addr" required maxlength="50"></textarea>
+            <textarea :value="address" @input="updateCustomer" :class="{inValid: !addrValidity}" id="customer-addr" type="addr" name="customer-addr" required maxlength="50"></textarea>
           </li>
         </ol>
 
@@ -103,7 +103,7 @@
       <fieldset class="payment">
         <legend>付款方式</legend>
         <ol>
-          <li><input v-model="payment" value="cash" type="radio" name="payment" id="cash" /><label for="cash">现金付</label></li>
+          <li><input v-model="payment" value="Cash" type="radio" name="payment" id="cash" /><label for="cash">现金付</label></li>
           <li><input v-model="payment" value="wechat" type="radio" name="payment" id="wechat" /><label for="wechat">微信支付</label></li>
           <li><input v-model="payment" value="alipay" type="radio" name="payment" id="alipay" /><label for="alipay">支付宝</label></li>
         </ol>
@@ -139,20 +139,20 @@
       ]),
       ...mapState({
         name: state => state.customer.name,
-        tel: state => state.customer.tel,
-        addr: state => state.customer.addr,
+        telephone: state => state.customer.telephone,
+        address: state => state.customer.address,
         delayday: state => state.reservation.delayday,
         scheduledtime: state => state.reservation.scheduledtime,
         nameValidity: state => nameRE.test(state.customer.name),
-        telValidity: state => phoneRE.test(state.customer.tel),
-        addrValidity: state => !!state.customer.addr.trim(),
+        telValidity: state => phoneRE.test(state.customer.telephone),
+        addrValidity: state => !!state.customer.address.trim(),
       }),
       payment: {
         get () {
-          return this.$store.state.payment
+          return this.$store.state.paymentMethod
         },
         set (value) {
-          this.$store.commit('updatePayment', value)
+          this.$store.commit('updatePaymentMethod', value)
         },
       }
     },

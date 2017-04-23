@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import {submitOrder} from './api'
 import transit from 'transit-js'
+import R from 'ramda'
 
 Vue.use(Vuex)
 
@@ -10,30 +11,27 @@ const writer = transit.writer('json')
 const state = {
   summonedCid: 'JQPG',
   gratuity: 3,
-  Cuisines: [
-    /*
-    */
-  ],
+  Cuisines: [],
   cartItems: [],
   comment: '',
   customer: {
     'name': '霸气老板娘',
-    'tel': '18690890381',
-    'addr': '高新街桂林路东四巷锦林二巷8号1楼'
+    'telephone': '18690890381',
+    'address': '高新街桂林路东四巷锦林二巷8号1楼'
   },
   delayDayOptions: [
     {text: '今日', value: '0'},
     {text: '明日', value: '1'}
   ],
   reservation: {'delayday': 0, 'scheduledtime': '16:30'},
-  payment: 'cash'
+  paymentMethod: 'alipay_wap'
 }
 
 const getters = {
-  isCartEmpty: state => !state.cartItems.length,
+  isCartEmpty: state => R.isEmpty(state.cartItems),
   cuisineDetailsOf: state => {
     return function (cid) {
-      return state.Cuisines.filter(c => c.id === cid)
+      return state.Cuisines.filter(c => c.productID === cid)
     }
   },
   cuisineNameOf: state => {
@@ -45,36 +43,40 @@ const getters = {
   speciesOf: state => {
     return function (cid) {
       let [c] = this.cuisineDetailsOf(cid)
-      return c.species
+      return c.offers
     }
   },
   specPriceOf: state => {
     return function (cid, spec) {
       let [c] = this.cuisineDetailsOf(cid)
-      let ss = c.species
-      let [s] = ss.filter(i => i.name.ident === spec)
+      let ss = c.offers
+      let [s] = ss.filter(i => i.name === spec)
       return !!s && s.price
     }
   },
   qtyOf: state => {
     return function (cid, spec) {
-      let [c] = state.cartItems.filter(i => i.cid === cid && i.spec === spec)
+      let [c] = state.cartItems.filter(i => i.productID === cid && i.offers.name === spec)
       return !!c && c.qty
     }
   },
   total: (state) => state.cartItems.reduce(
-    (total, p) => { return total + p.specPrice * p.qty },
+    (total, p) => { return total + p.price * p.qty },
     0
   ) + state.gratuity,
-  stagedOrder: state => {
+  stagedOrder: (state, getters) => {
+    let customer = transit.map([
+      transit.keyword('Customer/name'), state.customer.name,
+      transit.keyword('Customer/telephone'), state.customer.telephone,
+      transit.keyword('Customer/address'), state.customer.address,
+    ])
     return transit.map([
-      transit.keyword('order/customer-name'), state.customer.name,
-      transit.keyword('order/customer-phone'), state.customer.tel,
-      transit.keyword('order/street-addr'), state.customer.addr,
-      transit.keyword('order/comment'), state.comment,
-      transit.keyword('order/schedule-day'), state.reservation.delayday,
-      transit.keyword('order/schedule-time'), state.reservation.scheduledtime,
-      transit.keyword('order/items'), state.cartItems,
+      transit.keyword('Order/customer'), customer,
+      transit.keyword('Order/comment'), state.comment,
+      transit.keyword('Order/schedule-day'), state.reservation.delayday,
+      transit.keyword('Order/schedule-time'), state.reservation.scheduledtime,
+      transit.keyword('Order/CartItems'), state.cartItems,
+      transit.keyword('charge/paymentMethod'), transit.keyword('PaymentMethod/' + state.paymentMethod),
     ])
   }}
 
@@ -83,16 +85,16 @@ const mutations = {
   closeModal (state) { state.summonedCid = '' },
   summonCuisine (state, cid) { state.summonedCid = cid },
   incCuisine (state, [cid, spec]) {
-    let [c] = state.cartItems.filter(i => i.cid === cid && i.spec === spec)
+    let [c] = state.cartItems.filter(i => i.productID === cid && i.offers.name === spec)
     if (!c) {
-      state.cartItems.push({'cid': cid, 'spec': spec, 'qty': 1})
+      state.cartItems.push({'productID': cid, 'qty': 1, 'offers': {'name': spec}})
     } else {
       c.qty = c.qty + 1
     }
   },
   decCuisine (state, [cid, spec]) {
-    let [c] = state.cartItems.filter(i => i.cid === cid && i.spec === spec)
-    let i = state.cartItems.findIndex(i => i.cid === cid && i.spec === spec)
+    let [c] = state.cartItems.filter(i => i.productID === cid && i.offers.name === spec)
+    let i = state.cartItems.findIndex(i => i.productID === cid && i.offers.name === spec)
     if (c.qty === 1) {
       state.cartItems.splice(i, 1)
     } else {
@@ -105,8 +107,8 @@ const mutations = {
   updateReservation (state, [k, v]) {
     state.reservation[k] = v
   },
-  updatePayment (state, value) {
-    state.payment = value
+  updatePaymentMethod (state, value) {
+    state.paymentMethod = value
   }
 }
 

@@ -2,12 +2,13 @@
 const config = {
   apiServer: 'https://api.miaomfood.com',
   apiLocalServer: 'http://localhost:8080',
+  apiVersion: 'v1',
 }
 
 export function fetchCuisines () {
   return new Promise(function (resolve, reject) {
     let xhr = new XMLHttpRequest() // eslint-disable-line no-undef
-    let url = config.apiLocalServer + '/cuisines'
+    let url = config.apiServer + '/api/' + config.apiVersion + '/cuisines'
     xhr.open('GET', url)
     xhr.onreadystatechange = handler
     // xhr.responseType = 'text'
@@ -29,12 +30,12 @@ export function submitOrder (cartDatoms) {
   setTimeout(() => {
     return new Promise(function (resolve, reject) {
       let xhr = new XMLHttpRequest() // eslint-disable-line no-undef
-      let url = config.apiLocalServer + '/orders'
+      let url = config.apiServer + '/api/' + config.apiVersion + '/orders'
       xhr.open('POST', url)
-      xhr.onreadystatechange = handler
       xhr.setRequestHeader('Content-Type', 'application/transit+json')
       xhr.setRequestHeader('Accept', 'application/json')
       xhr.send(cartDatoms)
+      xhr.onreadystatechange = handler
 
       function handler () {
         if (xhr.status === 201) {
