@@ -20,8 +20,8 @@ const state = {
     'address': '高新街桂林路东四巷锦林二巷8号1楼'
   },
   delayDayOptions: [
-    {text: '今日', value: '0'},
-    {text: '明日', value: '1'}
+    {text: '今日', value: 0},
+    {text: '明日', value: 1}
   ],
   reservation: {'delayday': 0, 'scheduledtime': '16:30'},
   paymentMethod: 'alipay_wap'
@@ -73,7 +73,7 @@ const getters = {
     return transit.map([
       transit.keyword('Order/customer'), customer,
       transit.keyword('Order/comment'), state.comment,
-      transit.keyword('Order/schedule-day'), state.reservation.delayday,
+      transit.keyword('Order/schedule-day'), transit.integer(state.reservation.delayday),
       transit.keyword('Order/schedule-time'), state.reservation.scheduledtime,
       transit.keyword('Order/CartItems'), state.cartItems,
       transit.keyword('charge/paymentMethod'), transit.keyword('PaymentMethod/' + state.paymentMethod),
