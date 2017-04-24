@@ -104,8 +104,8 @@
         <legend>付款方式</legend>
         <ol>
           <li><input v-model="payment" value="Cash" type="radio" name="payment" id="cash" /><label for="cash">现金付</label></li>
-          <li><input v-model="payment" value="wechat" type="radio" name="payment" id="wechat" /><label for="wechat">微信支付</label></li>
-          <li><input v-model="payment" value="alipay" type="radio" name="payment" id="alipay" /><label for="alipay">支付宝</label></li>
+          <li><input v-model="payment" value="wx_pub" type="radio" name="payment" id="wechat" /><label for="wechat">微信支付</label></li>
+          <li><input v-model="payment" value="alipay_wap" type="radio" name="payment" id="alipay" /><label for="alipay">支付宝</label></li>
         </ol>
         <button :disabled="!(nameValidity && telValidity && addrValidity)" name="place-order-button" @click.prevent="checkout" >提交订单</button>
       </fieldset>
@@ -168,9 +168,9 @@
         let value = e.target.value
         this.$store.commit('updateReservation', [attr, value])
       },
-      ...mapActions({
-        checkout: 'submitOrder'
-      })
+      ...mapActions([
+        'checkout',
+      ]),
     }
   }
 </script>

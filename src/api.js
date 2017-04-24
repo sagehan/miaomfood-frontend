@@ -27,25 +27,23 @@ export function fetchCuisines () {
 }
 
 export function submitOrder (cartDatoms) {
-  setTimeout(() => {
-    return new Promise(function (resolve, reject) {
-      let xhr = new XMLHttpRequest() // eslint-disable-line no-undef
-      let url = config.apiServer + '/api/' + config.apiVersion + '/orders'
-      xhr.open('POST', url)
-      xhr.setRequestHeader('Content-Type', 'application/transit+json')
-      xhr.setRequestHeader('Accept', 'application/json')
-      xhr.send(cartDatoms)
-      xhr.onreadystatechange = handler
+  return new Promise(function (resolve, reject) {
+    let xhr = new XMLHttpRequest() // eslint-disable-line no-undef
+    let url = config.apiServer + '/api/' + config.apiVersion + '/orders'
+    xhr.open('POST', url)
+    xhr.setRequestHeader('Content-Type', 'application/transit+json')
+    xhr.setRequestHeader('Accept', 'application/json')
+    xhr.send(cartDatoms)
+    xhr.onreadystatechange = handler
 
-      function handler () {
-        if (xhr.status === 201) {
-          var receipt = JSON.parse(this.responseText)
-          resolve(receipt)
-        } else {
-          console.log('failure')
-          reject(new Error(this.status))
-        }
+    function handler () {
+      if (xhr.status === 201) {
+        var receipt = JSON.parse(this.responseText)
+        resolve(receipt)
+      } else {
+        console.log('failure')
+        reject(new Error(this.status))
       }
-    })
-  }, 100)
+    }
+  })
 }

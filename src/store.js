@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import {submitOrder} from './api'
 import transit from 'transit-js'
 import R from 'ramda'
+import pingxx from 'pingpp-js'
 
 Vue.use(Vuex)
 
@@ -24,7 +25,7 @@ const state = {
     {text: '明日', value: 1}
   ],
   reservation: {'delayday': 0, 'scheduledtime': '16:30'},
-  paymentMethod: 'alipay_wap'
+  paymentMethod: 'Cash'
 }
 
 const getters = {
@@ -76,7 +77,8 @@ const getters = {
       transit.keyword('Order/schedule-day'), transit.integer(state.reservation.delayday),
       transit.keyword('Order/schedule-time'), state.reservation.scheduledtime,
       transit.keyword('Order/CartItems'), state.cartItems,
-      transit.keyword('charge/paymentMethod'), transit.keyword('PaymentMethod/' + state.paymentMethod),
+      transit.keyword('Order/charge'), transit.map([
+        transit.keyword('charge/paymentMethod'), transit.keyword('PaymentMethod/' + state.paymentMethod)]),
     ])
   }}
 
@@ -113,10 +115,25 @@ const mutations = {
 }
 
 const actions = {
-  submitOrder ({state, getters}) {
+  async placeOrder ({state, getters}) {
     let cartDatoms = writer.write(getters.stagedOrder)
     console.log(cartDatoms)
-    submitOrder(cartDatoms)
+    return await submitOrder(cartDatoms)
+  },
+  async checkout ({dispatch}) {
+    var charge = R.prop('charge_raw', await dispatch('placeOrder'))
+    pingxx.createPayment(charge, function (result, err) {
+      console.log(result)
+      console.log(err.msg)
+      console.log(err.extra)
+      if (result === 'success') {
+        console.log('success')
+      } else if (result === 'fail') {
+        console.log('fail')
+      } else if (result === 'cancel') {
+        console.log('cancel')
+      }
+    })
   }
 }
 
