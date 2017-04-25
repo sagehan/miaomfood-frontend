@@ -3,7 +3,7 @@
     <ul>
       <li v-for="s in species">
         <span class="item-tag">
-          <b>{{s.name}}</b>/<b>{{s.price}}</b><b v-show="!!qtyOf(summonedCid, s.name)"> x {{qtyOf(summonedCid, s.name)}}</b>
+          <b><b>¥{{s.price}}</b>/{{s.name}}</b><b v-show="!!qtyOf(summonedCid, s.name)"> x {{qtyOf(summonedCid, s.name)}}</b>
         </span>
         <span @click="incCuisine(s.name)" class="btn-add"></span>
         <span @click="decCuisine(s.name)" class="btn-retract" v-show="!!qtyOf(summonedCid, s.name)"></span>

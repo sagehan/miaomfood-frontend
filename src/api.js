@@ -8,7 +8,7 @@ const config = {
 export function fetchCuisines () {
   return new Promise(function (resolve, reject) {
     let xhr = new XMLHttpRequest() // eslint-disable-line no-undef
-    let url = config.apiServer + '/api/' + config.apiVersion + '/cuisines'
+    let url = config.apiLocalServer + '/api/' + config.apiVersion + '/cuisines'
     xhr.open('GET', url)
     xhr.onreadystatechange = handler
     // xhr.responseType = 'text'
@@ -29,7 +29,7 @@ export function fetchCuisines () {
 export function submitOrder (cartDatoms) {
   return new Promise(function (resolve, reject) {
     let xhr = new XMLHttpRequest() // eslint-disable-line no-undef
-    let url = config.apiServer + '/api/' + config.apiVersion + '/orders'
+    let url = config.apiLocalServer + '/api/' + config.apiVersion + '/orders'
     xhr.open('POST', url)
     xhr.setRequestHeader('Content-Type', 'application/transit+json')
     xhr.setRequestHeader('Accept', 'application/json')
