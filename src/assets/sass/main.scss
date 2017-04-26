@@ -44,6 +44,7 @@ body {
     background-color: $page-bg;
     font-family: Helvetica, sans-serif;
 
+    transition: all .32s ease;
     //test below
     //position    : fixed; //for fixed cart on top, but not have fun at all
     //overflow  : hidden; //for fixed cart on top
@@ -217,15 +218,18 @@ h1 { margin: 0; }
     fieldset.payment li { display: inline-block !important; margin: 1em;}
 }
 
-[data-cart-expanded="true"] #cart {
-    width   : calc(100% - 1em);
-    height  : calc(100vh - #{$topbar_ht} - #{$row_height/$rem_size}em);
-    transition-property: height;
-    transition-delay: .1s;
+body.cart-expanded {
+    transform: translate3d(0, calc(100vh - #{$topbar_ht} - #{$row_height/$rem_size}em), 0);
+
+    #cart {
+        width   : calc(100% - 1em);
+        height  : calc(100vh - #{$topbar_ht} - #{$row_height/$rem_size}em);
+    }
 }
 
 #cart {
-    position: relative;
+    position: absolute;
+    top: 0;
     z-index : 10;
     //width     : calc(100% - 1em);
     //height    : calc(100vh - #{$topbar_ht} - #{$row_height/$rem_size}em);
@@ -237,8 +241,9 @@ h1 { margin: 0; }
     background-color: white;
     font-family: "HanziPen Sc";
     line-height: #{$row_height/$rem_size}em;
-    transition-duration: .2s;
-    transition-timing-function: ease-out;
+    transform: translate3d(0, calc(-100vh + #{$topbar_ht} + #{$row_height/$rem_size}em), 0);
+    transition: all .3s ease;
+    transition-property: height;
 
     &:before {
         content : "";
@@ -500,7 +505,7 @@ button[name="place-order-button"] {
         background-size: cover;
         z-index: 0;
 
-        html.no-touch & { background-attachment: fixed; }
+        //html.no-touch & { background-attachment: fixed; }
     }
 }
 

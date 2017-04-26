@@ -25,7 +25,7 @@
       ...mapGetters(['cuisineDetailsOf', 'speciesOf', 'specPriceOf', 'qtyOf']),
       species () { return this.speciesOf(this.cid) },
       isMonad () {
-        var ss = this.species
+        let ss = this.species
         if (R.length(ss) === 1) {
           return false
         } else {
