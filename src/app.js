@@ -35,9 +35,7 @@ export function initiate () {
     template: document.body.querySelector('#poster').outerHTML,
     mounted () {
       let nodes = document.querySelectorAll('.h-product > .spec-tag')
-      for (var i = 0; i < nodes.length; ++i) {
-        new SpecTagWidget({ el: nodes[i] })
-      }
+      Array.prototype.forEach.call(nodes, node => new SpecTagWidget({ el: node }))
     },
     methods: {
       showModal (e) {

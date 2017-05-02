@@ -5,13 +5,12 @@ const config = {
   apiVersion: 'v1',
 }
 
-export function fetchCuisines () {
+function fetchCuisines () {
   return new Promise(function (resolve, reject) {
     let xhr = new XMLHttpRequest() // eslint-disable-line no-undef
     let url = config.apiLocalServer + '/api/' + config.apiVersion + '/cuisines'
     xhr.open('GET', url)
     xhr.onreadystatechange = handler
-    // xhr.responseType = 'text'
     xhr.setRequestHeader('Accept', 'application/json')
     xhr.send()
 
@@ -26,7 +25,7 @@ export function fetchCuisines () {
   })
 }
 
-export function submitOrder (cartDatoms) {
+function submitOrder (cartDatoms) {
   return new Promise(function (resolve, reject) {
     let xhr = new XMLHttpRequest() // eslint-disable-line no-undef
     let url = config.apiLocalServer + '/api/' + config.apiVersion + '/orders'
@@ -46,4 +45,9 @@ export function submitOrder (cartDatoms) {
       }
     }
   })
+}
+
+export {
+  fetchCuisines,
+  submitOrder,
 }
