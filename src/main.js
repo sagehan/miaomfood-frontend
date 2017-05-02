@@ -1,10 +1,11 @@
 import 'src/assets/sass/main.scss'
+import { addClass } from './helper'
 import store from './store'
 import { fetchCuisines } from './api'
 import { initiate } from './app'
 
 if (!('ontouchstart' in document.documentElement)) {
-  document.documentElement.className += ' no-touch'
+  addClass(document.documentElement, 'no-touch')
 }
 
 fetchCuisines().then(
@@ -16,13 +17,11 @@ fetchCuisines().then(
 )
 
 {
-  const cartToggles = document.querySelectorAll('.toggle--cart')
+  const cartToggles = document.querySelectorAll('.cart-toggle')
   const cartToggleFn = function (e) {
-    let body = document.querySelector('body')
+    let cart = document.querySelector('#cart')
     e.preventDefault()
-    body.classList.toggle('cart-expanded')
+    cart.classList.toggle('is-active')
   }
-  for (var i = 0; i < cartToggles.length; i++) {
-    cartToggles[i].addEventListener('click', cartToggleFn)
-  }
+  Array.prototype.forEach.call(cartToggles, el => el.addEventListener('click', cartToggleFn))
 }

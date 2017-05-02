@@ -8,7 +8,7 @@
   <ul class="spec-tag" v-else>
     <li class="p-spec">
       <b class="spec-price">¥{{monadPrice}}</b>
-      <span v-for="s in species">{{s.name}}/</span>
+      <span v-for="s in species">{{s.name}} </span>
     </li>
   </ul>
 </template>

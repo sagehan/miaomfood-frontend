@@ -1,0 +1,48 @@
+body {
+  background-color: $page-bg;
+  font-family: Helvetica, sans-serif;
+
+  transition: all .32s ease;
+}
+
+@font-face {
+  font-family: 'HanziPen SC';
+  src: local('HanziPen SC');
+  src: local('HanziPenSC-W3');
+}
+
+@font-face {
+  font-family: 'Lucida Grande';
+  src: local('Lucida Grande');
+}
+
+@font-face {
+  font-family: 'icomiaomfood';
+  src: url(~assets/fonts/icomiaomfood.woff);
+}
+
+* {
+  -webkit-margin-before: 0;
+  -webkit-margin-after : 0;
+  -webkit-margin-start : 0;
+  -webkit-margin-end   : 0;
+  box-sizing           : border-box ;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea,
+ul,
+ol, {
+  padding: 0;
+}
+
+::selection { color: white; background: $primary_cl; }
+
+ol,ul { list-style-type: none; margin:0; padding: 0; }
+
+h1 { margin: 0; }
+
+.u-hidden { @include absoutly__hidden; }

@@ -1,0 +1,32 @@
+.topbar-toggles {
+  flex-shrink: 0;
+
+  a {
+    display: inline-block;
+    margin-left: 0.5em;
+    color: white;
+    text-decoration: none;
+
+    .no-touch &:hover {
+      color: $primary_cl;
+      // @include text__shadow;
+    }
+  }
+}
+
+.cart-toggle,
+.account-toggle {
+  z-index: 4;
+  display: table-cell;
+  width: #{2*18px/$rem_size}em;
+  height: #{2*18px/$rem_size}em;
+  border : 1px solid $primary_cl;
+  border-radius: 100%;
+  text-align: center;
+  vertical-align: middle;
+
+  &:before { font: #{18px/$rem_size}em 'icomiaomfood'; }
+}
+
+.cart-toggle:before { content: '\e917'; }
+.account-toggle:before { content: '\e92f'; }

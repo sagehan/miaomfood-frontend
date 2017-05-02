@@ -1,0 +1,39 @@
+@media screen and (max-width: 400px) and (orientation: portrait) {
+  .head-branding .branding-name { @include absoutly__hidden }
+}
+
+@media screen and (max-width: 640px) {
+  .head-branding .branding-slogan { @include absoutly__hidden }
+}
+
+.head-branding {
+  position    : relative;
+  height      : 42px;
+  display     : inline-flex;
+  font-size   : #{24px/$rem_size}em;
+  line-height : (42px / 24px);
+  align-items : center;
+
+  color: white;
+
+  a:any-link { color: initial; text-decoration: none; }
+
+  .branding-logo {
+    //width: percentage(84px/$canvas_width);
+    max-width: 2.5em;
+    margin-right: 0.5em;
+    border-radius: 100%;
+    background: white; 
+  }
+
+  .branding-name { flex-shrink: 0; }
+
+  .branding-slogan {
+    text-indent  : 0.25em;
+    font-size    : #{$rem_size/24px}em;
+    font-weight  : 300;
+    white-space  : nowrap;
+    overflow     : hidden;
+    text-overflow: clip;
+  }
+}

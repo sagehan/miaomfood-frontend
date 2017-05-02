@@ -1,0 +1,214 @@
+#drink div.group {
+  display: flex;
+    //justify-content: space-between;
+    width : percentage($drink_width/$layout_width);
+    margin: #{$grid_size/$rem_size}em auto #{2*$grid_size/$rem_size}em;
+
+    .h-product { margin-top : #{($grid_size/2/$rem_size)}em; }
+
+    .p-name {
+      margin          : 0; /* special for firefox */
+      font            : #{18px/$rem_size}em/#{$grid_size/18px)} 'HanziPen SC';
+text-align      : center;
+vertical-align  : middle;
+}
+
+.spec-tag {
+  -webkit-padding-start: 0;
+  padding     : 0;
+  font        : #{12px/$rem_size}em/#{($grid_size/12px)} -apple-system, BlinkMacSystemFont, 'Microsoft YaHei', Helvetica, sans-serif;
+  color: $tag-border_color;
+  text-align  : center;
+  vertical-align: middle;
+}
+}
+
+#coffee, #black-tea{
+  .h-product {
+    width: #{$grid_size/$rem_size}em;
+    margin-left: #{($grid_size/$rem_size)}em;
+  }
+
+  .p-name { @include text__shadow; }
+  .spec-tag { padding: 0; width: $grid_size; }
+}
+
+#coffee div.group {
+  .h-product { margin-bottom: #{($grid_size/2/$rem_size)}em; }
+  .h-product:nth-of-type(1) { margin-left: #{(0.5*$grid_size/$rem_size)}em; }
+
+  .p-spec {
+    position  : relative;
+    -webkit-margin-after: #{$row_height/2/12px}em;
+    margin-bottom: 8px;
+    outline   : 1px dashed $tag-border_color;
+  }
+  .p-spec.isSelected { outline-style: solid; }
+  .p-spec.isSelected:before {
+    content: '✓';
+    display: block;
+    width: $grid_size;
+    height: $grid_size;
+    font    : #{(18px/12px)}em/#{($grid_size/18px)} 'Lucida Grande';
+    word-spacing: 0;
+    color   : white;
+    background-color: $tag-border_color;
+  }
+
+  background-image:
+  linear-gradient(to right, $border_bg, $border_bg 1px, transparent 1px, transparent #{(($grid_size - 1px)/$rem_size)}em),
+  linear-gradient($border_bg, $border_bg 1px, transparent 1px, transparent #{(($grid_size - 1px)/$rem_size)}em);
+  background-size:
+  #{($grid_size/$rem_size)}em #{($grid_size/$rem_size)}em,
+  100% #{($grid_size/$rem_size)}em;
+  background-position : -#{($grid_size/2/$rem_size)}em -#{($grid_size/2/$rem_size)}em;
+  background-origin   : content-box;
+  background-clip     : content-box;
+}
+
+#black-tea div.group {
+  .p-name { min-height: #{4.5*$grid_size/$rem_size}em; }
+  .spec-price, .qty {position:relative; display: block}
+
+  .qty:before,
+  .spec-price:before{
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    color: $tag-border_color;
+    outline   : 1px dashed $tag-border_color;
+    transform : rotateZ(45deg) skew(-5deg, -5deg);
+  }
+  .p-spec.isSelected { .spec-price:before, .qty:before { outline-style: solid; } }
+
+  background-image:
+  repeating-linear-gradient(30deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 2*$grid_size),
+  repeating-linear-gradient(-30deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 2*$grid_size),
+  linear-gradient(-30deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1)),
+  linear-gradient(30deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1));
+  background-size: #{($grid_size/$rem_size)}em #{(2*$grid_size/$rem_size)}em;
+  background-position : -#{($grid_size/$rem_size)}em -#{($grid_size/$rem_size)}em;
+}
+
+#ice-tea div.group {
+  justify-content: space-between;
+
+  .h-product {
+    position: relative;
+    max-width: 25%;
+    margin-left: 0;
+    padding-top: #{48px/$rem_size}em;
+    padding-bottom: #{$grid_size/$rem_size}em;
+
+    &:after,
+    &:before,
+    .p-name:after,
+    .p-name:before {
+      display : block;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'HanziPen SC';
+      color   : initial;
+      @include text__shadow;
+            //@include bubble__gradient;
+            border  : 1px dashed $border_bg;
+            border-radius: 100%;
+          }
+
+          &.isSelected {
+            &:after,
+            &:before,
+            .p-name:after,
+            .p-name:before { border-style: solid; }
+          }
+
+          &:before {
+            top:0;
+            width : #{$row_height/$rem_size}em;
+            height: #{$row_height/$rem_size}em;
+            transform: translateX(-50%);
+            font  : #{18px/$rem_size}em/#{($row_height/18px)} 'HanziPen SC';
+            text-align: center;
+          }
+          &:after {
+            top:  #{(48px + 1.5*$grid_size + 1.5*$grid_size + 0.5*$grid_size)/18px}em;
+            width : #{1.8*$grid_size/$rem_size}em;
+            height: #{1.8*$grid_size/$rem_size}em;
+            line-height: #{1.2*$grid_size/$rem_size}em;
+            font  : #{18px/$rem_size}em/#{($row_height/18px)} 'HanziPen SC';
+            text-align: center;
+          }
+        }
+
+        .p-name {
+          position    : relative;
+          width       : 1em;
+          height      : #{(1.5*$grid_size + 1.5*$grid_size + 0.5*$grid_size + 0.5*$grid_size + 1.8*$grid_size)/18px}em;
+          margin      : 0 auto;
+          color       : transparent;
+
+          &:before {
+            width : #{$grid_size/18px}em;
+            height: #{$grid_size/18px}em;
+            line-height: #{$grid_size/18px}em;
+            transform: translateX(-50%);
+            text-align: center;
+          }
+
+          &:after {
+            top:    #{1.5*$grid_size/18px}em;
+            width : #{1.5*$grid_size/18px}em;
+            height: #{1.5*$grid_size/18px}em;
+            line-height: #{1.2*$grid_size/18px}em;
+          }
+        }
+
+        .p-spec {
+          display: block;
+          position: relative;
+        //width : #{2*$grid_size/12px}em;
+        height: #{2*$grid_size/12px}em;
+        line-height: #{2*$grid_size/12px}em;
+        margin-bottom: 0.5em;
+        border: 1px dashed $tag-border_color;
+        border-radius: 100%;
+      }
+      .p-spec.isSelected { border-style: solid; }
+
+      .spec-price, .qty { display: inline-block; }
+      .qty {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        line-height: 3;
+        transform: translateX(-50%);
+      }
+
+      .h-product:nth-of-type(1):before { content: '荔'}
+      .h-product:nth-of-type(1) .p-name:before { content: '枝'; }
+      .h-product:nth-of-type(1) .p-name:after { content: '芦'; }
+      .h-product:nth-of-type(1):after { content: '荟'}
+
+      .h-product:nth-of-type(2):before { content: '青'}
+      .h-product:nth-of-type(2) .p-name:before { content: '柠'; }
+      .h-product:nth-of-type(2) .p-name:after { content: '气'; }
+      .h-product:nth-of-type(2):after { content: '水'}
+
+      .h-product:nth-of-type(3):before { content: '清'}
+      .h-product:nth-of-type(3) .p-name:before { content: '香'; }
+      .h-product:nth-of-type(3) .p-name:after { content: '玫'; }
+      .h-product:nth-of-type(3):after { content: '瑰'; }
+    }
+
+    @media screen and (min-width: 640px) {
+      #drink  {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+
+        .category { min-width: 320px; }
+      }
+    }

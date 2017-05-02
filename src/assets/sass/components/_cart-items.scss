@@ -1,0 +1,39 @@
+@media screen and (max-width: 640px) and (orientation: portrait) {
+  .cart-items { width: calc(100% - 2em); }
+}
+
+.cart-items { 
+	flex: 1 0 100%;
+	margin: 1em; 
+	min-width: 20em;
+}
+
+table.cart-items {
+    //width : 100%;
+    //margin: 0 auto #{$row_height/$rem_size}em;
+    border-collapse : collapse;
+    text-align      : left;
+    line-height     : #{($row_height - 2px)/$rem_size}em;
+    white-space     : nowrap;
+
+    thead, tbody { border-bottom: 1px solid $border_bg; }
+
+    th { color: $border_bg; }
+    th:last-child,
+    td:last-child:not(:only-child) { text-align: right; }
+
+    th, tfoot tr:not(:last-child) {
+      font-size   : #{$small_size/$rem_size}em;
+      line-height : #{($row_height -2px)/$small_size}em;
+    }
+
+    td label { float: left; }
+    td input { width: calc( #{$canvas_width} - 10em); }
+}
+
+tr.h-item .spec-price:before, .CNY:before {
+    content: "¥";
+    margin-left: -1em;
+    font-size: 80%;
+  }
+

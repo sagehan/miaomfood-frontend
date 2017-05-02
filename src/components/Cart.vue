@@ -1,17 +1,17 @@
 <template>
   <article id="cart">
-    <header class="cart-header">
+    <header class="cart__hd">
       <h1>购物车</h1>
     </header>
 
-    <div v-if="isCartEmpty" class="empty-cart">
+    <div v-if="isCartEmpty" class="cart__bd">
       <p>您还没有选择菜品哦!</p>
       <p class="toggle">
         <a href="#menu">寻找美味</a>
       </p>
     </div>
     <!-- or -->
-    <form v-else class="non-empty-cart">
+    <form v-else class="cart__bd">
       <table class="cart-items">
         <caption>订购信息</caption>
 
@@ -107,10 +107,17 @@
           <li><input v-model="payment" value="wx_pub" type="radio" name="payment" id="wechat" /><label for="wechat">微信支付</label></li>
           <li><input v-model="payment" value="alipay_wap" type="radio" name="payment" id="alipay" /><label for="alipay">支付宝</label></li>
         </ol>
-        <button :disabled="!(nameValidity && telValidity && addrValidity)" name="place-order-button" @click.prevent="checkout" >提交订单</button>
       </fieldset>
-    </form>
-  </article>
+
+      <button
+        class="btn btn_submit"
+        name="place-order-button" 
+        :disabled="!(nameValidity && telValidity && addrValidity)" 
+        @click.prevent="checkout" >
+        提交订单
+      </button>
+  </form>
+</article>
 </template>
 
 <script>

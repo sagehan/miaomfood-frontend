@@ -1,0 +1,70 @@
+// mixin
+@mixin absolutly__centered {
+  position: absolute;
+  top     : 50%;
+  left    : 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin absoutly__hidden {
+  position: absolute;
+  overflow: hidden;
+  clip    : rect(0 0 0 0);
+  height  : 1px;
+  width   : 1px;
+  margin  : -1px;
+  border  : 0;
+  padding : 0;
+  white-space: nowrap;
+}
+
+@mixin box__shadow {
+  box-shadow:
+  1px -1px 3px $shadow_bg,
+  1px 1px 3px $shadow_bg,
+  inset 0 0 3em rgba(0, 0, 0, 0.1)
+}
+
+@mixin text__shadow {
+  text-shadow:
+  rgba(0,0,0,0.1) -1px 0,
+  rgba(0,0,0,0.1) 0 -1px,
+  rgba(255,255,255,0.1) 1px 0,
+  rgba(255,255,255,0.1) 0 1px,
+  rgba(0,0,0,0.1) -1px -1px,
+  rgba(255,255,255,0.1) 1px 1px;
+}
+
+@mixin bubble__gradient {}
+
+@mixin pricetag {
+  content : "✓";
+  display : inline-block;
+  position: absolute;
+  width   : 1em;
+  height  : #{($row_height - 6px)/14px}em;
+  padding : 0 0.25em;
+  font    : #{(14px/12px)}em/#{(($row_height - 6px)/14px)} "Lucida Grande";
+  border  : 1px solid $tag-border_color;
+  word-spacing: 0;
+  color   : white;
+  background-color: $tag-border_color;
+}
+
+@mixin pricetag__leading {
+  @include pricetag;
+  left    : 0;
+  bottom  : -1px;
+  transform: translateX(-100%);
+  border-bottom-left-radius: 2em;
+  border-top-left-radius: 2em;
+}
+
+@mixin pricetag__trailing {
+  @include pricetag;
+  right   : 0;
+  bottom  : -1px;
+  transform: translateX(100%);
+  border-bottom-right-radius: 2em;
+  border-top-right-radius: 2em;
+}
