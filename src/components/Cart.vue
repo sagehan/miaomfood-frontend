@@ -6,9 +6,6 @@
 
     <div v-if="isCartEmpty" class="cart__bd">
       <p>您还没有选择菜品哦!</p>
-      <p class="toggle">
-        <a href="#menu">寻找美味</a>
-      </p>
     </div>
     <!-- or -->
     <form v-else class="cart__bd">

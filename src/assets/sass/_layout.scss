@@ -1,13 +1,13 @@
 @import '~susy/sass/susy';
 
 #topbar {
-  display : flex;
-  position: absolute;
-  z-index : 10;
+  display : block;
+  position: fixed;
+  z-index : 100000;
+  //margin  : #{$row_height/$rem_size}em auto;
+  //padding : 0 1em;
+  height  : 0;
   width   : 100%;
-  height  : $topbar_ht;
-  margin  : #{$row_height/$rem_size}em auto;
-  padding : 0 1em;
   align-items: center;
   justify-content: space-between;
 }

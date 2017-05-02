@@ -7,33 +7,39 @@
 }
 
 .head-branding {
-  position    : relative;
-  height      : 42px;
-  display     : inline-flex;
-  font-size   : #{24px/$rem_size}em;
-  line-height : (42px / 24px);
-  align-items : center;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 20px;
+  padding: 0.5rem 0;
+  background: $primary_cl;
+  width: 50px;
+  text-align: center;
+  color: hsl(0, 0%, 100%);
+  //font-size: 40px;
 
-  color: white;
-
-  a:any-link { color: initial; text-decoration: none; }
+  a {
+    display: inline-block;
+    position: relative;
+    //padding: 24px;
+    height: 100%;
+    line-height: 100%;
+    color: initial; 
+    text-decoration: none;
+    cursor: pointer;
+  }
 
   .branding-logo {
     //width: percentage(84px/$canvas_width);
-    max-width: 2.5em;
-    margin-right: 0.5em;
+    margin: auto;
+    vertical-align: middle;
+    max-width: 80%;
     border-radius: 100%;
     background: white; 
   }
 
-  .branding-name { flex-shrink: 0; }
-
-  .branding-slogan {
-    text-indent  : 0.25em;
-    font-size    : #{$rem_size/24px}em;
-    font-weight  : 300;
-    white-space  : nowrap;
-    overflow     : hidden;
-    text-overflow: clip;
+  .branding-name {
+    display: block;
+    margin-top: 0.5rem;
   }
 }

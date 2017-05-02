@@ -1,5 +1,7 @@
 .topbar-toggles {
-  flex-shrink: 0;
+  width: 100%;
+  padding:  20px;
+  text-align: right;
 
   a {
     display: inline-block;
@@ -9,23 +11,25 @@
 
     .no-touch &:hover {
       color: $primary_cl;
-      // @include text__shadow;
+      @include text__shadow;
     }
   }
 }
 
 .cart-toggle,
 .account-toggle {
-  z-index: 4;
   display: table-cell;
-  width: #{2*18px/$rem_size}em;
-  height: #{2*18px/$rem_size}em;
+  z-index: 4;
+  vertical-align: middle;
   border : 1px solid $primary_cl;
   border-radius: 100%;
+  width: #{2*18px/$rem_size}em;
+  height: #{2*18px/$rem_size}em;
   text-align: center;
-  vertical-align: middle;
 
-  &:before { font: #{18px/$rem_size}em 'icomiaomfood'; }
+  &:before {
+    font: #{18px/$rem_size}em 'icomiaomfood';
+  }
 }
 
 .cart-toggle:before { content: '\e917'; }
