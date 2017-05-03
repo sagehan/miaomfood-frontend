@@ -1,12 +1,14 @@
 .topbar-toggles {
-  width: 100%;
+  @include span(2 wider last);
+  display: inline-table;
   padding:  20px;
-  text-align: right;
+  //text-align: right;
 
   a {
-    display: inline-block;
-    margin-left: 0.5em;
+    display: table-cell;
+    width: span(1 wide);
     color: white;
+    text-align: center;
     text-decoration: none;
 
     .no-touch &:hover {
@@ -18,8 +20,6 @@
 
 .cart-toggle,
 .account-toggle {
-  display: table-cell;
-  z-index: 4;
   vertical-align: middle;
   border : 1px solid $primary_cl;
   border-radius: 100%;

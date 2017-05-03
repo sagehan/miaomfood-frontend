@@ -1,20 +1,105 @@
-@import '~susy/sass/susy';
+$susy: (
+  columns: 12,
+  gutters: 6.8/20.4,
+  global-box-sizing: border-box,
+  debug: (
+    //image: show,
+    output: background,
+    toggle: bottom right,
+    )
+  );
+
+.wrap {
+  @include container
+}
+
+#cart {
+  @include breakpoint($small) { height: 100vh; }
+  @include breakpoint($medium) { margin-top: 1em; height: calc(100vh - 2em); }
+  position: fixed;
+  right   : 0;
+  z-index : 800;
+  width   : 0;
+  transition: all .3s ease;
+
+  &.is-active {
+    @include breakpoint($small)  {
+      width: 100%;
+      //transition-delay: .2s;
+    }
+    @include breakpoint($medium) {
+      margin-right: ( 1/2 * gutters() );
+      width: span(6);
+
+      & ~ #topbar,
+      & ~ #carousel,
+      & ~ #menu,
+      & ~ #poster,
+      & ~ footer {
+        width: span(6 of 12);
+      }
+    }
+    @include breakpoint($big) {
+      margin-right: ( 1/2 * gutters() );
+      width: span(4);
+
+      & ~ #topbar,
+      & ~ #carousel,
+      & ~ #menu,
+      & ~ #poster,
+      & ~ footer {
+        width: span(8 of 12);
+      }
+
+      ~ #topbar .branding-name {
+        @include absoutly__hidden
+        //transition: all .3s ease .1s;
+      }
+    }
+  }
+}
 
 #topbar {
   display : block;
   position: fixed;
-  z-index : 100000;
-  //margin  : #{$row_height/$rem_size}em auto;
-  //padding : 0 1em;
-  height  : 0;
+  z-index : 900;
+  height  : 5em;
   width   : 100%;
-  align-items: center;
-  justify-content: space-between;
+  padding : 0 span(1 wide);
+  transition: all .3s ease;
 }
 
-main { 
+#carousel {
+  position: relative;
+  margin-bottom: -#{(42px+32px)/$rem_size}em;
+  width   : 100%;
+  height  : 100vh;
+  min-height: $min_cover_ht;
+  transition: all .3s ease;
+}
+
+#menu {
+  width: 100%;
+  padding : 0 span(1 wide);
+  transition: all .3s ease;
+}
+
+#poster {
   margin-top: 1em;
   width: 100%;
+  transition: all .3s ease;
+}
+
+footer {
+  padding     : 1em;
+  line-height : #{$row_height/$rem_size};
+  color       : adjust-color($black, $alpha: -0.65);
+  font-weight : 200;
+  text-align  : center;
+  text-transform: capitalize;
+
+  a:link { color: inherit; text-decoration: none; }
+  a:hover{ color: $black; font-weight: bold; }
 }
 
 #pizza, #meal, #snack, #coffee, #black-tea, #ice-tea {
@@ -193,15 +278,4 @@ main {
     transform: translateY(-50%);
   }
   .p-spec.isSelected:before { @include pricetag__leading; }
-}
-
-footer {
-  padding     : 1em;
-  line-height : #{$row_height/$rem_size};
-  color       : adjust-color($black, $alpha: -0.65);
-  font-weight : 200;
-  text-transform: capitalize;
-
-  a:link { color: inherit; text-decoration: none; }
-  a:hover{ color: $black; font-weight: bold; }
 }

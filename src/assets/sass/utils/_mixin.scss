@@ -18,7 +18,14 @@
   white-space: nowrap;
 }
 
-@mixin box__shadow {
+@mixin box__shadow__rtl {
+  box-shadow:
+  -1px -1px 3px $shadow_bg,
+  1px 1px 3px $shadow_bg,
+  inset 0 0 3em rgba(0, 0, 0, 0.1)
+}
+
+@mixin box__shadow__ltr {
   box-shadow:
   1px -1px 3px $shadow_bg,
   1px 1px 3px $shadow_bg,

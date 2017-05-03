@@ -1,10 +1,4 @@
 #menu {
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, -100%);
-  width: percentage($menu_width/$layout_width);
-  z-index : 2;
-
   a {
     display: inline-block;
     width: 100%;

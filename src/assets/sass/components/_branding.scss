@@ -1,22 +1,27 @@
-@media screen and (max-width: 400px) and (orientation: portrait) {
-  .head-branding .branding-name { @include absoutly__hidden }
-}
-
-@media screen and (max-width: 640px) {
-  .head-branding .branding-slogan { @include absoutly__hidden }
+#cart.is-active ~ #topbar > .head-branding {
+  &:before {
+    @include breakpoint($small) {
+      content : "";
+      position: absolute;
+      top: 0;
+      display : block;
+      width   : 100%;
+      height  : 0.5rem;
+      background-size  : 0.5rem 0.5rem;
+      background-image : radial-gradient( 6px at top  center, white 0, grey 3px, transparent 3px);
+      background-repeat: repeat-x;
+    }
+  }
 }
 
 .head-branding {
+  @include span(1);
+  @include breakpoint($medium) { transform: translateX(-100%) };
   display: inline-block;
-  position: absolute;
-  top: 0;
-  left: 20px;
-  padding: 0.5rem 0;
   background: $primary_cl;
   width: 50px;
   text-align: center;
   color: hsl(0, 0%, 100%);
-  //font-size: 40px;
 
   a {
     display: inline-block;
@@ -39,7 +44,9 @@
   }
 
   .branding-name {
+    @include breakpoint($small $medium) { @include absoutly__hidden  }
     display: block;
     margin-top: 0.5rem;
+    height: 5em;
   }
 }

@@ -1,6 +1,9 @@
+#cart { @include box__shadow__rtl; }
 
+.head-branding,
+.cart-toggle,
+.account-toggle,
+#carousel,
 #tasty,
 #drink,
-#lazycat {
-  @include box__shadow;
-}
+#lazycat { @include box__shadow__rtl; }
