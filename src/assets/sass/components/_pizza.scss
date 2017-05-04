@@ -15,14 +15,14 @@
 #pizza.category {
   //.group { @include span(8); @include squish(2) }
 
-  @include breakpoint($small $big) {
+  @include breakpoint($small $medium) {
     .group {
       @include span(8);
       @include squish(2);
     }
   }
 
-  @include breakpoint(($big + 1px) $display) {
+  @include breakpoint($medium $display) {
     .group {
       @include span(4);
       &:nth-of-type(2n+1) { @include break; @include pre(1 wide); }
