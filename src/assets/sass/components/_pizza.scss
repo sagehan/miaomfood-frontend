@@ -1,14 +1,48 @@
-#pizza div.group {
+#pizza .group {
+  margin-top: #{(2*$row_height/16px)}em;
+  margin-bottom: #{(2*$row_height/16px)}em;
   border: 1.5px dashed $border_bg;
 
   &:after,
   &:before {
-    content: '';
     display: block;
     position: absolute;
     width: percentage((4*$column_width + 3*$gutter_width)/$group_width);
+    content: '';
+  }
+}
+
+#pizza.category {
+  //.group { @include span(8); @include squish(2) }
+
+  @include breakpoint($small $big) {
+    .group {
+      @include span(8);
+      @include squish(2);
+    }
   }
 
+  @include breakpoint(($big + 1px) $display) {
+    .group {
+      @include span(4);
+      &:nth-of-type(2n+1) { @include break; @include pre(1 wide); }
+      &:nth-of-type(2n)   { @include last; @include post(1 wide); }
+    }
+  }
+
+  @include breakpoint($display $widescreen) {
+    @include layout($poster-col4);
+    .group {
+      @include span(4);
+      &:nth-of-type(4n+1) { @include break; @include pre(1 wide); }
+      &:nth-of-type(4n+2) { @include pre(2); @include span(4); }
+      &:nth-of-type(4n+3) { @include pre(2); @include span(4); }
+      &:nth-of-type(4n)   { @include pre(2); @include span(4); }
+    }
+  }
+}
+
+#pizza .h-product{
   .spec-tag {
     position  : relative;
     margin-top: -#{((2*$row_height - 3px + $row_height/2)/12px)}em;
@@ -18,27 +52,18 @@
     display: block;
     position: relative;
     margin: 3em auto 0;
-    width: #{153px/$rem_size}em;
     height: #{153px/$rem_size}em;
-
-    .u-photo {
-      display: block;
-      width : 140px;
-      height      : auto;
-      @include absolutly__centered;
-      z-index: 700;
-      /*shape-outside: circle();*/
-    }
+    width: #{153px/$rem_size}em;
 
     &:after,
     &:before {
-      content: '';
-      display: block;
-      width  : 100%;
-      height : 100%;
       @include absolutly__centered;
+      display: block;
       background-color: white;
       border-radius: 100%;
+      height : 100%;
+      width  : 100%;
+      content: '';
     }
     &:after {
       width: 140px;
@@ -46,17 +71,25 @@
       box-shadow: 1px 1px 1px 1px adjust-color($shadow_bg, $alpha: -0.5);
     }
     &:before { box-shadow: 1px 2px 1px 1px adjust-color($shadow_bg, $alpha: -0.5); }
+
+    .u-photo {
+      @include absolutly__centered;
+      display: block;
+      z-index: 700;
+      height : auto;
+      width  : 140px;
+      /*shape-outside: circle();*/
+    }
   }
 }
 
-#pizza div.twins {
+#pizza .twins.group {
   display   : flex;
   flex-wrap : nowrap;
   justify-content: space-between;
-  margin: #{(4*$row_height/16px)}em auto;
 
   .h-product {
-    width: 49%;
+    width: 50%;
 
     &:nth-child(odd) {
       .p-name { transform: translateX(-100%); }
@@ -89,13 +122,13 @@
     }
   }
 
-  &:nth-of-type(1) article.h-product:nth-child(1),
-  &:nth-of-type(2) article.h-product:nth-child(2),
-  &:nth-of-type(3) article.h-product:nth-child(1),
-  &:nth-of-type(4) article.h-product:nth-child(2), {
+  &:nth-of-type(1) .h-product:nth-child(1),
+  &:nth-of-type(2) .h-product:nth-child(2),
+  &:nth-of-type(3) .h-product:nth-child(1),
+  &:nth-of-type(4) .h-product:nth-child(2), {
+    position    :relative;
     -webkit-margin-before: #{(3*$row_height/16px)}em;
     margin-top  : #{(4*$row_height/16px)}em;
-    position    :relative;
     bottom      : -#{(1*$row_height/16px)}em;
   }
 
@@ -115,14 +148,14 @@
       background-color:  $tasty_bg;
     }
 
-    article.h-product:after {
+    .h-product:after {
       content: '';
       display: block;
       position: absolute;
       bottom: 0;
       left: 100%;
-      width: 2*($column_width+$gutter_width);
       height: #{2*$row_height/$rem_size}em;
+      width: 2*($column_width+$gutter_width);
     }
   }
 
@@ -142,7 +175,7 @@
       background-color:  $tasty_bg;
     }
 
-    article.h-product:after {
+    .h-product:after {
       content: '';
       display: block;
       position: absolute;
@@ -156,11 +189,11 @@
   &:nth-of-type(1) {
     &:before { background: url('~assets/imgs/bacon.png') left top/contain no-repeat content-box;}
 
-    article.h-product:nth-child(1):after {
+    .h-product:nth-child(1):after {
       transform: scale(1.15, 1.15);
       background: url('~assets/imgs/yuangu.png') left top/contain no-repeat content-box;
     }
-    article.h-product:nth-child(2):after {
+    .h-product:nth-child(2):after {
       transform: translate(-50%, -50%) scale(1.5, 1.5);
       background: url(~assets/imgs/pineapple.png) left top/contain no-repeat content-box;
     }
@@ -169,83 +202,83 @@
   &:nth-of-type(2) {
     &:before { background: url(~assets/imgs/beef.png) right top/contain no-repeat content-box; }
 
-    article.h-product:nth-child(1):after {
+    .h-product:nth-child(1):after {
       transform: translate(-50%, 0) scale(1.15, 1.15);
-            //background: url(~assets/imgs/) left top/contain no-repeat content-box;
-          }
-          article.h-product:nth-child(2):after {
-            transform: translate(-100%,50%) scale(1.5, 1.5);
-            background: url(~assets/imgs/pepper.png) left top/contain no-repeat content-box;
-          }
-        }
+      //background: url(~assets/imgs/) left top/contain no-repeat content-box;
+    }
+    .h-product:nth-child(2):after {
+      transform: translate(-100%,50%) scale(1.5, 1.5);
+      background: url(~assets/imgs/pepper.png) left top/contain no-repeat content-box;
+    }
+  }
 
-        &:nth-of-type(3) {
-          &:before { background: url(~assets/imgs/chicken.png) left top/contain no-repeat content-box; }
+  &:nth-of-type(3) {
+    &:before { background: url(~assets/imgs/chicken.png) left top/contain no-repeat content-box; }
 
-          article.h-product:nth-child(1):after {
-            transform: scale(1.15, 1.15);
-            background: url(~assets/imgs/pepper.png) left top/contain no-repeat content-box;
-          }
-          article.h-product:nth-child(2):after {
-            transform: translate(-50%,-50%) scale(1.5, 1.5);
-            background: url(~assets/imgs/yuangu.png) left top/contain no-repeat content-box;
-          }
-        }
+    .h-product:nth-child(1):after {
+      transform: scale(1.15, 1.15);
+      background: url(~assets/imgs/pepper.png) left top/contain no-repeat content-box;
+    }
+    .h-product:nth-child(2):after {
+      transform: translate(-50%,-50%) scale(1.5, 1.5);
+      background: url(~assets/imgs/yuangu.png) left top/contain no-repeat content-box;
+    }
+  }
 
-        &:nth-of-type(4) {
-        //&:before { background: url(~assets/imgs/chicken.png) right top/contain no-repeat content-box; }
+  &:nth-of-type(4) {
+    //&:before { background: url(~assets/imgs/chicken.png) right top/contain no-repeat content-box; }
 
-        article.h-product:nth-child(1):after {
-          transform: translate(-50%, -25%) scale(1.15, 1.15);
-          background: url(~assets/imgs/huanggua.png) left top/contain no-repeat content-box;
-        }
-        article.h-product:nth-child(2):after {
-          transform: translate(-100%, 50%) scale(1.5, 1.5);
-          background: url(~assets/imgs/xia.png) left top/contain no-repeat content-box;
-        }
+    article.h-product:nth-child(1):after {
+      transform: translate(-50%, -25%) scale(1.15, 1.15);
+      background: url(~assets/imgs/huanggua.png) left top/contain no-repeat content-box;
+    }
+    article.h-product:nth-child(2):after {
+      transform: translate(-100%, 50%) scale(1.5, 1.5);
+      background: url(~assets/imgs/xia.png) left top/contain no-repeat content-box;
+    }
+  }
+}
+
+#pizza .orphan.group {
+  .h-product {
+    position: relative;
+    padding : 1em 0 3em;
+    //height    : #{8*$row_height/$rem_size}em;
+  }
+
+  &:nth-of-type(even) .h-product {
+    .p-name { transform: translateX(-100%); }
+    .p-spec.isSelected:after { @include pricetag__trailing; }
+
+    figure {
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin-right: -3em;
+
+      .e-description {
+        right: 0;
+        margin-right: 1em;
+        transform: translateX(-#{$column_width + 2*$gutter_width}) rotate(-15deg);
       }
     }
+  }
 
-    #pizza div.orphan {
-      article.h-product {
-        position: relative;
-        padding : 1em 0 3em;
-        //height    : #{8*$row_height/$rem_size}em;
-      }
+  &:nth-of-type(odd) .h-product {
+    .p-name { position: relative; right: -100%; }
+    .spec-tag { right: -100%; transform: translateX(-100%); }
+    .p-spec.isSelected:before { @include pricetag__leading; }
 
-      &:nth-of-type(even) article.h-product {
-        .p-name { transform: translateX(-100%); }
-        .p-spec.isSelected:after { @include pricetag__trailing; }
+    figure {
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin-left: -3em;
 
-        figure {
-          position: absolute;
-          top: 0;
-          right: 0;
-          margin-right: -3em;
-
-          .e-description {
-            right: 0;
-            margin-right: 1em;
-            transform: translateX(-#{$column_width + 2*$gutter_width}) rotate(-15deg);
-          }
-        }
-      }
-
-      &:nth-of-type(odd) article.h-product {
-        .p-name { position: relative; right: -100%; }
-        .spec-tag { right: -100%; transform: translateX(-100%); }
-        .p-spec.isSelected:before { @include pricetag__leading; }
-
-        figure {
-          position: absolute;
-          top: 0;
-          left: 0;
-          margin-left: -3em;
-
-          .e-description {
-            margin-left: 1em;
-            transform: translateX(#{$column_width + 2*$gutter_width}) rotate(15deg);
-          }
-        }
+      .e-description {
+        margin-left: 1em;
+        transform: translateX(#{$column_width + 2*$gutter_width}) rotate(15deg);
       }
     }
+  }
+}

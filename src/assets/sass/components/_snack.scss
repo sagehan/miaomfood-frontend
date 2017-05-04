@@ -1,0 +1,41 @@
+#snack  .group {
+  margin: #{($row_height/16px)}em auto;
+  min-height: #{7*$row_height/$rem_size}em;
+}
+
+#snack .h-product {
+  .p-name, .spec-tag, .u-photo { position: absolute; }
+  .p-name { left: 50%; transform: translateX(-50%); }
+
+  .u-photo {
+    left: calc(50% + #{24px/$rem_size}em + 1em);
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50%;
+    height: auto;
+  }
+
+  .spec-tag {
+    right: calc(50% + #{24px/2/12px}em + #{($row_height/4/12px)}em + 1px);
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .p-spec.isSelected:before { @include pricetag__leading; }
+}
+
+#snack.category {
+  @include layout($poster-col2)
+
+  .group {
+    @include span(8 of 12);
+    @include squish(2);
+  }
+
+  @include breakpoint($medium) {
+    .group {
+      @include span(4);
+      &:nth-of-type(2n+1) { @include break; @include pre(1 wide); }
+      &:nth-of-type(2n)   { @include last; @include post(1 wide); }
+    }
+  }
+}

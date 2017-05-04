@@ -1,8 +1,6 @@
 body {
   background-color: $page-bg;
   font-family: Helvetica, sans-serif;
-
-  transition: all .32s ease;
 }
 
 @font-face {
@@ -18,15 +16,15 @@ body {
 
 @font-face {
   font-family: 'icomiaomfood';
-  src: url(~assets/fonts/icomiaomfood.woff);
+  src: url('~assets/fonts/icomiaomfood.woff');
 }
 
 * {
+  box-sizing           : border-box;
   -webkit-margin-before: 0;
   -webkit-margin-after : 0;
   -webkit-margin-start : 0;
   -webkit-margin-end   : 0;
-  box-sizing           : border-box ;
 }
 
 button,
@@ -44,5 +42,3 @@ ol, {
 ol,ul { list-style-type: none; margin:0; padding: 0; }
 
 h1 { margin: 0; }
-
-.u-hidden { @include absoutly__hidden; }

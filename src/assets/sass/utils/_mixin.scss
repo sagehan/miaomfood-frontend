@@ -42,6 +42,38 @@
   rgba(255,255,255,0.1) 1px 1px;
 }
 
+@mixin halfround__L {
+  border-right-style: none;
+  border-top-left-radius: 50%;
+  border-bottom-left-radius: 50%;
+}
+
+@mixin halfround__R {
+  border-left-style: none;
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+}
+
+@mixin halfround__TL {
+  @include halfround__L;
+  border-bottom-style: none;
+}
+
+@mixin halfround__BL {
+  @include halfround__L;
+  border-top-style: none;
+}
+
+@mixin halfround__TR {
+  @include halfround__R;
+  border-bottom-style: none;
+}
+
+@mixin halfround__BR {
+  @include halfround__R;
+  border-top-style: none;
+}
+
 @mixin bubble__gradient {}
 
 @mixin pricetag {

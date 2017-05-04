@@ -5,11 +5,15 @@
 @import 'utils/variables';
 @import 'utils/mixin';
 
+@import 'themes/default';
+
 @import 'base';
 
 @import 'layout';
 
 @import 'components/pizza';
+@import 'components/meal';
+@import 'components/snack';
 @import 'components/branding';
 @import 'components/toggles';
 @import 'components/dropdown-menu';
@@ -19,8 +23,7 @@
 @import 'components/cart';
 @import 'components/cart-items';
 
-//@import 'pages/_tasty';
-@import 'pages/_drink';
-@import 'pages/_lazy-cat';
-
-@import 'themes/default';
+@import 'pages/pages';
+@import 'pages/tasty';
+@import 'pages/drink';
+@import 'pages/lazy-cat';
