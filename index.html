@@ -718,8 +718,8 @@
         <sapn class="drawer__hd">好喝</sapn>
         <ul class="drawer__bd">
           <li class="drawer__item"><a href="#coffee">咖啡</a></li>
-          <li class="drawer__item"><a href="#black-tea">红茶</a></li>
-          <li class="drawer__item"><a href="#ice-tea">气泡水</a></li>
+          <li class="drawer__item"><a href="#tea">红茶</a></li>
+          <li class="drawer__item"><a href="#water">气泡水</a></li>
         </ul>
       </li>
       <li class="drawer fun">
@@ -1088,37 +1088,7 @@
         </div>
       </section>
 
-      <section id="ice-tea" class="category">
-        <h1 class="category__title">气泡水</h1>
-
-        <div class="group">
-          <article class="h-product" data-cid="LZHLHSH">
-            <h2 @click="showModal" class="p-name">荔枝芦荟</h2>
-            <ul class="spec-tag">
-              <li class="p-spec"><span><b class="spec-price">¥18</b>/气泡水</span>
-              </li>
-            </ul>
-          </article>
-
-          <article class="h-product" data-cid="QNQPSH">
-            <h2 @click="showModal" class="p-name">青柠气泡水</h2>
-            <ul class="spec-tag">
-              <li class="p-spec"><span><b class="spec-price">¥18</b>/气泡水</span>
-              </li>
-            </ul>
-          </article>
-
-          <article class="h-product isSelected" data-cid="QXMGSH">
-            <h2 @click="showModal" class="p-name">清香玫瑰</h2>
-            <ul class="spec-tag">
-              <li class="p-spec"><span><b class="spec-price">¥18</b>/气泡水</span>
-              </li>
-            </ul>
-          </article>
-        </div>
-      </section>
-
-      <section id="black-tea" class="category">
+      <section id="tea" class="category">
         <h1 class="category__title">红茶</h1>
 
         <div class="group">
@@ -1172,6 +1142,36 @@
         </div>
       </section>
 
+<section id="water" class="category">
+        <h1 class="category__title">气泡水</h1>
+
+        <div class="group">
+          <article class="h-product" data-cid="LZHLHSH">
+            <h2 @click="showModal" class="p-name">荔枝芦荟</h2>
+            <ul class="spec-tag">
+              <li class="p-spec"><span><b class="spec-price">¥18</b>/气泡水</span>
+              </li>
+            </ul>
+          </article>
+
+          <article class="h-product" data-cid="QNQPSH">
+            <h2 @click="showModal" class="p-name">青柠气泡水</h2>
+            <ul class="spec-tag">
+              <li class="p-spec"><span><b class="spec-price">¥18</b>/气泡水</span>
+              </li>
+            </ul>
+          </article>
+
+          <article class="h-product isSelected" data-cid="QXMGSH">
+            <h2 @click="showModal" class="p-name">清香玫瑰</h2>
+            <ul class="spec-tag">
+              <li class="p-spec"><span><b class="spec-price">¥18</b>/气泡水</span>
+              </li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
     </section>
 
     <section id="lazycat" class="category lazycat page">
@@ -1189,9 +1189,8 @@
       </small>
     </p>
     <p class="copyright">
-      <small>Copyright 2017 &copy; 乌鲁木齐市喵姆餐厅（<b>miaomfood.com</b>）版权所有</small>
+      <small>Copyright 2017 &copy; <b>miaomfood.com</b> 乌鲁木齐市喵姆餐厅版权所有</small>
     </p>
-    <a href="http://json-ld.org/" title="JSON-LD Data"><img style="border:0px;" width="24" src="http://json-ld.org/images/json-ld-data-24.png" alt="JSON-LD-logo-24"/></a>
   </footer>
 </body>
 </html>

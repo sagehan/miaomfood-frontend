@@ -1,17 +1,3 @@
-#pizza .group {
-  margin-top: #{(2*$row_height/16px)}em;
-  margin-bottom: #{(2*$row_height/16px)}em;
-  border: 1.5px dashed $border_bg;
-
-  &:after,
-  &:before {
-    display: block;
-    position: absolute;
-    width: percentage((4*$column_width + 3*$gutter_width)/$group_width);
-    content: '';
-  }
-}
-
 #pizza.category {
   //.group { @include span(8); @include squish(2) }
 
@@ -39,6 +25,20 @@
       &:nth-of-type(4n+3) { @include pre(2); @include span(4); }
       &:nth-of-type(4n)   { @include pre(2); @include span(4); }
     }
+  }
+}
+
+#pizza .group {
+  margin-top: #{(2*$row_height/16px)}em;
+  margin-bottom: #{(2*$row_height/16px)}em;
+  border: 1.5px dashed $border_bg;
+
+  &:after,
+  &:before {
+    display: block;
+    position: absolute;
+    width: percentage((4*$column_width + 3*$gutter_width)/$group_width);
+    content: '';
   }
 }
 

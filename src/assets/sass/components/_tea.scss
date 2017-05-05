@@ -1,0 +1,36 @@
+#tea .group {
+  background-image:
+  repeating-linear-gradient(30deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 2*$grid_size),
+  repeating-linear-gradient(-30deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 2*$grid_size),
+  linear-gradient(-30deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1)),
+  linear-gradient(30deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1));
+  background-size: #{($grid_size/$rem_size)}em #{(2*$grid_size/$rem_size)}em;
+  background-position : -#{($grid_size/$rem_size)}em -#{($grid_size/$rem_size)}em;
+}
+
+#tea .h-product {
+  width: #{$grid_size/$rem_size}em;
+  margin-left: #{($grid_size/$rem_size)}em;
+
+  .p-name {
+    @include text__shadow;
+    min-height: #{4.5*$grid_size/$rem_size}em;
+  }
+
+  .spec-tag { padding: 0; width: $grid_size; }
+
+  .spec-price, .qty {position:relative; display: block}
+
+  .qty:before,
+  .spec-price:before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    color: $tag-border_color;
+    outline   : 1px dashed $tag-border_color;
+    transform : rotateZ(45deg) skew(-5deg, -5deg);
+  }
+  .p-spec.isSelected { .spec-price:before, .qty:before { outline-style: solid; } }
+}

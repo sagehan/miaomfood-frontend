@@ -11,9 +11,17 @@
 
 @import 'layout';
 
+@import 'pages/pages';
+@import 'pages/tasty';
+@import 'pages/drink';
+//@import 'pages/lazy-cat';
+
 @import 'components/pizza';
 @import 'components/meal';
 @import 'components/snack';
+@import 'components/coffee';
+@import 'components/water';
+@import 'components/tea';
 @import 'components/branding';
 @import 'components/toggles';
 @import 'components/dropdown-menu';
@@ -22,8 +30,3 @@
 @import 'components/addition-panel';
 @import 'components/cart';
 @import 'components/cart-items';
-
-@import 'pages/pages';
-@import 'pages/tasty';
-@import 'pages/drink';
-@import 'pages/lazy-cat';

@@ -1,16 +1,3 @@
-#meal .group {
-  margin-top: #{(2*$row_height/16px)}em;
-  margin-bottom: #{(2*$row_height/16px)}em;
-}
-
-#meal .h-product {
-  border: 1.5px dashed $border_bg;
-
-  .p-name, .spec-tag, figure, { position: absolute; }
-  figure { width: 60% ; margin: 0; }
-  .u-photo { width: 100%; height: auto;}
-}
-
 #meal.category {
   @include layout($poster-col2)
 
@@ -19,7 +6,7 @@
     @include squish(2);
   }
 
-  @include breakpoint($medium) {
+  @include breakpoint($medium $bigger) {
     .group {
       @include span(4);
       &:nth-of-type(2n+1) { @include last; @include post(1 wide); }
@@ -31,6 +18,28 @@
       }
     }
   }
+
+  @include breakpoint($bigger) {
+    .group {
+      @include squish(1);
+      &:nth-of-type(3n+1) {  @include span(3); @include pre(0.5) }
+      &:nth-of-type(3n+2) { @include span(2.5);  }
+      &:nth-of-type(3n)   { @include span(2.5);  }
+    }
+  }
+}
+
+#meal .group {
+  margin-top: #{(2*$row_height/16px)}em;
+  margin-bottom: #{(2*$row_height/16px)}em;
+}
+
+#meal .h-product {
+  border: 1.5px dashed $border_bg;
+
+  .p-name, .spec-tag, figure, { position: absolute; }
+  figure { width: 60% ; margin: 0; }
+  .u-photo { width: 100%; height: auto;}
 }
 
 #meal .orphan.group {
@@ -45,7 +54,7 @@
       position: absolute;
       top: 50%;
       left: calc(50% + #{24px/$rem_size}em + 1em);
-      transform: translate(50%  ,50%);
+      transform: translateX(50%);
       width: 75%;
     }
 

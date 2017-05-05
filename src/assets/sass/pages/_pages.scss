@@ -1,8 +1,9 @@
 .page {
+  @include layout($poster-col2);
   @include container;
   position: relative;
   margin: #{(2*$row_height/16px)}em auto;
-
+/*
   &:before {
     content: '▾';
     display: block;
@@ -11,27 +12,27 @@
     font-size: 2em;
     line-height: 0.25;
     text-align: center;
-    flex-basis: 100%; // special for media queries
   }
+
   &:after {
     content: '';
     position: absolute;
+    bottom: 0.75em;
+    right: 0.25em;
+    z-index: -1;
+    background: $page_bg;
     width: 40%;
     height: 1em;
-    right: 0.25em;
-    bottom: 0.75em;
-    background: $page_bg;
     box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.3);
     transform: skew(5deg) rotate(5deg);
-    z-index: -1;
   }
+*/
 }
 
 .category {
   @include layout($poster-col2);
   @include container;
-  margin-top: span(1);
-  padding-bottom: gutters();
+  padding-bottom: gutters(12);
 }
 
 .category__title {
@@ -40,5 +41,10 @@
   text-align: center;
   vertical-align: middle;
   font: #{24px/$rem_size}em/#{(42px/24px)} 'HanziPen SC';
-  cursor    : pointer;
+}
+
+.illustration {
+  width: span(10);
+  margin: auto;
+  text-align: center;
 }

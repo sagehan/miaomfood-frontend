@@ -1,0 +1,106 @@
+#water .h-product {
+  position: relative;
+  max-width: 25%;
+  margin-left: 0;
+  padding-top: #{48px/$rem_size}em;
+  padding-bottom: #{$grid_size/$rem_size}em;
+
+  &:nth-of-type(1):before { content: '荔'}
+  &:nth-of-type(1) .p-name:before { content: '枝'; }
+  &:nth-of-type(1) .p-name:after { content: '芦'; }
+  &:nth-of-type(1):after { content: '荟'}
+
+  &:nth-of-type(2):before { content: '青'}
+  &:nth-of-type(2) .p-name:before { content: '柠'; }
+  &:nth-of-type(2) .p-name:after { content: '气'; }
+  &:nth-of-type(2):after { content: '水'}
+
+  &:nth-of-type(3):before { content: '清'}
+  &:nth-of-type(3) .p-name:before { content: '香'; }
+  &:nth-of-type(3) .p-name:after { content: '玫'; }
+  &:nth-of-type(3):after { content: '瑰'; }
+
+  &:after,
+  &:before,
+  .p-name:after,
+  .p-name:before {
+    @include text__shadow;
+    display : block;
+    position: absolute;
+    left: 50%;
+    //transform: translateX(-50%);
+    border  : 1px dashed $border_bg;
+    border-radius: 100%;
+    font-family: 'HanziPen SC';
+    color   : initial;
+    //@include bubble__gradient;
+  }
+
+  &:before {
+    top:0;
+    width : #{$row_height/$rem_size}em;
+    height: #{$row_height/$rem_size}em;
+    transform: translateX(-50%);
+    font  : #{18px/$rem_size}em/#{($row_height/18px)} 'HanziPen SC';
+    text-align: center;
+  }
+  &:after {
+    top:  #{(48px + 1.5*$grid_size + 1.5*$grid_size + 0.5*$grid_size)/18px}em;
+    width : #{1.8*$grid_size/$rem_size}em;
+    height: #{1.8*$grid_size/$rem_size}em;
+    line-height: #{1.2*$grid_size/$rem_size}em;
+    font  : #{18px/$rem_size}em/#{($row_height/18px)} 'HanziPen SC';
+    text-align: center;
+  }
+
+  &.isSelected {
+    &:after,
+    &:before,
+    .p-name:after,
+    .p-name:before { border-style: solid; }
+  }
+
+  .p-name {
+    position    : relative;
+    width       : 1em;
+    height      : #{(1.5*$grid_size + 1.5*$grid_size + 0.5*$grid_size + 0.5*$grid_size + 1.8*$grid_size)/18px}em;
+    margin      : 0 auto;
+    color       : transparent;
+
+    &:before {
+      width : #{$grid_size/18px}em;
+      height: #{$grid_size/18px}em;
+      line-height: #{$grid_size/18px}em;
+      transform: translateX(-50%);
+      text-align: center;
+    }
+
+    &:after {
+      top:    #{1.5*$grid_size/18px}em;
+      width : #{1.5*$grid_size/18px}em;
+      height: #{1.5*$grid_size/18px}em;
+      line-height: #{1.2*$grid_size/18px}em;
+    }
+  }
+
+  .p-spec {
+    display: block;
+    position: relative;
+    width : #{2*$grid_size/12px}em;
+    height: #{2*$grid_size/12px}em;
+    line-height: #{2*$grid_size/12px}em;
+    margin-bottom: 0.5em;
+    border: 1px dashed $tag-border_color;
+    border-radius: 100%;
+  }
+  .p-spec.isSelected { border-style: solid; }
+
+  .spec-price, .qty { display: inline-block; }
+  .qty {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    line-height: 3;
+    transform: translateX(-50%);
+  }
+}

@@ -1,3 +1,32 @@
+#snack.category {
+  @include layout($poster-col2)
+
+  .group {
+    @include span(8 of 12);
+    @include squish(2);
+  }
+
+  @include breakpoint($medium $bigger) {
+    .group {
+      @include span(4);
+      &:nth-of-type(2n+1) { @include break; @include pre(1 wide); }
+      &:nth-of-type(2n)   { @include last; @include post(1 wide); }
+    }
+  }
+
+  @include breakpoint($bigger) {
+    .group {
+      @include span(3);
+      &:nth-of-type(3n+1) { @include break; }
+      &:nth-of-type(3n+2) { @include squish(0.5); }
+      //&:nth-of-type(3n) { @include last; }
+      &:nth-of-type(2n)   { @include nobreak; }
+      &:nth-of-type(2n+1) { @include nobreak; @include pre(0.5); }
+      &:nth-of-type(2n+2) { @include nobreak; @include pre(0.5); }
+    }
+  }
+}
+
 #snack  .group {
   margin: #{($row_height/16px)}em auto;
   min-height: #{7*$row_height/$rem_size}em;
@@ -21,21 +50,4 @@
     transform: translateY(-50%);
   }
   .p-spec.isSelected:before { @include pricetag__leading; }
-}
-
-#snack.category {
-  @include layout($poster-col2)
-
-  .group {
-    @include span(8 of 12);
-    @include squish(2);
-  }
-
-  @include breakpoint($medium) {
-    .group {
-      @include span(4);
-      &:nth-of-type(2n+1) { @include break; @include pre(1 wide); }
-      &:nth-of-type(2n)   { @include last; @include post(1 wide); }
-    }
-  }
 }

@@ -32,13 +32,13 @@ $susy: (
       & ~ #menu,
       & ~ #poster,
       & ~ footer {
-        width: span(6 of 12);
+        @include span(6 of 12);
       }
 
       & ~ #topbar .branding-name { @include absoutly__hidden }
     }
 
-    @include breakpoint($medium $big) {
+    @include breakpoint($medium $bigger) {
       //margin-right: ( 1/2 * gutters() );
       width: span(6);
 
@@ -47,13 +47,12 @@ $susy: (
       & ~ #menu,
       & ~ #poster,
       & ~ footer {
-        width: span(6 of 12);
+        @include span(6 of 12);
       }
 
       & ~ #poster #pizza .group {
         @include span(4 of 6);
-        &:nth-of-type(2n+1) { @include squish(2); }
-        &:nth-of-type(2n)   { @include break; @include squish(2); }
+        @include squish(2);
       }
 
       & ~ #poster #meal .group {
@@ -65,6 +64,66 @@ $susy: (
         @include span(4 of 6);
         @include squish(2);
       } 
+    }
+
+    @include breakpoint($big $bigger) {
+      & ~ #poster #drink .category { @include full; }
+    }
+
+    @include breakpoint($bigger) {
+      width: span(4);
+
+      & ~ #topbar,
+      & ~ #carousel,
+      & ~ #menu,
+      & ~ #poster,
+      & ~ footer {
+        @include span(8 of 12);
+      }
+    }
+
+    @include breakpoint($bigger $display) {
+      & ~ #poster #drink .category { @include full; }
+    }
+
+    @include breakpoint($bigger $widescreen) {
+      & ~ #poster #meal .group {
+        @include span(4);
+        &:nth-of-type(2n+1) { @include last; @include post(1 wide); }
+        &:nth-of-type(2n)   { @include break; @include pre(1 wide); }
+
+        &.orphan:first-of-type {
+          @include span(8 of 12);
+          @include squish(2);
+        }
+      }
+
+      & ~ #poster #snack .group {
+        @include span(4);
+        &:nth-of-type(2n+1) { @include break; @include pre(1 wide); }
+        &:nth-of-type(2n)   { @include last; @include post(1 wide); }
+      }
+
+      & ~ #poster #drink .category {
+        .category {
+          @include span(5);
+          @include squish(0.5);
+
+          &:nth-of-type(3) { @include break; }
+        }
+      }
+    }
+
+    @include breakpoint($widescreen) {
+      width: span(3);
+
+      & ~ #topbar,
+      & ~ #carousel,
+      & ~ #menu,
+      & ~ #poster,
+      & ~ footer {
+        @include span(9 of 12);
+      }
     }
   }
 }
@@ -95,7 +154,7 @@ $susy: (
 }
 
 #poster {
-  //@include container;
+  @include container;
   transition: all .3s ease;
 }
 
