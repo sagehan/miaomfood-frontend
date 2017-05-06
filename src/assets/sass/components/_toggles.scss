@@ -2,12 +2,11 @@
   @include span(2 wider last);
   display: inline-table;
   padding:  20px;
-  //text-align: right;
 
   a {
     display: table-cell;
     width: span(1 wide);
-    color: white;
+    color: $primary_cl;
     text-align: center;
     text-decoration: none;
 
@@ -20,12 +19,10 @@
 
 .cart-toggle,
 .account-toggle {
-  vertical-align: middle;
-  border : 1px solid $primary_cl;
-  border-radius: 100%;
+  //border : 1px solid $primary_cl;
+  //border-radius: 100%;
   width: #{2*18px/$rem_size}em;
   height: #{2*18px/$rem_size}em;
-  text-align: center;
 
   &:before {
     font: #{18px/$rem_size}em 'icomiaomfood';

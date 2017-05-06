@@ -1,4 +1,5 @@
-#cart {
+.cart {
+  @include layout($poster-col2)
   @include container; 
   background-color: white;
   overflow: scroll;
@@ -14,72 +15,101 @@
     background-image : radial-gradient( 6px at top  center, $shadow_bg 0, grey 3px, transparent 3px);
     background-repeat: repeat-x;
   }
+
+  &__hd {
+    margin  : #{$row_height/$rem_size}em auto;
+    text-align: center;
+
+    h1 { font: #{24px/$rem_size}em/#{(42px/24px)} "HanziPen SC";}
+  }
+
+  &__bd {
+    margin: auto gutters();
+    width: span(11);
+  }
 }
 
-.cart__hd {
-  margin  : #{$row_height/$rem_size}em 1rem;
-  text-align: center;
+.line-item {
+  width: 100%;
+  font-size   : #{$small_size/$rem_size}em;
 
-  h1 { font: #{24px/$rem_size}em/#{(42px/24px)} "HanziPen SC";}
+  .charge-info & { text-align: right; }
+
+  .charge-info & .money {
+    display: inline-block;
+    width: 3em;
+  }
 }
 
-.customer, .payment { margin: 1em; min-width: 20em; }
+.step-wrap {
+  @include span(12);
+  margin: 1em auto;
+}
 
-.required {
+.step__hd { text-align: center; margin: 1em auto; }
+
+.form-input {
+  position: relative;
+  margin-bottom: 20px;
+  border-bottom: 1px solid $border_bg;
+  background: $cart_bg;
+
+  &__hd {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transform-origin: 0 50%;
+    transition: font-size 0.1s, transform 0.1s;
+    white-space: nowrap;
+    color: $border_bg;
+  }
+
+  &__bd { padding: 0 0 0 4em; }
+}
+
+.asterisk {
   font-weight : 800;
   color       : $primary_cl;
   margin-left : 0.25em;
 }
 
-fieldset { border-width: 0; padding: 0; }
-legend { text-align: center; margin: 1em auto; }
-
-input, textarea, select, button {
-  font-family : "HanziPen SC";
-  outline     : none;
-  border-width: 0;
-  background-color: transparent;
+.submit-button {
+  display: block;
+  margin : #{1*$row_height/$rem_size}em auto;
+  padding: 1em;
+  text-align: center;
 }
 
-input.comment-input,
-input.coupon-input { width: 8em; border-width: 0; overflow: hidden;}
 input[name="is--reserved"] { @include absoutly__hidden; }
-input:not(:checked) + label + .reservation-option { @include absoutly__hidden; }
+input:not(:checked) + label + .reservation-options { visibility: hidden; }
 
-fieldset.customer li input,
-fieldset.customer li select,
-fieldset.customer li textarea {
-  width: calc(100% - 4em);
-  border-bottom: 1px dashed $border_bg;
-}
-fieldset.customer li textarea {
-  padding-top: 1em;
-  line-height: #{$row_height/$rem_size}em;
-  resize: none;
-}
+.reservation {
+  label { cursor: pointer; }
 
-fieldset.reservation {
-  margin: 1em 0;
-
-  label { position: relative; }
-  input:checked + label:after { visibility: visible;}
-  label:after {
+  label:before {
     content: "✓";
     position: absolute;
-    left: 0;
+    right: 0;
     color: $primary_cl;
     font-family: "Lucida Grande";
     visibility: hidden;
-    transition: visibility .2s ease;
+    transition: visibility .3s ease;
   }
-  label:before {
+
+  label:after {
     content: "☐";
     font-family: "Lucida Grande";
-    margin-right: 0.5em;
+    margin-left: 0.5em;
   }
 
+  input:checked + label:before { visibility: visible; }
+}
 
-  div.reservation-option { display: inline-block; }
+.reservation-options {
+  display: inline-block;
+  transition: visibility .3s ease;
+
+  .option__delayday, .option__time { width: initial; }
 }
 
 fieldset.payment ol {
@@ -107,10 +137,4 @@ fieldset.payment ol {
     cursor: pointer;
     transition: all .2s ease;
   }
-}
-
-button[name="place-order-button"] {
-  display: block;
-  margin : #{1.5*$row_height/$rem_size}em auto;
-  text-align: center;
 }

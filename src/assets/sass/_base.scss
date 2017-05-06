@@ -27,16 +27,6 @@ body {
   -webkit-margin-end   : 0;
 }
 
-button,
-input,
-optgroup,
-select,
-textarea,
-ul,
-ol, {
-  padding: 0;
-}
-
 ::selection { color: white; background: $primary_cl; }
 
 ol,ul { list-style-type: none; margin:0; padding: 0; }
@@ -44,3 +34,21 @@ ol,ul { list-style-type: none; margin:0; padding: 0; }
 h1 { margin: 0; }
 
 img { max-width: 100%; }
+
+fieldset { margin: 0; border-width: 0; padding: 0; }
+
+input,textarea, select, option {
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  width: 100%;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 16px;
+  background : none;
+  background-color: hsla(0, 0%, 0%, 0);
+  cursor: pointer;
+  -webkit-appearance : none;
+  -moz-appearance : none;
+}
