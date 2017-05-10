@@ -667,6 +667,9 @@
     }
   ]
 }</script>
+<!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+<![endif]-->
 </head>
 <body class="wrap">
   <div id="account-panel">
@@ -722,12 +725,12 @@
           <li class="drawer__item"><a href="#water">气泡水</a></li>
         </ul>
       </li>
-      <li class="drawer fun">
+      <li class="drawer activity">
         <sapn class="drawer__hd">好玩</sapn>
         <ul class="drawer__bd">
-          <li class="drawer__item"><a href="#">联谊策划</a></li>
-          <li class="drawer__item"><a href="#">披萨制作体验</a></li>
-          <li class="drawer__item"><a href="#">烘焙教学</a></li>
+          <li class="drawer__item"><a href="#fellowship">联谊策划</a></li>
+          <li class="drawer__item"><a href="#diy">披萨制作体验</a></li>
+          <li class="drawer__item"><a href="#teaching">烘焙教学</a></li>
         </ul>
       </li>
       <li class="drawer lazycat">
@@ -736,456 +739,551 @@
     </ul>
   </nav>
 
-  <main id="poster">
-    <section id="tasty" class="tasty page">
-      <section id="pizza" class="category">
-        <h1 class="category__title">披萨</h1>
+  <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true" >
+    <div class="pswp__bg"></div>
 
-        <div class="twins group">
-          <article class="h-product" data-cid="JQPG">
-            <h2 class="p-name">激情培根</h2>
-            <ul class="spec-tag">
-              <li class="p-spec"><span><b class="spec-price">¥39</b>/八寸</span></li>
-              <li class="p-spec"><span><b class="spec-price">¥59</b>/八寸</span></li>
-            </ul>
-            <figure @click="showModal">
-              <img class="u-photo" src="./static/imgs/pizza.png" alt="图片：激情培根披萨" />
-              <figcaption class="e-description">
-                <p>特色：双层培根，圆菇</p>
-              </figcaption>
-            </figure>
-          </article>
-          <article class="h-product" data-cid="FQXWY">
-            <h2 class="p-name">风情夏威夷</h2>
-            <ul class="spec-tag">
-              <li class="p-spec"><span><b class="spec-price">¥39</b>/八寸</span></li>
-              <li class="p-spec"><span><b class="spec-price">¥59</b>/十寸</span></li>
-            </ul>
-            <figure @click="showModal">
-              <img class="u-photo" src="./static/imgs/pizza.png" alt="图片：风情夏威夷披萨" />
-              <figcaption class="e-description">
-                <p>特色：培根，菠萝</p>
-              </figcaption>
-            </figure>
-          </article>
-        </div>
-
-        <div class="twins group">
-          <article class="h-product" data-cid="NNMM">
-            <h2 class="p-name">内牛满面</h2>
-            <ul class="spec-tag">
-              <li class="p-spec"><span><b class="spec-price">¥46</b>/八寸</span></li>
-              <li class="p-spec"><span><b class="spec-price">¥69</b>/十寸</span></li>
-            </ul>
-            <figure @click="showModal">
-              <img class="u-photo" src="./static/imgs/pizza.png" alt="图片：内牛满面披萨" />
-              <figcaption class="e-description">
-                <p>特色：牛肉</p>
-              </figcaption>
-            </figure>
-          </article>
-          <article class="h-product" data-cid="ITALY">
-            <h2 class="p-name">意式肉酱披萨</h2>
-            <ul class="spec-tag">
-              <li class="p-spec"><span><b class="spec-price">¥58</b>/八寸</span></li>
-              <li class="p-spec"><span><b class="spec-price">¥87</b>/十寸</span></li>
-            </ul>
-            <figure @click="showModal">
-              <img class="u-photo" src="./static/imgs/pizza.png" alt="图片：热辣牛肉披萨" />
-              <figcaption class="e-description">
-                <p>特色：牛肉，自制辣酱</p>
-              </figcaption>
-            </figure>
-          </article>
-        </div>
-
-        <div class="twins group">
-          <article class="h-product" data-cid="TURKEY">
-            <h2 class="p-name">土耳其烤鸡肉</h2>
-            <ul class="spec-tag">
-              <li class="p-spec"><span><b class="spec-price">¥46</b>/八寸</span></li>
-              <li class="p-spec"><span><b class="spec-price">¥69</b>/十寸</span></li>
-            </ul>
-            <figure @click="showModal">
-              <img class="u-photo" src="./static/imgs/pizza.png" alt="图片：土耳其烤鸡肉披萨" />
-              <figcaption class="e-description">
-                <p>特色：烤鸡肉，辣酱</p>
-              </figcaption>
-            </figure>
-          </article>
-          <article class="h-product" data-cid="ORLEANS">
-            <h2 class="p-name">奥尔良烤鸡肉</h2>
-            <ul class="spec-tag">
-              <li class="p-spec"><span><b class="spec-price">¥46</b>/八寸</span></li>
-              <li class="p-spec"><span><b class="spec-price">¥69</b>/十寸</span></li>
-            </ul>
-            <figure @click="showModal">
-              <img class="u-photo" src="./static/imgs/pizza.png" alt="图片：奥尔良烤鸡肉披萨" />
-              <figcaption class="e-description">
-                <p>特色：烤鸡肉，圆菇</p>
-              </figcaption>
-            </figure>
-          </article>
-        </div>
-
-        <div class="twins group">
-          <article class="h-product" data-cid="QMJQY">
-            <h2 class="p-name">情满金枪鱼</h2>
-            <ul class="spec-tag">
-              <li class="p-spec"><span><b class="spec-price">¥58</b>/八寸</span></li>
-              <li class="p-spec"><span><b class="spec-price">¥87</b>/十寸</span></li>
-            </ul>
-            <figure @click="showModal">
-              <img class="u-photo" src="./static/imgs/pizza.png" alt="图片：情满金枪鱼披萨" />
-              <figcaption class="e-description">
-                <p>特色：金枪鱼，酸黄瓜</p>
-              </figcaption>
-            </figure>
-          </article>
-          <article class="h-product" data-cid="XJTX">
-            <h2 class="p-name">席卷天虾</h2>
-            <ul class="spec-tag">
-              <li class="p-spec"><span><b class="spec-price">¥58</b>/八寸</span></li>
-              <li class="p-spec"><span><b class="spec-price">¥87</b>/十寸</span></li>
-            </ul>
-            <figure @click="showModal">
-              <img class="u-photo" src="./static/imgs/pizza.png" alt="图片：席卷天虾披萨" />
-              <figcaption class="e-description">
-                <p>特色：金枪鱼，虾仁</p>
-              </figcaption>
-            </figure>
-          </article>
-        </div>
-
-        <div class="orphan group">
-          <article class="h-product" data-cid="MGBC">
-            <h2 class="p-name">蘑菇菠菜</h2>
-            <ul class="spec-tag">
-              <li class="p-spec"><span><b class="spec-price">¥35</b>/八寸</span></li>
-              <li class="p-spec"><span><b class="spec-price">¥53</b>/十寸</span></li>
-            </ul>
-            <figure @click="showModal">
-              <img class="u-photo" src="./static/imgs/pizza.png" alt="图片：大力水手披萨" />
-              <figcaption class="e-description">
-                <p>特色：菠菜，蘑菇，酸黄瓜</p>
-              </figcaption>
-            </figure>
-          </article>
-        </div>
-
-        <div class="orphan group">
-          <article class="h-product" data-cid="LLLL">
-            <h2 class="p-name">榴恋榴莲</h2>
-            <ul class="spec-tag">
-              <li class="p-spec"><span><b class="spec-price">¥68</b>/八寸</span></li>
-              <li class="p-spec"><span><b class="spec-price">¥97</b>/十寸</span></li>
-            </ul>
-            <figure @click="showModal">
-              <img class="u-photo" src="./static/imgs/pizza.png" alt="图片：榴恋榴莲披萨" />
-              <figcaption class="e-description">
-                <p>特色：榴莲</p>
-              </figcaption>
-            </figure>
-          </article>
-        </div>
-      </section>
-
-      <section id="meal" class="category">
-        <h1 class="category__title">饭类</h1>
-
-        <div class="orphan group">
-          <article class="h-product" data-cid="TUDOUROU">
-            <h2 class="p-name">土豆肉酱千层</h2>
-            <figure @click="showModal">
-              <img class="u-photo" src="./static/imgs/rice.png" alt="图片：土豆肉酱千层" />
-              <figcaption class="e-description">
-                <p>特色：牛肉酱，土豆泥</p>
-              </figcaption>
-            </figure>
-            <ul class="spec-tag">
-              <li class="p-spec"><span><b class="spec-price">¥42</b>/份</span></li>
-            </ul>
-          </article>
-        </div>
-        <div class="twins group">
-        <article class="h-product" data-cid="ITALYJF">
-            <h2 class="p-name">意式肉酱焗饭</h2>
-            <ul class="spec-tag">
-              <li class="p-spec"><span><b class="spec-price">¥42</b>/份</span></li>
-            </ul>
-            <figure @click="showModal">
-              <img class="u-photo" src="./static/imgs/rice.png" alt="图片：意式肉酱焗饭" />
-              <figcaption class="e-description">
-                <p>特色：牛肉，红酒</p>
-              </figcaption>
-            </figure>
-          </article>
-          <article class="h-product" data-cid="HHNRJF">
-            <h2 class="p-name">红绘牛肉</h2>
-            <ul class="spec-tag">
-              <li class="p-spec"><span><b class="spec-price">¥35</b>/份</span></li>
-            </ul>
-            <figure @click="showModal">
-              <img class="u-photo" src="./static/imgs/rice.png" alt="图片：红绘牛肉焗饭" />
-              <figcaption class="e-description">
-                <p>特色：牛肉，红酒</p>
-              </figcaption>
-            </figure>
-          </article>
-        </div>
-        <div class="twins group">
-          <article class="h-product" data-cid="TURKEYJF">
-            <h2 class="p-name">土耳其烤鸡肉焗饭</h2>
-            <ul class="spec-tag">
-              <li class="p-spec"><span><b class="spec-price">¥38</b>/份</span></li>
-            </ul>
-            <figure @click="showModal">
-              <img class="u-photo" src="./static/imgs/rice.png" alt="图片：土耳其烤鸡肉焗饭" />
-              <figcaption class="e-description">
-                <p>特色：土耳其风味烤鸡肉</p>
-              </figcaption>
-            </figure>
-          </article>
-          <article class="h-product" data-cid="GLJRJF">
-            <h2 class="p-name">咖喱鸡肉</h2>
-            <ul class="spec-tag">
-              <li class="p-spec"><span><b class="spec-price">¥35</b>/份</span></li>
-            </ul>
-            <figure @click="showModal">
-              <img class="u-photo" src="./static/imgs/rice.png" alt="图片：咖喱鸡肉焗饭" />
-              <figcaption class="e-description">
-                <p>特色：鸡肉，咖喱</p>
-              </figcaption>
-            </figure>
-          </article>
-        </div>
-      </section>
-
-      <section id="snack" class="category">
-        <h1 class="category__title">小吃</h1>
-
-        <div class="orphan group">
-          <article class="h-product" data-cid="TUDOUNI">
-            <h2 class="p-name">芝士焗土豆泥</h2>
-            <img @click="showModal" class="u-photo"  src="./static/imgs/rice.png" alt="图片：焗土豆泥" />
-            <ul class="spec-tag">
-              <li class="p-spec"><span><b class="spec-price">¥12</b>/金枪鱼味</span></li>
-              <li class="p-spec"><span><b class="spec-price">¥9</b>/培根味</span></li>
-            </ul>
-          </article>
-        </div>
-
-        <div class="orphan group">
-          <article class="h-product" data-cid="JULIULIAN">
-            <h2 class="p-name">芝士焗榴莲</h2>
-            <img @click="showModal" class="u-photo"  src="./static/imgs/rice.png" alt="图片：焗榴莲" />
-            <ul class="spec-tag">
-              <li class="p-spec"><span><b class="spec-price">¥28</b>/榴莲味</span></li>
-            </ul>
-          </article>
-        </div>
-
-        <div class="orphan group">
-          <article class="h-product" data-cid="ORLEANSKCH">
-            <h2 class="p-name">奥尔良烤翅</h2>
-            <img @click="showModal" class="u-photo" src="./static/imgs/chicken-wings.png" alt="图片：奥尔良烤翅" />
-            <ul class="spec-tag">
-              <li class="p-spec"><span><b class="spec-price">¥20</b>/一对</span></li>
-              <li class="p-spec"><span><b class="spec-price">¥50</b>/六对</span></li>
-            </ul>
-          </article>
-        </div>
-
-        <div class="orphan group">
-          <article class="h-product" data-cid="ZHJC">
-            <h2 class="p-name">炸鸡翅</h2>
-            <img @click="showModal" class="u-photo"  src="./static/imgs/rice.png" alt="图片：炸鸡翅" />
-            <ul class="spec-tag">
-             <li class="p-spec"><span><b class="spec-price">¥20</b>/一对</span></li>
-             <li class="p-spec"><span><b class="spec-price">¥50</b>/六对</span></li>
-            </ul>
-          </article>
-        </div>
-
-        <div class="orphan group">
-          <article class="h-product" data-cid="ZHJL">
-            <h2 class="p-name">炸鸡柳</h2>
-            <img @click="showModal" class="u-photo"  src="./static/imgs/rice.png" alt="图片：炸鸡柳" />
-            <ul class="spec-tag">
-              <li class="p-spec"><span><b class="spec-price">¥18</b>/份</span></li>
-            </ul>
-          </article>
-        </div>
-
-        <div class="orphan group">
-          <article class="h-product" data-cid="JRYCJ">
-            <h2 class="p-name">鸡肉洋葱卷</h2>
-            <img @click="showModal" class="u-photo"  src="./static/imgs/rice.png" alt="图片：鸡肉洋葱卷" />
-            <ul class="spec-tag">
-              <li class="p-spec"><span><b class="spec-price">¥22</b>/份</span></li>
-            </ul>
-          </article>
-        </div>
-
-        <div class="orphan group">
-          <article class="h-product" data-cid="ZHXXQ">
-            <h2 class="p-name">芝心虾球</h2>
-            <img @click="showModal" class="u-photo"  src="./static/imgs/rice.png" alt="图片：芝心虾球" />
-            <ul class="spec-tag">
-              <li class="p-spec"><span><b class="spec-price">¥29</b>/份</span></li>
-            </ul>
-          </article>
-        </div>
-
-        <div class="orphan group">
-          <article class="h-product" data-cid="ZHSHTC">
-            <h2 class="p-name">炸食套餐</h2>
-            <img @click="showModal" class="u-photo"  src="./static/imgs/rice.png" alt="图片：炸食套餐" />
-            <ul class="spec-tag">
-              <li class="p-spec"><span><b class="spec-price">¥89</b>/份</span></li>
-            </ul>
-          </article>
-        </div>
-      </section>
-    </section>
-
-    <section id="drink" class="drink page">
-      <section id="coffee" class="category">
-        <h1 class="category__title">咖啡</h1>
-
-        <div class="group">
-          <article class="h-product" data-cid="KBQN">
-            <h2 @click="showModal" class="p-name">卡布奇诺</h2>
-            <ul class="spec-tag">
-              <li class="p-spec">
-                <span><b class="spec-price">¥25</b></span>
-                <span class="qty"> x2</span>
-              </li>
-            </ul>
-          </article>
-
-          <article class="h-product" data-cid="QKLMK">
-            <h2 @click="showModal" class="p-name">巧克力摩卡</h2>
-            <ul class="spec-tag">
-              <li class="p-spec"><span><b class="spec-price">¥25</b></span>
-              </li>
-            </ul>
-          </article>
-
-          <article class="h-product" data-cid="KFNT">
-            <h2 @click="showModal" class="p-name">咖啡拿铁</h2>
-            <ul class="spec-tag">
-              <li class="p-spec"><b class="spec-price">¥25</b><span>冰</span>/<span>热</span></li>
-            </ul>
-          </article>
-
-          <article class="h-product" data-cid="MSHKF">
-            <h2 @click="showModal" class="p-name">美式咖啡</h2>
-            <ul class="spec-tag">
-              <li class="p-spec"><b class="spec-price">¥18</b><span>冰</span>/<span>热</span></li>
-            </ul>
-          </article>
-        </div>
-      </section>
-
-      <section id="tea" class="category">
-        <h1 class="category__title">红茶</h1>
-
-        <div class="group">
-          <article class="h-product" data-cid="HXNCH">
-            <h2 @click="showModal" class="p-name">花香奶茶</h2>
-            <ul class="spec-tag">
-              <li class="p-spec"><span>冰</span><span>热</span><b class="spec-price">¥15</b>
-              </li>
-            </ul>
-          </article>
-
-          <article class="h-product" data-cid="ZHZHNCH">
-            <h2 @click="showModal" class="p-name">珍珠奶茶</h2>
-            <ul class="spec-tag">
-              <li class="p-spec"><span>冰</span><span>热</span><b class="spec-price">¥16</b>
-              </li>
-            </ul>
-          </article>
-
-          <article class="h-product" data-cid="YYNCH">
-            <h2 @click="showModal" class="p-name">鸳鸯奶茶</h2>
-            <ul class="spec-tag">
-              <li class="p-spec"><span>冰</span><span>热</span><b class="spec-price">¥17</b>
-              </li>
-            </ul>
-          </article>
-
-          <article class="h-product" data-cid="BLBJCH">
-            <h2 @click="showModal" class="p-name">菠萝伯爵茶</h2>
-            <ul class="spec-tag">
-              <li class="p-spec"><b class="spec-price">¥22</b><span>冰</span><span>热</span>
-              </li>
-            </ul>
-          </article>
-
-          <article class="h-product" data-cid="HXNMCH">
-            <h2 @click="showModal" class="p-name">花香柠檬茶</h2>
-            <ul class="spec-tag">
-              <li class="p-spec"><b class="spec-price">¥22</b><span>冰</span><span>热</span>
-              </li>
-            </ul>
-          </article>
-
-          <article class="h-product" data-cid="JJYZCH">
-            <h2 @click="showModal" class="p-name">金桔柚子茶</h2>
-            <ul class="spec-tag">
-              <li class="p-spec"><b class="spec-price">¥22</b><span>冰</span><span>热</span>
-              </li>
-            </ul>
-          </article>
-        </div>
-      </section>
-
-<section id="water" class="category">
-        <h1 class="category__title">气泡水</h1>
-
-        <div class="group">
-          <article class="h-product" data-cid="LZHLHSH">
-            <h2 @click="showModal" class="p-name">荔枝芦荟</h2>
-            <ul class="spec-tag">
-              <li class="p-spec"><span><b class="spec-price">¥18</b>/气泡水</span>
-              </li>
-            </ul>
-          </article>
-
-          <article class="h-product" data-cid="QNQPSH">
-            <h2 @click="showModal" class="p-name">青柠气泡水</h2>
-            <ul class="spec-tag">
-              <li class="p-spec"><span><b class="spec-price">¥18</b>/气泡水</span>
-              </li>
-            </ul>
-          </article>
-
-          <article class="h-product isSelected" data-cid="QXMGSH">
-            <h2 @click="showModal" class="p-name">清香玫瑰</h2>
-            <ul class="spec-tag">
-              <li class="p-spec"><span><b class="spec-price">¥18</b>/气泡水</span>
-              </li>
-            </ul>
-          </article>
-        </div>
-      </section>
-
-    </section>
-
-    <section id="lazycat" class="category lazycat page">
-      <h1 class="category__title">送餐到家</h1>
-      <div class="illustration">
-        <img class="maps" src="./static/imgs/location.png" />
+    <div class="pswp__scroll-wrap">
+      <div class="pswp__container">
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
       </div>
-    </section>
+
+      <div class="pswp__ui pswp__ui--hidden">
+        <div class="pswp__top-bar">
+          <div class="pswp__counter"></div>
+          <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+          <button class="pswp__button pswp__button--share" title="Share"></button>
+          <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+          <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+          <div class="pswp__preloader">
+            <div class="pswp__preloader__icn">
+              <div class="pswp__preloader__cut">
+                <div class="pswp__preloader__donut"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+          <div class="pswp__share-tooltip"></div>
+        </div>
+
+        <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+        </button>
+
+        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+        </button>
+
+        <div class="pswp__caption">
+          <div class="pswp__caption__center"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main id="poster">
+    <div id="goods" class="goods grp">
+      <section id="tasty" class="tasty page">
+        <section id="pizza" class="category">
+          <h1 class="category__title">披萨</h1>
+
+          <div class="twins group">
+            <article class="h-product" data-cid="JQPG">
+              <h2 class="p-name">激情培根</h2>
+              <ul class="spec-tag">
+                <li class="p-spec"><span><b class="spec-price">¥39</b>/八寸</span></li>
+                <li class="p-spec"><span><b class="spec-price">¥59</b>/八寸</span></li>
+              </ul>
+              <figure @click="showModal">
+                <img class="u-photo" src="./static/imgs/pizza.png" alt="图片：激情培根披萨" />
+                <figcaption class="e-description">
+                  <p>特色：双层培根，圆菇</p>
+                </figcaption>
+              </figure>
+            </article>
+            <article class="h-product" data-cid="FQXWY">
+              <h2 class="p-name">风情夏威夷</h2>
+              <ul class="spec-tag">
+                <li class="p-spec"><span><b class="spec-price">¥39</b>/八寸</span></li>
+                <li class="p-spec"><span><b class="spec-price">¥59</b>/十寸</span></li>
+              </ul>
+              <figure @click="showModal">
+                <img class="u-photo" src="./static/imgs/pizza.png" alt="图片：风情夏威夷披萨" />
+                <figcaption class="e-description">
+                  <p>特色：培根，菠萝</p>
+                </figcaption>
+              </figure>
+            </article>
+          </div>
+
+          <div class="twins group">
+            <article class="h-product" data-cid="NNMM">
+              <h2 class="p-name">内牛满面</h2>
+              <ul class="spec-tag">
+                <li class="p-spec"><span><b class="spec-price">¥46</b>/八寸</span></li>
+                <li class="p-spec"><span><b class="spec-price">¥69</b>/十寸</span></li>
+              </ul>
+              <figure @click="showModal">
+                <img class="u-photo" src="./static/imgs/pizza.png" alt="图片：内牛满面披萨" />
+                <figcaption class="e-description">
+                  <p>特色：牛肉</p>
+                </figcaption>
+              </figure>
+            </article>
+            <article class="h-product" data-cid="ITALY">
+              <h2 class="p-name">意式肉酱披萨</h2>
+              <ul class="spec-tag">
+                <li class="p-spec"><span><b class="spec-price">¥58</b>/八寸</span></li>
+                <li class="p-spec"><span><b class="spec-price">¥87</b>/十寸</span></li>
+              </ul>
+              <figure @click="showModal">
+                <img class="u-photo" src="./static/imgs/pizza.png" alt="图片：热辣牛肉披萨" />
+                <figcaption class="e-description">
+                  <p>特色：牛肉，自制辣酱</p>
+                </figcaption>
+              </figure>
+            </article>
+          </div>
+
+          <div class="twins group">
+            <article class="h-product" data-cid="TURKEY">
+              <h2 class="p-name">土耳其烤鸡肉</h2>
+              <ul class="spec-tag">
+                <li class="p-spec"><span><b class="spec-price">¥46</b>/八寸</span></li>
+                <li class="p-spec"><span><b class="spec-price">¥69</b>/十寸</span></li>
+              </ul>
+              <figure @click="showModal">
+                <img class="u-photo" src="./static/imgs/pizza.png" alt="图片：土耳其烤鸡肉披萨" />
+                <figcaption class="e-description">
+                  <p>特色：烤鸡肉，辣酱</p>
+                </figcaption>
+              </figure>
+            </article>
+            <article class="h-product" data-cid="ORLEANS">
+              <h2 class="p-name">奥尔良烤鸡肉</h2>
+              <ul class="spec-tag">
+                <li class="p-spec"><span><b class="spec-price">¥46</b>/八寸</span></li>
+                <li class="p-spec"><span><b class="spec-price">¥69</b>/十寸</span></li>
+              </ul>
+              <figure @click="showModal">
+                <img class="u-photo" src="./static/imgs/pizza.png" alt="图片：奥尔良烤鸡肉披萨" />
+                <figcaption class="e-description">
+                  <p>特色：烤鸡肉，圆菇</p>
+                </figcaption>
+              </figure>
+            </article>
+          </div>
+
+          <div class="twins group">
+            <article class="h-product" data-cid="QMJQY">
+              <h2 class="p-name">情满金枪鱼</h2>
+              <ul class="spec-tag">
+                <li class="p-spec"><span><b class="spec-price">¥58</b>/八寸</span></li>
+                <li class="p-spec"><span><b class="spec-price">¥87</b>/十寸</span></li>
+              </ul>
+              <figure @click="showModal">
+                <img class="u-photo" src="./static/imgs/pizza.png" alt="图片：情满金枪鱼披萨" />
+                <figcaption class="e-description">
+                  <p>特色：金枪鱼，酸黄瓜</p>
+                </figcaption>
+              </figure>
+            </article>
+            <article class="h-product" data-cid="XJTX">
+              <h2 class="p-name">席卷天虾</h2>
+              <ul class="spec-tag">
+                <li class="p-spec"><span><b class="spec-price">¥58</b>/八寸</span></li>
+                <li class="p-spec"><span><b class="spec-price">¥87</b>/十寸</span></li>
+              </ul>
+              <figure @click="showModal">
+                <img class="u-photo" src="./static/imgs/pizza.png" alt="图片：席卷天虾披萨" />
+                <figcaption class="e-description">
+                  <p>特色：金枪鱼，虾仁</p>
+                </figcaption>
+              </figure>
+            </article>
+          </div>
+
+          <div class="orphan group">
+            <article class="h-product" data-cid="MGBC">
+              <h2 class="p-name">蘑菇菠菜</h2>
+              <ul class="spec-tag">
+                <li class="p-spec"><span><b class="spec-price">¥35</b>/八寸</span></li>
+                <li class="p-spec"><span><b class="spec-price">¥53</b>/十寸</span></li>
+              </ul>
+              <figure @click="showModal">
+                <img class="u-photo" src="./static/imgs/pizza.png" alt="图片：大力水手披萨" />
+                <figcaption class="e-description">
+                  <p>特色：菠菜，蘑菇，酸黄瓜</p>
+                </figcaption>
+              </figure>
+            </article>
+          </div>
+
+          <div class="orphan group">
+            <article class="h-product" data-cid="LLLL">
+              <h2 class="p-name">榴恋榴莲</h2>
+              <ul class="spec-tag">
+                <li class="p-spec"><span><b class="spec-price">¥68</b>/八寸</span></li>
+                <li class="p-spec"><span><b class="spec-price">¥97</b>/十寸</span></li>
+              </ul>
+              <figure @click="showModal">
+                <img class="u-photo" src="./static/imgs/pizza.png" alt="图片：榴恋榴莲披萨" />
+                <figcaption class="e-description">
+                  <p>特色：榴莲</p>
+                </figcaption>
+              </figure>
+            </article>
+          </div>
+        </section>
+
+        <section id="meal" class="category">
+          <h1 class="category__title">饭类</h1>
+
+          <div class="orphan group">
+            <article class="h-product" data-cid="TUDOUROU">
+              <h2 class="p-name">土豆肉酱千层</h2>
+              <figure @click="showModal">
+                <img class="u-photo" src="./static/imgs/rice.png" alt="图片：土豆肉酱千层" />
+                <figcaption class="e-description">
+                  <p>特色：牛肉酱，土豆泥</p>
+                </figcaption>
+              </figure>
+              <ul class="spec-tag">
+                <li class="p-spec"><span><b class="spec-price">¥42</b>/份</span></li>
+              </ul>
+            </article>
+          </div>
+          <div class="twins group">
+          <article class="h-product" data-cid="ITALYJF">
+              <h2 class="p-name">意式肉酱焗饭</h2>
+              <ul class="spec-tag">
+                <li class="p-spec"><span><b class="spec-price">¥42</b>/份</span></li>
+              </ul>
+              <figure @click="showModal">
+                <img class="u-photo" src="./static/imgs/rice.png" alt="图片：意式肉酱焗饭" />
+                <figcaption class="e-description">
+                  <p>特色：牛肉，红酒</p>
+                </figcaption>
+              </figure>
+            </article>
+            <article class="h-product" data-cid="HHNRJF">
+              <h2 class="p-name">红绘牛肉</h2>
+              <ul class="spec-tag">
+                <li class="p-spec"><span><b class="spec-price">¥35</b>/份</span></li>
+              </ul>
+              <figure @click="showModal">
+                <img class="u-photo" src="./static/imgs/rice.png" alt="图片：红绘牛肉焗饭" />
+                <figcaption class="e-description">
+                  <p>特色：牛肉，红酒</p>
+                </figcaption>
+              </figure>
+            </article>
+          </div>
+          <div class="twins group">
+            <article class="h-product" data-cid="TURKEYJF">
+              <h2 class="p-name">土耳其烤鸡肉焗饭</h2>
+              <ul class="spec-tag">
+                <li class="p-spec"><span><b class="spec-price">¥38</b>/份</span></li>
+              </ul>
+              <figure @click="showModal">
+                <img class="u-photo" src="./static/imgs/rice.png" alt="图片：土耳其烤鸡肉焗饭" />
+                <figcaption class="e-description">
+                  <p>特色：土耳其风味烤鸡肉</p>
+                </figcaption>
+              </figure>
+            </article>
+            <article class="h-product" data-cid="GLJRJF">
+              <h2 class="p-name">咖喱鸡肉</h2>
+              <ul class="spec-tag">
+                <li class="p-spec"><span><b class="spec-price">¥35</b>/份</span></li>
+              </ul>
+              <figure @click="showModal">
+                <img class="u-photo" src="./static/imgs/rice.png" alt="图片：咖喱鸡肉焗饭" />
+                <figcaption class="e-description">
+                  <p>特色：鸡肉，咖喱</p>
+                </figcaption>
+              </figure>
+            </article>
+          </div>
+        </section>
+
+        <section id="snack" class="category">
+          <h1 class="category__title">小吃</h1>
+
+          <div class="orphan group">
+            <article class="h-product" data-cid="TUDOUNI">
+              <h2 class="p-name">芝士焗土豆泥</h2>
+              <img @click="showModal" class="u-photo"  src="./static/imgs/rice.png" alt="图片：焗土豆泥" />
+              <ul class="spec-tag">
+                <li class="p-spec"><span><b class="spec-price">¥12</b>/金枪鱼味</span></li>
+                <li class="p-spec"><span><b class="spec-price">¥9</b>/培根味</span></li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="orphan group">
+            <article class="h-product" data-cid="JULIULIAN">
+              <h2 class="p-name">芝士焗榴莲</h2>
+              <img @click="showModal" class="u-photo"  src="./static/imgs/rice.png" alt="图片：焗榴莲" />
+              <ul class="spec-tag">
+                <li class="p-spec"><span><b class="spec-price">¥28</b>/榴莲味</span></li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="orphan group">
+            <article class="h-product" data-cid="ORLEANSKCH">
+              <h2 class="p-name">奥尔良烤翅</h2>
+              <img @click="showModal" class="u-photo" src="./static/imgs/chicken-wings.png" alt="图片：奥尔良烤翅" />
+              <ul class="spec-tag">
+                <li class="p-spec"><span><b class="spec-price">¥20</b>/一对</span></li>
+                <li class="p-spec"><span><b class="spec-price">¥50</b>/六对</span></li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="orphan group">
+            <article class="h-product" data-cid="ZHJMH">
+              <h2 class="p-name">炸鸡米花</h2>
+              <img @click="showModal" class="u-photo"  src="./static/imgs/checken_chunks.jpg" alt="图片：炸鸡米花" />
+              <ul class="spec-tag">
+               <li class="p-spec"><span><b class="spec-price">¥22</b>/一份</span></li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="orphan group">
+            <article class="h-product" data-cid="ZHJC">
+              <h2 class="p-name">炸鸡翅</h2>
+              <img @click="showModal" class="u-photo"  src="./static/imgs/rice.png" alt="图片：炸鸡翅" />
+              <ul class="spec-tag">
+               <li class="p-spec"><span><b class="spec-price">¥20</b>/一对</span></li>
+               <li class="p-spec"><span><b class="spec-price">¥50</b>/六对</span></li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="orphan group">
+            <article class="h-product" data-cid="ZHJL">
+              <h2 class="p-name">炸鸡柳</h2>
+              <img @click="showModal" class="u-photo"  src="./static/imgs/rice.png" alt="图片：炸鸡柳" />
+              <ul class="spec-tag">
+                <li class="p-spec"><span><b class="spec-price">¥18</b>/份</span></li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="orphan group">
+            <article class="h-product" data-cid="JRYCJ">
+              <h2 class="p-name">鸡肉洋葱卷</h2>
+              <img @click="showModal" class="u-photo"  src="./static/imgs/rice.png" alt="图片：鸡肉洋葱卷" />
+              <ul class="spec-tag">
+                <li class="p-spec"><span><b class="spec-price">¥22</b>/份</span></li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="orphan group">
+            <article class="h-product" data-cid="ZHXXQ">
+              <h2 class="p-name">芝心虾球</h2>
+              <img @click="showModal" class="u-photo"  src="./static/imgs/rice.png" alt="图片：芝心虾球" />
+              <ul class="spec-tag">
+                <li class="p-spec"><span><b class="spec-price">¥29</b>/份</span></li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="orphan group">
+            <article class="h-product" data-cid="ZHSHTC">
+              <h2 class="p-name">炸食套餐</h2>
+              <img @click="showModal" class="u-photo"  src="./static/imgs/rice.png" alt="图片：炸食套餐" />
+              <ul class="spec-tag">
+                <li class="p-spec"><span><b class="spec-price">¥89</b>/份</span></li>
+              </ul>
+            </article>
+          </div>
+        </section>
+      </section>
+
+      <section id="drink" class="drink page">
+        <section id="coffee" class="category">
+          <h1 class="category__title">咖啡</h1>
+
+          <div class="group">
+            <article class="h-product" data-cid="KBQN">
+              <h2 @click="showModal" class="p-name">卡布奇诺</h2>
+              <ul class="spec-tag">
+                <li class="p-spec">
+                  <span><b class="spec-price">¥25</b></span>
+                  <span class="qty"> x2</span>
+                </li>
+              </ul>
+            </article>
+
+            <article class="h-product" data-cid="QKLMK">
+              <h2 @click="showModal" class="p-name">巧克力摩卡</h2>
+              <ul class="spec-tag">
+                <li class="p-spec"><span><b class="spec-price">¥25</b></span>
+                </li>
+              </ul>
+            </article>
+
+            <article class="h-product" data-cid="KFNT">
+              <h2 @click="showModal" class="p-name">咖啡拿铁</h2>
+              <ul class="spec-tag">
+                <li class="p-spec"><b class="spec-price">¥25</b><span>冰</span>/<span>热</span></li>
+              </ul>
+            </article>
+
+            <article class="h-product" data-cid="MSHKF">
+              <h2 @click="showModal" class="p-name">美式咖啡</h2>
+              <ul class="spec-tag">
+                <li class="p-spec"><b class="spec-price">¥18</b><span>冰</span>/<span>热</span></li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section id="tea" class="category">
+          <h1 class="category__title">红茶</h1>
+
+          <div class="group">
+            <article class="h-product" data-cid="HXNCH">
+              <h2 @click="showModal" class="p-name">花香奶茶</h2>
+              <ul class="spec-tag">
+                <li class="p-spec"><span>冰</span><span>热</span><b class="spec-price">¥15</b>
+                </li>
+              </ul>
+            </article>
+
+            <article class="h-product" data-cid="ZHZHNCH">
+              <h2 @click="showModal" class="p-name">珍珠奶茶</h2>
+              <ul class="spec-tag">
+                <li class="p-spec"><span>冰</span><span>热</span><b class="spec-price">¥16</b>
+                </li>
+              </ul>
+            </article>
+
+            <article class="h-product" data-cid="YYNCH">
+              <h2 @click="showModal" class="p-name">鸳鸯奶茶</h2>
+              <ul class="spec-tag">
+                <li class="p-spec"><span>冰</span><span>热</span><b class="spec-price">¥17</b>
+                </li>
+              </ul>
+            </article>
+
+            <article class="h-product" data-cid="BLBJCH">
+              <h2 @click="showModal" class="p-name">菠萝伯爵茶</h2>
+              <ul class="spec-tag">
+                <li class="p-spec"><b class="spec-price">¥22</b><span>冰</span><span>热</span>
+                </li>
+              </ul>
+            </article>
+
+            <article class="h-product" data-cid="HXNMCH">
+              <h2 @click="showModal" class="p-name">花香柠檬茶</h2>
+              <ul class="spec-tag">
+                <li class="p-spec"><b class="spec-price">¥22</b><span>冰</span><span>热</span>
+                </li>
+              </ul>
+            </article>
+
+            <article class="h-product" data-cid="JJYZCH">
+              <h2 @click="showModal" class="p-name">金桔柚子茶</h2>
+              <ul class="spec-tag">
+                <li class="p-spec"><b class="spec-price">¥22</b><span>冰</span><span>热</span>
+                </li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section id="water" class="category">
+          <h1 class="category__title">气泡水</h1>
+
+          <div class="group">
+            <article class="h-product" data-cid="LZHLHSH">
+              <h2 @click="showModal" class="p-name">荔枝芦荟</h2>
+              <ul class="spec-tag">
+                <li class="p-spec"><span><b class="spec-price">¥18</b>/气泡水</span>
+                </li>
+              </ul>
+            </article>
+
+            <article class="h-product" data-cid="QNQPSH">
+              <h2 @click="showModal" class="p-name">青柠气泡水</h2>
+              <ul class="spec-tag">
+                <li class="p-spec"><span><b class="spec-price">¥18</b>/气泡水</span>
+                </li>
+              </ul>
+            </article>
+
+            <article class="h-product isSelected" data-cid="QXMGSH">
+              <h2 @click="showModal" class="p-name">清香玫瑰</h2>
+              <ul class="spec-tag">
+                <li class="p-spec"><span><b class="spec-price">¥18</b>/气泡水</span>
+                </li>
+              </ul>
+            </article>
+          </div>
+        </section>
+      </section>
+
+      <section id="lazycat" class="category lazycat page">
+        <h1 class="category__title">送餐到家</h1>
+        <div class="illustration">
+          <img class="maps" src="./static/imgs/location.png" />
+        </div>
+      </section>
+    </div>
+
+    <div id="activity" class="activity page services grp">
+      <section id="fellowship" class="category">
+        <h1 class="category__title">联谊策划</h1>
+
+        <div class="gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+            <a href="/static/imgs/fellowship_1__large.jpg" itemprop="contentUrl" data-size="1200x1138">
+                <img src="/static/imgs/fellowship_1__thumb.jpg" itemprop="thumbnail" alt="Image description" />
+            </a>
+            <figcaption itemprop="caption description">
+                小伙伴们的快乐时光
+            </figcaption>
+            <meta itemprop="width" content="300">
+            <meta itemprop="height" content="600">
+          </figure>
+
+          <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+              <a href="/static/imgs/fellowship_2__large.jpg" itemprop="contentUrl" data-size="852x640">
+                  <img src="/static/imgs/fellowship_2__thumb.png" itemprop="thumbnail" alt="Image description" />
+              </a>
+              <figcaption itemprop="caption description">描述</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="diy" class="category">
+        <h1 class="category__title">披萨自制体验</h1>
+        <div class="video-wrp">
+          <video id="diy_video" controls poster="/static/imgs/diy_1__thumb.jpg">
+            <source src="/static/imgs/diy_1__video.mp4" type="video/mp4">
+            <img src="/static/imgs/diy_1__thumb.jpeg">
+          </video>
+        </div>
+      </section>
+
+      <section id="teaching" class="category">
+        <h1 class="category__title">烘焙教学</h1>
+      </section>
+    </div>
   </main>
 
   <footer>
     <p class="contributor">
       <small>
-        Logo by <a rel="author" href="" target="_blank">小毛</a>，制作 by <a rel="author" href="https://heysage.com/" title="Heysage" target="_blank">松志</a>
+        <a rel="author" href="https://heysage.com/" title="Heysage" target="_blank">松志</a> 作品，Logo by <a href="" target="_blank">小毛</a>
       </small>
     </p>
     <p class="copyright">

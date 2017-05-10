@@ -1,12 +1,15 @@
 import 'src/assets/sass/main.scss'
 import { addClass } from './helper'
 import store from './store'
+import initPhotoSwipeFromDOM from './gallery'
 import { fetchCuisines } from './api'
 import { initiate } from './app'
 
 if (!('ontouchstart' in document.documentElement)) {
   addClass(document.documentElement, 'no-touch')
 }
+
+initPhotoSwipeFromDOM('.gallery')
 
 fetchCuisines().then(
   cuisines => {

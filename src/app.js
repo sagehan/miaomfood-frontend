@@ -30,9 +30,9 @@ export function initiate () {
   }).$mount()
 
   const app = new Vue({
-    el: '#poster',
+    el: '#goods',
     store,
-    template: document.body.querySelector('#poster').outerHTML,
+    template: document.body.querySelector('#goods').outerHTML,
     mounted () {
       let nodes = document.querySelectorAll('.h-product > .spec-tag')
       Array.prototype.forEach.call(nodes, node => new SpecTagWidget({ el: node }))

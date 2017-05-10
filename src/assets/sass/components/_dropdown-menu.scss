@@ -60,7 +60,7 @@
 
 .menu-title { @include absoutly__hidden; }
 
-.tasty, .tasty .drawer__bd { background-color: $tasty-bg;       &:after { background: $tasty_bg !important;} }
-.drink, .drink .drawer__bd { background-color: $drink_bg;       &:after { background: $drink_bg !important;} }
-.lazycat, .lazycat .drawer__bd { background-color: $lazycat_bg; &:after { background: $lazycat_bg !important;} }
-.fun, .fun .drawer__bd { background-color: $lazycat_bg; &:after { background: $lazycat_bg !important;} }
+.tasty .drawer__bd { background-color: $tasty-bg;       &:after { background: $tasty_bg !important;} }
+.drink .drawer__bd { background-color: $drink_bg;       &:after { background: $drink_bg !important;} }
+.lazycat .drawer__bd { background-color: $lazycat_bg; &:after { background: $lazycat_bg !important;} }
+.activity .drawer__bd { background-color: $activity_bg; &:after { background: $activity_bg !important;} }

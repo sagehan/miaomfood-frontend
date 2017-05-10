@@ -5,7 +5,7 @@
     </header>
 
     <div v-if="isCartEmpty" class="cart__bd">
-      <p>您还没有选择菜品哦!</p>
+      <p class="empty-reminder">您还没有选择菜品哦!</p>
     </div>
     <!-- or -->
     <form v-else class="cart__bd steps">

@@ -1,6 +1,8 @@
 @import '~normalize.css/normalize';
 @import '~susy/sass/susy';
 @import '~breakpoint-sass/stylesheets/breakpoint';
+@import '~photoswipe/dist/photoswipe';
+@import '~photoswipe/dist/default-skin/default-skin.css';
 
 @import 'utils/variables';
 @import 'utils/mixin';
@@ -15,6 +17,7 @@
 @import 'pages/tasty';
 @import 'pages/drink';
 //@import 'pages/lazy-cat';
+@import 'pages/activity';
 
 @import 'components/pizza';
 @import 'components/meal';

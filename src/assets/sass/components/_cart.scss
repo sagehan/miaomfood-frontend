@@ -26,6 +26,8 @@
   &__bd {
     margin: auto gutters();
     width: span(11);
+
+    & .empty-reminder { text-align: center; }
   }
 }
 
