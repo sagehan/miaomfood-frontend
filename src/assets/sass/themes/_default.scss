@@ -17,9 +17,13 @@ $tag-border_color: hsl(174, 75, 33);
 .head-branding,
 #carousel,
 .page { @include box__shadow__ltr; }
-// #activity { h1 {@include text__shadow; }}
+#activity { h1 {@include text__shadow; }}
 
 .tasty { background-color: $tasty-bg; &:after { background: $tasty_bg !important;} }
 .drink { background-color: $drink_bg; &:after { background: $drink_bg !important;} }
 .lazycat { background-color: $lazycat_bg; &:after { background: $lazycat_bg !important;} }
-.activity { background-color: $activity_bg; &:after { background: $activity_bg !important;} }
+.activity {
+	&:after { background: $activity_bg !important;}
+
+	& .category {background: url('~assets/imgs/bg-blackboard.jpg');}
+}

@@ -1,22 +1,68 @@
-.video-wrp {
-  position: relative;
-  max-width: span(11 wider);
-  margin: gutters();
-  box-shadow: 1px 1px 1px 1px adjust-color($shadow_bg, $alpha: -0.5);
+#activity {
+  // margin: 1em auto;
+  font: #{16px/$rem_size}em/#{(24px/24px)} 'HanziPen SC';
 
-  &:after,
-  &:before {
-    content : '';
-    display : block;
-    position: absolute;
-    width   : 100%;
-    height  : $rem_size;
-    background: url('~assets/imgs/cover-bottom-texture.png') top left/cover;
+  .page { box-shadow: none; }
+
+  .category {
+    position: relative;
+    color: white;
+
+    &:after,
+    &:before {
+      content : '';
+      display : block;
+      position: absolute;
+      width   : 100%;
+      height  : $rem_size;
+      background: url('~assets/imgs/cover-bottom-texture.png') top left/cover;
+    }
+    &:before {
+      top:  0;
+      transform: rotateX(180deg) rotateY(180deg) rotateZ(-0.35deg) translateY(70%);
+      z-index: 2;
+    }
+    &:after { bottom: 0; }
   }
-  &:before {
-    top:  0;
-    transform: rotateX(180deg) rotateY(180deg) rotateZ(-0.35deg) translateY(70%);
-    z-index: 2;
+
+  p { margin: 1.65em; line-height: 1.5em; }
+
+  .video-wrp {
+    position: relative;
+    width: 100%;
+    background: url('/static/imgs/diy_1__thumb.jpg') center/cover;
+
+    &:after { bottom: 0; }
   }
-  &:after { bottom: 0; }
+}
+
+#fellowship {
+  .gallery {
+    @include layout($poster-col2);
+    @include container;
+  }
+
+  figure {
+    @include span(10)
+    @include squish(1)
+    text-align: center;
+
+    @include breakpoint($medium $big) {
+      @include span(5);
+      @include squish(0.5);
+    }
+
+    @include breakpoint($big) {
+      @include span(3);
+      @include squish(0.5);
+    }
+
+    figcaption { margin: 0.75em; font-weight: 300; }
+  }
+}
+
+#diy {
+  padding: 0;
+
+  .category__title { position: absolute; }
 }

@@ -32,6 +32,7 @@
 .category {
   @include layout($poster-col2);
   @include container;
+  padding-top: 1em;
   padding-bottom: gutters(12);
 }
 
