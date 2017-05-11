@@ -1,6 +1,6 @@
 // swatches
 $black      : hsla(0, 0, 15%, 1);
-$primary_cl : #ec224f;
+$primary_cl : hsl(333, 72, 76);
 $cart_bg    : #ffffff;
 $page_bg    : hsl(0, 0, 92);
 $tasty_bg   : hsl(67, 75, 95);
@@ -14,7 +14,7 @@ $tag-border_color: hsl(174, 75, 33);
 
 #cart { @include box__shadow__rtl; }
 
-.head-branding,
+//.head-branding,
 #carousel,
 .page { @include box__shadow__ltr; }
 #activity { h1 {@include text__shadow; }}

@@ -20,36 +20,43 @@
   position: relative;
   display: inline-block;
   margin : 0;
-  background: $primary_cl;
+  background: transparent;
+  height: 50px;
   width: 50px;
+  background: $black;
   text-align: center;
   color: hsl(0, 0%, 100%);
 
   a {
-    display: inline-block;
+    display: block;
     position: relative;
     //padding: 24px;
+    width: auto;
     height: 100%;
     line-height: 100%;
-    color: initial; 
+    color: initial;
     text-decoration: none;
     cursor: pointer;
   }
 
   .branding-logo {
-    //width: percentage(84px/$canvas_width);
+    @include absolutly__centered;
+    position: absolute;
     margin: auto;
-    vertical-align: middle;
-    max-width: 80%;
+    width: 135px;
+    max-width: 165%;
     border-radius: 100%;
-    background: white; 
+    background: transparent;
+    text-align: center;
+    vertical-align: middle;
   }
 
   .branding-name {
     @include breakpoint($small $medium) { @include absoutly__hidden  }
     display: block;
-    margin-top: 0.5rem;
+    padding-top: 0.5rem;
     height: 5em;
+    background: $primary_cl;
     font-weight: 100;
   }
 }

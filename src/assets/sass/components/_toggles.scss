@@ -1,7 +1,8 @@
 .topbar-toggles {
-  @include span(2 wider last);
+  @include span(1 wider last);
   display: inline-table;
   padding:  20px;
+  padding-right: 0;
 
   a {
     display: table-cell;

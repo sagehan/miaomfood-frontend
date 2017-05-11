@@ -64,5 +64,5 @@
 #diy {
   padding: 0;
 
-  .category__title { position: absolute; }
+  .category__title { position: absolute; z-index: 2; }
 }
