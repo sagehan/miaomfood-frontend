@@ -31,14 +31,14 @@
     margin          : 0; 
     text-align      : center;
     vertical-align  : middle;
-    font            : #{18px/$rem_size}em/#{$grid_size/18px)} 'HanziPen SC';
-}
+    font            : #{18px/$rem_size}em/#{$grid_size/18px)} 'mmf','HanziPen SC';
+  }
 
-.spec-tag {
-  padding     : 0;
-  font        : #{12px/$rem_size}em/#{($grid_size/12px)} -apple-system, BlinkMacSystemFont, 'Microsoft YaHei', Helvetica, sans-serif;
-  color       : $tag-border_color;
-  text-align  : center;
-  vertical-align: middle;
-}
+  .spec-tag {
+    padding     : 0;
+    font        : #{12px/$rem_size}em/#{($grid_size/12px)} -apple-system, BlinkMacSystemFont, 'Microsoft YaHei', Helvetica, sans-serif;
+    color       : $tag-border_color;
+    text-align  : center;
+    vertical-align: middle;
+  }
 }

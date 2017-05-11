@@ -47,14 +47,14 @@
   }
 }
 
-.drawer__hd { font: #{24px/$rem_size}em/#{(42px/24px)} 'HanziPen SC'; }
+.drawer__hd { font: #{24px/$rem_size}em/#{(42px/24px)} 'mmf', 'HanziPen SC'; }
 
 .drawer a  {
   display: inline-block;
   width: 100%;
   height: #{42px/$rem_size}em;
   line-height: #{42px/$rem_size};
-  font-family: 'HanziPen SC';
+  font-family: 'mmf', 'HanziPen SC';
   color: initial; text-decoration: none;
 }
 
@@ -63,4 +63,4 @@
 .tasty .drawer__bd { background-color: $tasty-bg;       &:after { background: $tasty_bg !important;} }
 .drink .drawer__bd { background-color: $drink_bg;       &:after { background: $drink_bg !important;} }
 .lazycat .drawer__bd { background-color: $lazycat_bg; &:after { background: $lazycat_bg !important;} }
-.activity .drawer__bd { background-color: $activity_bg; &:after { background: $activity_bg !important;} }
+.drawer.activity, .activity .drawer__bd { background-color: $activity_bg; &:after { background: $activity_bg !important;} }

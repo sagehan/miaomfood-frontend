@@ -7,7 +7,7 @@
     width           : #{24px/$rem_size}em;
     min-height      : #{5*$row_height/18px}em;
     padding         : #{($row_height/2/18px)}em #{($row_height/4/18px)}em;
-    font            : #{18px/$rem_size}em/#{($row_height/18px)} 'HanziPen SC';
+    font            : #{18px/$rem_size}em/#{($row_height/18px)} 'mmf','HanziPen SC';
     //writing-mode  : vertical-rl;
     text-align      : center;
     vertical-align  : middle;
@@ -42,7 +42,7 @@
     top: 0;
     margin-top: -3em;
     padding-top: 0.5em;
-    font        : #{$small_size/$rem_size}em/#{($row_height/$small_size)} 'HanziPen SC';
+    font        : #{$small_size/$rem_size}em/#{($row_height/$small_size)} 'mmf','HanziPen SC';
     white-space : nowrap;
     word-break  : keep-all;
   }
