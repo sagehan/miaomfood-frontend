@@ -24,6 +24,7 @@
     -webkit-margin-after: #{$row_height/2/12px}em;
     margin-bottom: 8px;
     outline   : 1px dashed $tag-border_color;
+    text-align: center;
   }
   .p-spec.isSelected { outline-style: solid; }
   .p-spec.isSelected:before {
