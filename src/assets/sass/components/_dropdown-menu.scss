@@ -26,7 +26,8 @@
     position: relative;
     border-bottom: 1px solid $black;
 
-    .no-touch &:hover .drawer__bd { visibility: visible; }
+    .no-touch &:hover .drawer__bd,
+    &.is-active .drawer__bd { visibility: visible; }
     .drawer__bd {
       position: absolute;
       visibility: hidden;
@@ -39,7 +40,8 @@
   opacity: 0.9;
   transition: background-color .5s ease;
 
-  .no-touch &:hover .drawer__bd { display: block; }
+  .no-touch &:hover .drawer__bd,
+  &.is-active .drawer__bd { display: block; }
   .drawer__bd {
     display: none;
     bottom  : #{42px/$rem_size}em;

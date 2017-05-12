@@ -5,6 +5,16 @@ import initPhotoSwipeFromDOM from './gallery'
 import { fetchCuisines } from './api'
 import { initiate } from './app'
 
+if ('ontouchstart' in document.documentElement) {
+  const menuItems = document.querySelectorAll('.drawer')
+  const drawerToggleFn = function (e) {
+    var activeDrawer = document.querySelector('.drawer.is-active')
+    if (activeDrawer) { activeDrawer.classList.toggle('is-active') }
+    e.currentTarget.classList.toggle('is-active')
+  }
+  Array.prototype.forEach.call(menuItems, el => el.addEventListener('click', drawerToggleFn))
+}
+
 if (!('ontouchstart' in document.documentElement)) {
   addClass(document.documentElement, 'no-touch')
 }

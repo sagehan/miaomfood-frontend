@@ -195,12 +195,12 @@
     }
     .h-product:nth-child(2):after {
       transform: translate(-50%, -50%) scale(1.5, 1.5);
-      background: url(~assets/imgs/pineapple.png) left top/contain no-repeat content-box;
+      background: url('~assets/imgs/pineapple.png') left top/contain no-repeat content-box;
     }
   }
 
   &:nth-of-type(2) {
-    &:before { background: url(~assets/imgs/beef.png) right top/contain no-repeat content-box; }
+    &:before { background: url('~assets/imgs/beef.png') right top/contain no-repeat content-box; }
 
     .h-product:nth-child(1):after {
       transform: translate(-50%, 0) scale(1.15, 1.15);
@@ -208,20 +208,20 @@
     }
     .h-product:nth-child(2):after {
       transform: translate(-100%,50%) scale(1.5, 1.5);
-      background: url(~assets/imgs/pepper.png) left top/contain no-repeat content-box;
+      background: url('~assets/imgs/pepper.png') left top/contain no-repeat content-box;
     }
   }
 
   &:nth-of-type(3) {
-    &:before { background: url(~assets/imgs/chicken.png) left top/contain no-repeat content-box; }
+    &:before { background: url('~assets/imgs/chicken.png') left top/contain no-repeat content-box; }
 
     .h-product:nth-child(1):after {
       transform: scale(1.15, 1.15);
-      background: url(~assets/imgs/pepper.png) left top/contain no-repeat content-box;
+      background: url('~assets/imgs/pepper.png') left top/contain no-repeat content-box;
     }
     .h-product:nth-child(2):after {
       transform: translate(-50%,-50%) scale(1.5, 1.5);
-      background: url(~assets/imgs/yuangu.png) left top/contain no-repeat content-box;
+      background: url('~assets/imgs/yuangu.png') left top/contain no-repeat content-box;
     }
   }
 
@@ -230,11 +230,11 @@
 
     article.h-product:nth-child(1):after {
       transform: translate(-50%, -25%) scale(1.15, 1.15);
-      background: url(~assets/imgs/huanggua.png) left top/contain no-repeat content-box;
+      background: url('~assets/imgs/huanggua.png') left top/contain no-repeat content-box;
     }
     article.h-product:nth-child(2):after {
       transform: translate(-100%, 50%) scale(1.5, 1.5);
-      background: url(~assets/imgs/xia.png) left top/contain no-repeat content-box;
+      background: url('~assets/imgs/xia.png') left top/contain no-repeat content-box;
     }
   }
 }
@@ -280,5 +280,14 @@
         transform: translateX(#{$column_width + 2*$gutter_width}) rotate(15deg);
       }
     }
+  }
+
+  &:nth-of-type(6):before {
+    position: absolute;
+    top: -1em;
+    left: 50%;
+    height: #{3*$row_height/$rem_size}em;
+    transform: translate(-50%, -25%) scale(1.15, 1.15);
+    background: url('~assets/imgs/liulian.png') left top/contain no-repeat content-box;
   }
 }
