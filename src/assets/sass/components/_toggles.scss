@@ -19,7 +19,7 @@
 }
 
 .cart-toggle,
-.account-toggle {
+.console-toggle {
   //border : 1px solid $primary_cl;
   //border-radius: 100%;
   width: #{2*18px/$rem_size}em;
@@ -31,4 +31,4 @@
 }
 
 .cart-toggle:before { content: '\e917'; }
-.account-toggle:before { content: '\e92f'; }
+.console-toggle:before { content: '\e92f'; }

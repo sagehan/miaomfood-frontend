@@ -38,3 +38,13 @@ fetchCuisines().then(
   }
   Array.prototype.forEach.call(cartToggles, el => el.addEventListener('click', cartToggleFn))
 }
+
+{
+  const consoleToggles = document.querySelectorAll('.console-toggle')
+  const consoleToggleFn = function (e) {
+    let console = document.querySelector('#console')
+    e.preventDefault()
+    console.classList.toggle('is-active')
+  }
+  Array.prototype.forEach.call(consoleToggles, el => el.addEventListener('click', consoleToggleFn))
+}

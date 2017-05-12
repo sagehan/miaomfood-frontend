@@ -11,7 +11,7 @@ $susy: (
 
 main { margin-top: 1em; }
 
-#cart {
+.panel {
   @include breakpoint($small) { height: 100vh; }
   @include breakpoint($medium) { margin-top: 1em; height: calc(100vh - 2em); }
   position: fixed;

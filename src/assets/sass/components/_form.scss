@@ -1,0 +1,34 @@
+.form-input {
+  position: relative;
+  margin-bottom: 20px;
+  border-bottom: 1px solid $border_bg;
+  background: $cart_bg;
+
+  &__hd {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transform-origin: 0 50%;
+    transition: font-size 0.1s, transform 0.1s;
+    white-space: nowrap;
+    color: $border_bg;
+  }
+
+  &__bd {
+    padding: 0 0 0 4em;
+    font-size: 1rem;
+  }
+}
+
+.submit-button {
+  width: 100%;
+  height: 50px;
+  background-color: $primary_cl;
+  color: white;
+  border-radius: 0;
+
+  &[disabled='true'] {
+    background: hsl(0, 0%, 97%);
+    color: initial;
+  }
+}

@@ -2,6 +2,7 @@
 $black      : hsla(0, 0, 15%, 1);
 $primary_cl : hsl(333, 72, 76);
 $cart_bg    : #ffffff;
+$panel_bg	: hsl(0, 0, 100%);
 $page_bg    : hsl(0, 0, 92);
 $tasty_bg   : hsl(67, 75, 95);
 $drink_bg   : hsl(341, 75, 95);
@@ -12,18 +13,23 @@ $border_bg  : hsl(0, 0, 75);
 $shadow_bg       : hsl(0, 0, 50);
 $tag-border_color: hsl(174, 75, 33);
 
-#cart { @include box__shadow__rtl; }
+.panel { @include box__shadow__rtl; }
 
 //.head-branding,
 #carousel,
 .page { @include box__shadow__ltr; }
-#activity { h1 {@include text__shadow; }}
+
+#contact,
+#activity { @include text__shadow; }
 
 .tasty { background-color: $tasty-bg; &:after { background: $tasty_bg !important;} }
 .drink { background-color: $drink_bg; &:after { background: $drink_bg !important;} }
 .lazycat { background-color: $lazycat_bg; &:after { background: $lazycat_bg !important;} }
+
 .activity {
 	&:after { background: $activity_bg !important;}
 
-	& .category {background: url('~assets/imgs/bg-blackboard.jpg');}
+	& .category {background: url('~assets/imgs/bg-blackboard.jpg'); }
 }
+
+#contact { background: url('~assets/imgs/bg-blackboard.jpg'); }

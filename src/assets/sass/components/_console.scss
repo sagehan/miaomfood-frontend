@@ -1,0 +1,72 @@
+#console {
+  .form__hd {
+    margin: 1.5em;
+  }
+
+  .session_form .line-item .text_action {
+    position: absolute;
+    right: 0;
+    color: $border_bg;
+  }
+
+  .form-input__bd { padding: 0 0 0 5em; }
+
+  p { text-align: center !important; }
+  /*
+  small {
+    line-height: 1;
+    font-size: #{10px/$rem_size}em;
+    font-weight: 200;
+    color: $border_bg;
+  }
+  */
+
+  .divide-title {
+    position: relative;
+    text-align: center;
+    color: $border_bg;
+
+    &:before {
+      @include absolutly__centered;
+      content: "";
+      height: 1px;
+      width: 100%;
+      background-color: $border_bg;
+    }
+
+    span {
+      position: relative;
+      padding: 0 1em;
+      background-color: $panel_bg;
+    }
+  }
+}
+
+.social-login {
+  padding: 1.5em;
+  text-align: center;
+
+  a { color: grey; }
+  a:hover { color: $primary_cl; }
+  a:first-child { margin-right: 32px; }
+  a:last-child { margin-left: 32px; }
+
+  .icon-qq:before {
+    content: '\e900';
+    font-family: 'icomiaomfood';
+  }
+  .icon-wechat:before {
+    content: '\e901';
+    font-family: 'icomiaomfood';
+  }
+  .icon-weibo:before {
+    content: '\e958';
+    font-size: 32px;
+    font-family: 'icomiaomfood';
+  }
+}
+
+.icon-qq,
+.icon-wechat {
+  font-size: 32px;
+}

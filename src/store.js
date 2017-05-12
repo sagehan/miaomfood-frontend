@@ -10,6 +10,7 @@ Vue.use(Vuex)
 const writer = transit.writer('json')
 
 const state = {
+  user: {},
   summonedCid: 'JQPG',
   gratuity: 3,
   Cuisines: [],
@@ -29,6 +30,7 @@ const state = {
 }
 
 const getters = {
+  isAnonymous: state => R.isEmpty(state.user),
   isCartEmpty: state => R.isEmpty(state.cartItems),
   cuisineDetailsOf: state => {
     return function (cid) {

@@ -1,14 +1,14 @@
 <template>
-  <article id="cart" class="cart">
-    <header class="cart__hd">
+  <article id="cart" class="cart panel">
+    <header class="panel__hd">
       <h1>购物车</h1>
     </header>
 
-    <div v-if="isCartEmpty" class="cart__bd">
+    <div v-if="isCartEmpty" class="panel__bd">
       <p class="empty-reminder">您还没有选择菜品哦!</p>
     </div>
     <!-- or -->
-    <form v-else class="cart__bd steps">
+    <form v-else class="panel__bd steps">
 
       <div class="step-wrap">
         <table class="cart-items">
@@ -66,7 +66,6 @@
             <li class="form-input line-item">
               <label class="form-input__hd" for="customer-tel">手机<span class="asterisk">*</span></label>
               <input class="form-input__bd" :value="telephone" @input="updateCustomer" :class="{inValid: !telValidity}" id="customer-tel" type="tel" name="customer-tel" required maxlength="11" />
-
             </li>
 
             <li class="form-input line-item">

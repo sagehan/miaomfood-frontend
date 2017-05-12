@@ -1,36 +1,3 @@
-.cart {
-  @include layout($poster-col2)
-  @include container; 
-  background-color: white;
-  overflow: scroll;
-  font-family: "HanziPen Sc";
-  line-height: #{$row_height/$rem_size}em;
-
-  &:before {
-    content : "";
-    display : block;
-    width   : 100%;
-    height  : 0.5rem;
-    background-size  : 0.5rem 0.5rem;
-    background-image : radial-gradient( 6px at top  center, $shadow_bg 0, grey 3px, transparent 3px);
-    background-repeat: repeat-x;
-  }
-
-  &__hd {
-    margin  : #{$row_height/$rem_size}em auto;
-    text-align: center;
-
-    h1 { font: #{24px/$rem_size}em/#{(42px/24px)} "HanziPen SC";}
-  }
-
-  &__bd {
-    margin: auto gutters();
-    width: span(11);
-
-    & .empty-reminder { text-align: center; }
-  }
-}
-
 .line-item {
   width: 100%;
   font-size   : #{$small_size/$rem_size}em;
@@ -48,25 +15,10 @@
   margin: 1em auto;
 }
 
-.step__hd { text-align: center; margin: 1em auto; }
-
-.form-input {
-  position: relative;
-  margin-bottom: 20px;
-  border-bottom: 1px solid $border_bg;
-  background: $cart_bg;
-
-  &__hd {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    transform-origin: 0 50%;
-    transition: font-size 0.1s, transform 0.1s;
-    white-space: nowrap;
-    color: $border_bg;
-  }
-
-  &__bd { padding: 0 0 0 4em; }
+.step__hd {
+  margin: 1em auto;
+  text-align: center;
+  color: $border_bg;
 }
 
 .asterisk {

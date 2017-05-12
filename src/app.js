@@ -3,12 +3,19 @@ import 'src/assets/sass/main.scss'
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import store from './store'
 import Vue from 'vue'
+import Console from './components/Console'
 import Cart from './components/Cart'
 import AdditionModal from './components/AdditionModal'
 import SpecTag from './components/SpecTag'
 
 export function initiate () {
   /* eslint-disable no-new */
+  new Vue({
+    el: '#console',
+    store,
+    render: h => h(Console)
+  })
+
   new Vue({
     el: '#cart',
     store,
