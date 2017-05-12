@@ -53,36 +53,36 @@
         </div>
       </div>
 
-        <fieldset class="step-wrap customer">
-          <legend class="step__hd">配送信息</legend>
+      <fieldset class="step-wrap customer">
+        <legend class="step__hd">配送信息</legend>
 
-          <ol class="step__bd">
-            <li class="form-input line-item">
-              <label class="form-input__hd"
-              for="customer-name">称呼<span class="asterisk">*</span></label>
-              <input class="form-input__bd" :value="name" @input="updateCustomer" :class="{inValid: !nameValidity}" id="customer-name" type="text" name="customer-name" required maxlength="10"/>
-            </li>
+        <ol class="step__bd">
+          <li class="form-input line-item">
+            <label class="form-input__hd"
+            for="customer-name">称呼<span class="asterisk">*</span></label>
+            <input class="form-input__bd" :value="name" @input="updateCustomer" :class="{inValid: !nameValidity}" id="customer-name" type="text" name="customer-name" required maxlength="10"/>
+          </li>
 
-            <li class="form-input line-item">
-              <label class="form-input__hd" for="customer-tel">手机<span class="asterisk">*</span></label>
-              <input class="form-input__bd" :value="telephone" @input="updateCustomer" :class="{inValid: !telValidity}" id="customer-tel" type="tel" name="customer-tel" required maxlength="11" />
-            </li>
+          <li class="form-input line-item">
+            <label class="form-input__hd" for="customer-tel">手机<span class="asterisk">*</span></label>
+            <input class="form-input__bd" :value="telephone" @input="updateCustomer" :class="{inValid: !telValidity}" id="customer-tel" type="tel" name="customer-tel" required maxlength="11" />
+          </li>
 
-            <li class="form-input line-item">
-              <label class="form-input__hd" for="customerCity">城市<span class="asterisk">*</span></label>
-              <div class="form-input__bd">
-                <select id="customer-city" name="customer-city" >
-                  <option value="乌鲁木齐" selected>乌鲁木齐市</option>
-                </select>
-              </div>
-            </li>
+          <li class="form-input line-item">
+            <label class="form-input__hd" for="customerCity">城市<span class="asterisk">*</span></label>
+            <div class="form-input__bd">
+              <select id="customer-city" name="customer-city" >
+                <option value="乌鲁木齐" selected>乌鲁木齐市</option>
+              </select>
+            </div>
+          </li>
 
-            <li class="form-input line-item">
-              <label class="form-input__hd" for="customer-addr">地址<span class="asterisk">*</span></label>
-              <textarea class="form-input__bd" :value="address" @input="updateCustomer" :class="{inValid: !addrValidity}" id="customer-addr" type="addr" name="customer-addr" required maxlength="50"></textarea>
-            </li>
-          </ol>
-        </fieldset>
+          <li class="form-input line-item">
+            <label class="form-input__hd" for="customer-addr">地址<span class="asterisk">*</span></label>
+            <textarea class="form-input__bd" :value="address" @input="updateCustomer" :class="{inValid: !addrValidity}" id="customer-addr" type="addr" name="customer-addr" required maxlength="50"></textarea>
+          </li>
+        </ol>
+      </fieldset>
 
       <div class="step-wrap">
         <fieldset class="payment">

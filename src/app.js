@@ -7,6 +7,7 @@ import Console from './components/Console'
 import Cart from './components/Cart'
 import AdditionModal from './components/AdditionModal'
 import SpecTag from './components/SpecTag'
+import { addClass } from './helper'
 
 export function initiate () {
   /* eslint-disable no-new */
@@ -48,8 +49,11 @@ export function initiate () {
       showModal (e) {
         let target = e.currentTarget.parentNode
         let cid = target.getAttribute('data-cid')
+        let el = document.body
+        addClass(el, 'is--fixed')
         this.$store.commit('summonCuisine', cid)
         target.appendChild(panelVm.$el)
+        target.addEventListener('touchmove', function (e) { e.preventDefault() }, false)
       }
     }
   })

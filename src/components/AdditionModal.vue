@@ -15,6 +15,7 @@
 <script>
   import { mapState, mapGetters } from 'vuex'
   import Modal from './Modal'
+  import { removeClass } from '../helper'
 
   export default {
     name: 'addition-modal',
@@ -27,9 +28,14 @@
     },
 
     methods: {
-      closeModal (e) { this.$store.commit('closeModal') },
+      closeModal (e) {
+        let el = document.body
+        removeClass(el, 'is--fixed')
+        this.$el.parentNode.removeEventListener('touchmove', function (e) { e.preventDefault() }, false)
+        this.$store.commit('closeModal')
+      },
       incCuisine (spec) { this.$store.commit('incCuisine', [this.summonedCid, spec]) },
-      decCuisine (spec) { this.$store.commit('decCuisine', [this.summonedCid, spec]) }
+      decCuisine (spec) { this.$store.commit('decCuisine', [this.summonedCid, spec]) },
     }
   }
 </script>
