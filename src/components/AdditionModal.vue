@@ -30,7 +30,7 @@
     methods: {
       closeModal (e) {
         let el = document.body
-        removeClass(el, 'is--fixed')
+        removeClass(el, 'is-fixed')
         this.$el.parentNode.removeEventListener('touchmove', function (e) { e.preventDefault() }, false)
         this.$store.commit('closeModal')
       },

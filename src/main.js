@@ -33,6 +33,8 @@ fetchCuisines().then(
   const cartToggles = document.querySelectorAll('.cart-toggle')
   const cartToggleFn = function (e) {
     let cart = document.querySelector('#cart')
+    let body = document.body
+    body.classList.toggle('is-fixed')
     e.preventDefault()
     cart.classList.toggle('is-active')
   }
@@ -42,9 +44,11 @@ fetchCuisines().then(
 {
   const consoleToggles = document.querySelectorAll('.console-toggle')
   const consoleToggleFn = function (e) {
-    let console = document.querySelector('#console')
+    let consl = document.querySelector('#console')
+    let body = document.body
+    body.classList.toggle('is-fixed')
     e.preventDefault()
-    console.classList.toggle('is-active')
+    consl.classList.toggle('is-active')
   }
   Array.prototype.forEach.call(consoleToggles, el => el.addEventListener('click', consoleToggleFn))
 }

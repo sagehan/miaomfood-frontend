@@ -188,6 +188,6 @@
       ...mapActions([
         'checkout',
       ]),
-    }
+    },
   }
 </script>

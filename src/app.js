@@ -50,7 +50,7 @@ export function initiate () {
         let target = e.currentTarget.parentNode
         let cid = target.getAttribute('data-cid')
         let el = document.body
-        addClass(el, 'is--fixed')
+        addClass(el, 'is-fixed')
         this.$store.commit('summonCuisine', cid)
         target.appendChild(panelVm.$el)
         target.addEventListener('touchmove', function (e) { e.preventDefault() }, false)

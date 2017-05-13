@@ -5,7 +5,7 @@ $susy: (
   global-box-sizing: border-box,
   );
 
-body.is--fixed { overflow: hidden; }
+body.is-fixed { overflow: hidden; }
 
 .wrap {
   @include container
