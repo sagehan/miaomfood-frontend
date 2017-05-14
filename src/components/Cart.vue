@@ -65,7 +65,7 @@
 
           <li class="form-input line-item">
             <label class="form-input__hd" for="customer-tel">手机<span class="asterisk">*</span></label>
-            <input class="form-input__bd" :value="telephone" @input="updateCustomer" :class="{inValid: !telValidity}" id="customer-tel" type="tel" name="customer-tel" required maxlength="11" />
+            <input class="form-input__bd" :value="telephone" @input="updateCustomer" :class="{inValid: !telValidity}" id="customer-tel" type="tel" name="customer-telephone" required maxlength="11" />
           </li>
 
           <li class="form-input line-item">
@@ -79,7 +79,7 @@
 
           <li class="form-input line-item">
             <label class="form-input__hd" for="customer-addr">地址<span class="asterisk">*</span></label>
-            <textarea class="form-input__bd" :value="address" @input="updateCustomer" :class="{inValid: !addrValidity}" id="customer-addr" type="addr" name="customer-addr" required maxlength="50"></textarea>
+            <textarea class="form-input__bd" :value="address" @input="updateCustomer" :class="{inValid: !addrValidity}" id="customer-addr" type="addr" name="customer-address" required maxlength="50"></textarea>
           </li>
         </ol>
       </fieldset>

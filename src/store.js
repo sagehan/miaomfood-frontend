@@ -11,15 +11,15 @@ const writer = transit.writer('json')
 
 const state = {
   user: {},
-  summonedCid: 'JQPG',
+  summonedCid: '',
   gratuity: 3,
   Cuisines: [],
   cartItems: [],
   comment: '',
   customer: {
-    'name': '霸气老板娘',
-    'telephone': '18690890381',
-    'address': '高新街桂林路东四巷锦林二巷8号1楼'
+    'name': '',
+    'telephone': '',
+    'address': ''
   },
   delayDayOptions: [
     {text: '今日', value: 0},
