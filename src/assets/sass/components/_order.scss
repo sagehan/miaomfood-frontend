@@ -5,6 +5,8 @@ $susy: (
   global-box-sizing: border-box,
   );
 
+body { padding: 0.75em; }
+
 .step-wrap {
   @include span(12);
   margin: 1em auto;
@@ -73,6 +75,7 @@ $susy: (
   position: relative;
   padding-top: 3em;
 
+/*
   &:before {
     display: block;
     position: absolute;
@@ -85,6 +88,7 @@ $susy: (
     border: 1px dashed white;
     //background: $border_bg;
   }
+  */
 }
 
 .step-bullet {
@@ -168,6 +172,7 @@ $susy: (
 
 footer {
   padding     : 1em;
+  padding-top : 5em; 
   line-height : #{$row_height/$rem_size};
   color       : adjust-color($black, $alpha: -0.65);
   font-weight : 200;

@@ -70,7 +70,7 @@ var webpackConfig = merge(baseWebpackConfig, {
     new HtmlWebpackPlugin({
       filename: 'orders/index.html',
       template: 'src/orders/index.html',
-      excludeChunks: ['app·'],
+      excludeChunks: ['app'],
       inject: true,
       minify: {
         removeComments: true,
