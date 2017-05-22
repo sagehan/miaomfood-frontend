@@ -1,7 +1,7 @@
 table.cart-items {
     margin: auto;
     margin-bottom: 20px;
-    width: span(12);
+    width: 100%;
     border-collapse : collapse;
     text-align      : left;
     line-height     : #{($row_height - 2px)/$rem_size}em;
