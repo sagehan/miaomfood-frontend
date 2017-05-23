@@ -43,8 +43,8 @@
     </aside>
     <main class="panel__bd">
       <section id="times" class="line-item">
-        <small>订单编号: 1705211860381</small>
-        <small>下单时间：<time class="datetiem">2017年05月21日</time></small>
+        <small>订单编号: {{orderNumber}}</small>
+        <small>下单时间：<time class="datetime" :datetime="orderDate">{{orderDate}}</time></small>
       </section>
 
       <section id="items" class="step-wrap">
@@ -56,18 +56,14 @@
             </tr>
           </thead>
           <tbody>
-            <tr class="h-item">
-              <td class="p-name">激情培根(十寸)</td>
-              <td class="spec-price">59</td>
-              <td class="qty">1</td>
-              <td class="sub-total money">59</td>
-            </tr>
-            <tr class="h-item">
-              <td class="p-name">榴恋榴莲(八寸)</td>
-              <td class="spec-price">68</td>
-              <td class="qty">1</td>
-              <td class="sub-total money">68</td>
-            </tr>
+            <template v-for="i in orderedItems">
+              <tr class="h-item">
+                <td class="p-name">{{i.productID.name}}({{i.offers.name}})</td>
+                <td class="spec-price">{{i.offers.price}}</td>
+                <td class="qty">{{i.orderQuantity}}</td>
+                <td class="sub-total money">{{i.offers.price * i.orderQuantity}}</td>
+              </tr>
+            </template>
           </tbody>
         </table>
       </section>
@@ -77,36 +73,32 @@
         <ol class="step__bd line-item">
           <li class="line-item">
             <span>称呼：</span>
-            <span>霸气老板娘</span>
+            <span>{{customer.name}}</span>
           </li>
 
           <li class="line-item">
             <span>手机：</span>
-            <span>18690890381</span>
+            <span>{{customer.telephone}}</span>
           </li>
 
           <li class="line-item">
             <span>地址：</span>
-            <span>高新街桂林路东四巷锦林二巷8号1楼</span>
+            <span>{{customer.address}}</span>
           </li>
         </ol>
       </section>
+
       <section id="complete" class="step-wrap">
-        <input
-        class="submit-button"
-        name="close-order-button"
-        type="submit"
-        value="确认收餐"
-        :disabled=""
-        @click.prevent="close-order" >
-      </input>
-    </section>
-  </main>
-</article>
+        <input >
+        </input>
+      </section>
+    </main>
+  </article>
   <footer>
     <p class="copyright">
       <small>Copyright 2017 &copy; <b>miaomfood.com</b> 乌鲁木齐市喵姆餐厅版权所有</small>
     </p>
   </footer>
+  <!-- script src="https://unpkg.com/vue"></script -->
 </body>
 </html>

@@ -63,7 +63,11 @@ const getters = {
       return !!c && c.qty
     }
   },
-  total: (state) => state.cartItems.reduce(
+  cartItemsAfterPriceUpserted: (state, getters) => {
+    let upsertPriceFn = i => R.assocPath(['offers', 'price'], getters.specPriceOf(i.productID, i.offers.name), i)
+    return R.map(upsertPriceFn, state.cartItems)
+  },
+  total: state => state.cartItems.reduce(
     (total, p) => { return total + p.price * p.qty },
     0
   ) + state.gratuity,
@@ -78,9 +82,10 @@ const getters = {
       transit.keyword('Order/comment'), state.comment,
       transit.keyword('Order/schedule-day'), transit.integer(state.reservation.delayday),
       transit.keyword('Order/schedule-time'), state.reservation.scheduledtime,
-      transit.keyword('Order/CartItems'), state.cartItems,
+      transit.keyword('Order/CartItems'), getters.cartItemsAfterPriceUpserted,
       transit.keyword('Order/charge'), transit.map([
-        transit.keyword('charge/paymentMethod'), transit.keyword('PaymentMethod/' + state.paymentMethod)]),
+        transit.keyword('charge/paymentMethod'),
+        transit.keyword('PaymentMethod/' + state.paymentMethod)]),
     ])
   }}
 

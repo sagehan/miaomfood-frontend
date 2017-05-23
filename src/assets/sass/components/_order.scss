@@ -5,7 +5,7 @@ $susy: (
   global-box-sizing: border-box,
   );
 
-body { padding: 0.75em; }
+body { padding: 0.75em; padding-top: 3em; }
 
 .step-wrap {
   @include span(12);
@@ -15,6 +15,7 @@ body { padding: 0.75em; }
 //.is-hidden { @include absoutly__hidden }
 
 #order {
+  @include breakpoint($small) { max-width: 320px; }
   position: relative;
   overflow: initial;
 
