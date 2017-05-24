@@ -130,7 +130,7 @@ body { padding: 0.75em; padding-top: 3em; }
     content: "";
     width: 100%;
     height: 2px;
-    border: 1px solid $primary_cl;
+    border: 1px dashed $border_bg;
   }
 
   &:nth-of-type(1) { @include span(isolate 1 at 1 of (2 3 5 2) no-gutters); }
@@ -138,16 +138,16 @@ body { padding: 0.75em; padding-top: 3em; }
   &:nth-of-type(3) { @include span(isolate 1 at 3 of (2 3 5 2) no-gutters); }
   &:nth-of-type(4) { @include span(isolate 1 at 4 of (2 3 5 2) no-gutters); }
 
-  &.is-active ~ &:before { border: 1px dashed white; background: $border_bg; }
-  &.is-active ~ & .step-label { color: $border_bg; }
-  &.is-active ~ & .step-label:before { background: $border_bg; }
+  &.is-active:before { border: 1px solid $primary_cl; background: $primary_cl; }
+  &.is-active .step-label { color: $primary_cl; }
+  &.is-active .step-label:before { background: $primary_cl; }
 }
 
 .step-label {
   display: block;
   position: relative;
   z-index: 3;
-  color: $primary_cl;
+  color: $border_bg;
   padding-top: 1em;
 
   &:before {
@@ -156,7 +156,7 @@ body { padding: 0.75em; padding-top: 3em; }
     left: 50%;
     top: 20%;
     transform: translate(-50%, -50%);
-    background: $primary_cl;
+    background: $border_bg;
     content: "";
     width: 0.5em;
     height: 0.5em;

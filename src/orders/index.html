@@ -33,19 +33,21 @@ function flipPanelFn (e) {
         <aside id="status-bar" class="line-item">
           <nav>
             <ul>
-              <li class="step-bullet">
+              <li class="step-bullet" :class="[!!orderTime? activeClass : '']">
                 <a href="#times" class="step-label">下单</a>
-                <b class="step-time"><time datetime="12:26">12:26</time></b>
+                <b class="step-time"><time :datetime="orderTime">{{orderTime}}</time></b>
               </li>
-              <li class="step-bullet is-active">
+              <li class="step-bullet" :class="[!!confirmedTime? activeClass : '']">
                 <a href="#items" class="step-label">备餐</a>
-                <b class="step-time"><time datetime="12:29">12:29</time></b>
+                <b class="step-time"><time :datetime="confirmedTime">{{confirmedTime}}</time></b>
               </li>
-              <li class="step-bullet">
+              <li class="step-bullet" :class="[!!deliveredTime? activeClass : '']">
                 <a href="#customer" class="step-label">配送</a>
+                <b class="step-time"><time :datetime="deliveredTime">{{deliveredTime}}</time></b>
               </li>
-              <li class="step-bullet">
+              <li class="step-bullet" :class="[!!completeTime? activeClass : '']">
                 <a href="#complete" class="step-label">送达</a>
+                <b class="step-time"><time :datetime="completeTime">{{completeTime}}</time></b>
               </li>
             </ul>
           </nav>
@@ -53,7 +55,7 @@ function flipPanelFn (e) {
         <main class="panel__bd">
           <section id="times" class="line-item">
             <small>订单编号: {{orderNumber}}</small>
-            <small>下单时间：<time class="datetime" :datetime="orderDate">{{orderDate}}</time></small>
+            <small>日期：<time class="datetime" :datetime="orderDate">{{orderDate}}</time></small>
           </section>
 
           <section id="items" class="step-wrap">
@@ -120,7 +122,7 @@ function flipPanelFn (e) {
           </p>
           <p class="telephone">
             <span>电话&微信：</span>
-            <span><a href="tel:18690890381">18690890381</a></span>
+            <span><a href="tel:18611552172">18690890381</a></span>
           </p>
           <p class="address">
             <span>餐厅地址：</span>
