@@ -2,16 +2,16 @@ import 'src/assets/sass/order.scss'
 import Vue from 'vue'
 import { reviewOrder } from '../api'
 
+/* eslint-disable no-undef */
+/* eslint-disable no-new */
+/* eslint-disable no-unused-vars */
+
 function getUrlParameter (name) {
   name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]')
   var regex = new RegExp('[\\?&]' + name + '=([^&#]*)')
   var results = regex.exec(window.location.search)
   return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '))
 }
-
-/* eslint-disable no-undef */
-/* eslint-disable no-new */
-/* eslint-disable no-unused-vars */
 
 (function () {
   let oid = getUrlParameter('out_trade_no') || window.location.pathname.slice(8)

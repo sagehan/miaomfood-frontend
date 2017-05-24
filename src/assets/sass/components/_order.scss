@@ -7,30 +7,53 @@ $susy: (
 
 body { padding: 0.75em; padding-top: 3em; }
 
+.container {
+  margin: auto;
+  position: relative;
+  perspective: 800px;
+  max-width: 320px;
+}
+
+#paper {
+  @include layout($poster-col2)
+  @include container
+  position: relative;
+  min-height: 685px;
+  transform-origin: right center;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+
+  &.is-flipped {
+    transform: translateX( -100% ) rotateY( -180deg );
+
+    .front { backface-visibility: hidden }
+  }
+
+  .front,
+  .back {
+    @include full;
+    margin: auto;
+    display: block;
+    position: absolute;
+    background: white;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    overflow: hidden;
+    min-height: 658px;
+  }
+  .back { transform: rotateY( 180deg ) }
+}
+
 .step-wrap {
   @include span(12);
   margin: 1em auto;
 }
 
-//.is-hidden { @include absoutly__hidden }
-
 #order {
   @include breakpoint($small) { max-width: 320px; }
   position: relative;
+  z-index: 1;
   overflow: initial;
-
-  &:after {
-    content: '';
-    position: absolute;
-    bottom: 0.75em;
-    right: 0.25em;
-    z-index: -1;
-    background: $page_bg;
-    width: 40%;
-    height: 1em;
-    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.3);
-    transform: skew(5deg) rotate(5deg);
-  }
 
   .line-item {
     line-height: #{$row_height/$rem_size}em;
@@ -64,9 +87,10 @@ body { padding: 0.75em; padding-top: 3em; }
   //height  : 5em;
   width   : 100%;
   padding : 0 span(1 wide);
+  transform-style: preserve-3d;
   transition: all .3s ease;
 
-  .head-branding { height: 100%; }
+  .head-branding { height: 100%; cursor: pointer; }
   .branding-logo { max-height: 5em; width: auto; }
 }
 
@@ -168,6 +192,38 @@ body { padding: 0.75em; padding-top: 3em; }
   &[disabled='true'] {
     background: hsl(0, 0%, 97%);
     color: initial;
+  }
+}
+
+.back article {
+  padding: 1em;
+  text-align: center;
+
+  h2 {
+    margin: 0.67em;
+    margin-top: 2em;
+    font-size: 1.2em;
+    font-weight: normal;
+  }
+
+  p { margin-top: 0; text-align: center ; }
+
+  .website,
+  .telephone,
+  .address {
+    display: table-row;
+
+    a { color: $black; border-bottom: 1px dashed $primary_cl; }
+
+    span:nth-of-type(1) {
+      display: table-cell;
+      min-width: 6em;
+      text-align: right;
+    }
+    span:nth-of-type(2) {
+      display: table-cell;
+      text-align: left;
+    }
   }
 }
 
