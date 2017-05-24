@@ -12,9 +12,13 @@
   <meta name="msapplication-tap-highlight" content="no" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <script type="text/javascript">
-function flipPanelFn (e) {
+function flipPanelFn () {
   var panel = document.querySelector('#paper')
   panel.classList.toggle('is-flipped')
+};
+function closeModal () {
+  var modal = document.querySelector('.modal')
+  modal.parentNode.removeChild(modal)
 }
   </script>
 </head>
@@ -54,7 +58,7 @@ function flipPanelFn (e) {
         </aside>
         <main class="panel__bd">
           <section id="times" class="line-item">
-            <small>订单编号: {{orderNumber}}</small>
+            <small>单号: {{orderNumber}}</small>
             <small>日期：<time class="datetime" :datetime="orderDate">{{orderDate}}</time></small>
           </section>
 
