@@ -67,8 +67,8 @@ const getters = {
     let upsertPriceFn = i => R.assocPath(['offers', 'price'], getters.specPriceOf(i.productID, i.offers.name), i)
     return R.map(upsertPriceFn, state.cartItems)
   },
-  total: state => state.cartItems.reduce(
-    (total, p) => { return total + p.price * p.qty },
+  total: (state, getters) => getters.cartItemsAfterPriceUpserted.reduce(
+    (total, i) => { return total + i.offers.price * i.qty },
     0
   ) + state.gratuity,
   stagedOrder: (state, getters) => {
@@ -110,15 +110,10 @@ const mutations = {
       c.qty = c.qty - 1
     }
   },
-  updateCustomer (state, [k, v]) {
-    state.customer[k] = v
-  },
-  updateReservation (state, [k, v]) {
-    state.reservation[k] = v
-  },
-  updatePaymentMethod (state, value) {
-    state.paymentMethod = value
-  }
+  updateComment (state, v) { state.comment = v },
+  updateCustomer (state, [k, v]) { state.customer[k] = v },
+  updateReservation (state, [k, v]) { state.reservation[k] = v },
+  updatePaymentMethod (state, value) { state.paymentMethod = value }
 }
 
 const actions = {

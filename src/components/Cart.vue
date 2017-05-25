@@ -32,7 +32,7 @@
 
         <fieldset class="form-input line-item">
             <label class="form-input__hd" for="comment">备注说明</label>
-            <input class="form-input__bd comment-input" type="text" name="comment"  maxlength="15" />
+            <input class="form-input__bd comment-input" type="text" name="comment"  v-model="comment" maxlength="15" />
         </fieldset>
 
         <div class="charge-info">
@@ -150,7 +150,6 @@
       ...mapState([
         'gratuity',
         'cartItems',
-        'comment',
         'delayDayOptions',
         'reservation',
       ]),
@@ -164,13 +163,13 @@
         telValidity: state => phoneRE.test(state.customer.telephone),
         addrValidity: state => !!state.customer.address.trim(),
       }),
+      comment: {
+        get () { return this.$store.state.comment },
+        set (value) { return this.$store.commit('updateComment', value) }
+      },
       payment: {
-        get () {
-          return this.$store.state.paymentMethod
-        },
-        set (value) {
-          this.$store.commit('updatePaymentMethod', value)
-        },
+        get () { return this.$store.state.paymentMethod },
+        set (value) { this.$store.commit('updatePaymentMethod', value) },
       }
     },
 
