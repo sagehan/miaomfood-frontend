@@ -50,6 +50,7 @@ function renderTime (timeStamp) {
           orderedItems: function () { return this.orderRaw.OrderedItems },
           comment: function () { return this.orderRaw.comment },
           customer: function () { return this.orderRaw.customer },
+          orderAmount: function () { return this.orderRaw.charge.amount },
           paymentMethod: function () { return this.orderRaw.charge.paymentMethod },
           scheduleDay: function () { return this.orderRaw['schedule-day'] },
           scheduleTime: function () { return this.orderRaw['schedule-time'] },
@@ -58,6 +59,21 @@ function renderTime (timeStamp) {
         template: document.body.querySelector('#order').outerHTML,
       })
     },
-    err => console.log('error message:' + err)
+    err => {
+      console.log(err)
+      document.body.innerHTML += `
+      <div class="modal modal-bg" onclick="closeModal(); flipPanelFn(); return false">
+        <div class="modal-fg">
+          <header id="topbar" class="panel__hd">
+            <h1 class="head-branding">
+              <img class="branding-logo" src="../static/imgs/logo.svg" alt="Logo" />
+            </h1>
+          </header>
+          <p style="text-align: center; margin: 1em; color: red;">
+          您查询的订单不存在，或者查询时效已过!
+          </p>
+        </div>
+      </div>`
+    }
     )
 })()

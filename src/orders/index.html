@@ -6,7 +6,6 @@
   <link rel="stylesheet" media="all" href="//cdnjs.cloudflare.com/ajax/libs/Han/3.2.7/han.min.css">
   <link rel="alternate" type="application/ld+json" title="JSON-LD representation of this site" href="/static/about.jsonld" />
   <link rel="canonical" href="https://miaomfood.com" />
-  <meta name="description" content="好多好多的芝士和肉，给你认真生活的力量！" />
   <meta name="keywords" content="喵姆餐厅 喵姆 Miaom pizza 快餐 美味 乌鲁木齐快餐 披萨 焗饭 小吃 烤翅" />
   <meta name="viewport" content="initial-scale=1.0, width=device-width, maximum-scale=1, user-scalable=0" />
   <meta name="msapplication-tap-highlight" content="no" />
@@ -15,6 +14,10 @@
 function flipPanelFn (e) {
   var panel = document.querySelector('#paper')
   panel.classList.toggle('is-flipped')
+};
+function closeModal() {
+  var modal = document.querySelector('.modal')
+  modal.parentNode.removeChild(modal)
 }
   </script>
 </head>
@@ -54,7 +57,7 @@ function flipPanelFn (e) {
         </aside>
         <main class="panel__bd">
           <section id="times" class="line-item">
-            <small>订单编号: {{orderNumber}}</small>
+            <small>单号: {{orderNumber}}</small>
             <small>日期：<time class="datetime" :datetime="orderDate">{{orderDate}}</time></small>
           </section>
 
@@ -77,6 +80,16 @@ function flipPanelFn (e) {
                 </template>
               </tbody>
             </table>
+
+            <div class="line-item">
+              <span>送餐费：</span>
+              <span class="money">3</span>
+            </div>
+
+            <div class="line-item">
+              <span>总额：</span>
+              <span class="money">{{orderAmount}}</span>
+            </div>
           </section>
 
           <section id="customer" class="step-wrap">

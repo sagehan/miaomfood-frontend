@@ -1,5 +1,6 @@
 <template>
   <Modal v-if="!!summonedCid" @closeModal="closeModal" class="modal">
+    <h2 class="modal__hd">{{cuisineNameOf(summonedCid)}}</h2>
     <ul>
       <li v-for="s in species">
         <span class="item-tag">
@@ -23,7 +24,7 @@
 
     computed: {
       ...mapState(['summonedCid']),
-      ...mapGetters(['cuisineDetailsOf', 'speciesOf', 'qtyOf']),
+      ...mapGetters(['cuisineDetailsOf', 'cuisineNameOf', 'speciesOf', 'qtyOf']),
       species () { return this.speciesOf(this.summonedCid) }
     },
 
