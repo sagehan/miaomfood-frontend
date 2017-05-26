@@ -6,10 +6,15 @@
   .session_form .line-item .text_action {
     position: absolute;
     right: 0;
+    z-index: 3;
     color: $border_bg;
   }
 
-  .form-input__bd { padding: 0 0 0 5em; }
+  .form-input__bd {
+    padding: 0 0 0 5em;
+
+    &[type=password] { border-right: 5em solid transparent; }
+  }
 
   p { text-align: center !important; }
   /*

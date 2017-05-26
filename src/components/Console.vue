@@ -28,7 +28,7 @@
           <a rel="nofollow" href="" class="icon-weibo" target="_self" title="新浪微博登录"></a>
         </div>
 
-        <p class="copy"><a href="https://www.bigcartel.com/signup/">注册</a></p>
+        <p class="copy"><a href="">注册</a></p>
       </form>
     </div>
   </article>

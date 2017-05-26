@@ -50,7 +50,7 @@ function renderTime (timeStamp) {
           orderedItems: function () { return this.orderRaw.OrderedItems },
           comment: function () { return this.orderRaw.comment },
           customer: function () { return this.orderRaw.customer },
-          orderAmount: function () { return this.orderRaw.charge.amount },
+          orderAmount: function () { return this.orderRaw.amount },
           paymentMethod: function () { return this.orderRaw.charge.paymentMethod },
           scheduleDay: function () { return this.orderRaw['schedule-day'] },
           scheduleTime: function () { return this.orderRaw['schedule-time'] },
